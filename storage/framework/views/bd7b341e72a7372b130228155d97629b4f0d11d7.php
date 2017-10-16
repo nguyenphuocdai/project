@@ -31,7 +31,7 @@
 
 			<ul id="categories">
 				<?php $menu = DB::table('categories')->get(); ?>
-						<?php $__currentLoopData = $menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_menu): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+					<?php $__currentLoopData = $menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_menu): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 				<li><a href="#"><?php echo e($item_menu->name); ?><span>(*)</span></a>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 			<div class="clearfix"></div>
@@ -69,18 +69,18 @@
 	<!-- Products -->
 	<div class="twelve columns products">
 
-		<!-- Product #1 -->
+		<!-- Product #1 --><?php $__currentLoopData = $pr_cate; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_pr_cate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 		<div class="four shop columns">
 			<figure class="product">
-				<?php $__currentLoopData = $pr_cate; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_pr_cate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+				
 				<div class="mediaholder">
 					<a href="<?php echo e(url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])); ?>">
-						<img alt="" src="<?php echo e(asset('resources/upload/'.$item_pr_cate->image)); ?>"/>
+						<img class="img" alt="" src="<?php echo e(asset('resources/upload/'.$item_pr_cate->image)); ?>"/>
 						<div class="cover">
-							<img alt="" src="<?php echo e(asset('resources/upload/'.$item_pr_cate->image)); ?>"/>
+							<img alt="" class="img" src="<?php echo e(asset('resources/upload/'.$item_pr_cate->image)); ?>"/>
 						</div>
 					</a>
-					<a href="<?php echo e(url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])); ?>" class="product-button"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+					<a href="<?php echo e(url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])); ?>" class="product-button"><i class="fa fa-hand-o-right"></i> Xem chi tiết</a>
 				</div>
 
 				<a href="variable-product-page.html">
@@ -91,9 +91,10 @@
 						
 					</section>
 				</a>
-				<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+				
 			</figure>
 		</div>
+		<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 		<!-- Pagination -->
 		<!-- <div class="pagination-container">
 			<nav class="pagination">

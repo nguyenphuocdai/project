@@ -106,7 +106,7 @@
 					    <div class="qtyplus"></div>
 					</form>
 
-					<a href="#" class="button adc">Thêm vào giỏ hàng</a>
+					<a href="{{url('mua-hang',[$pr_detail->product_id,$pr_detail->alias])}}" class="button adc">Thêm vào giỏ hàng</a>
 					<div class="clearfix"></div>
 
 			</section>

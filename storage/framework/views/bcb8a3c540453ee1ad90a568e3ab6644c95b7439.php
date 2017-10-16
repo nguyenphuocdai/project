@@ -44,9 +44,9 @@
 	<div class="twelve columns">
 		<div id="additional-menu">
 			<ul>
-				<li><a href="shopping-cart.html">Giỏ hàng</a></li>
+				<li><a href="<?php echo e(route('giohang')); ?>">Giỏ hàng</a></li>
 				<li><a href="wishlist.html">So sánh <span>(2)</span></a></li>
-				<li><a href="checkout-billing-details.html">Thanh toán</a></li>
+				<li><a href="<?php echo e(route('dathang')); ?>">Thanh toán</a></li>
 				<li><a href="<?php echo e(route('show-login')); ?>"><?php
 					if(Auth::guard('customers')->check())
 					{

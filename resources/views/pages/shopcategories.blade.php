@@ -32,7 +32,7 @@
 
 			<ul id="categories">
 				<?php $menu = DB::table('categories')->get(); ?>
-						@foreach($menu as $item_menu)
+					@foreach($menu as $item_menu)
 				<li><a href="#">{{$item_menu->name}}<span>(*)</span></a>
 					@endforeach
 			<div class="clearfix"></div>
@@ -70,18 +70,18 @@
 	<!-- Products -->
 	<div class="twelve columns products">
 
-		<!-- Product #1 -->
+		<!-- Product #1 -->@foreach($pr_cate as $item_pr_cate)
 		<div class="four shop columns">
 			<figure class="product">
-				@foreach($pr_cate as $item_pr_cate)
+				
 				<div class="mediaholder">
 					<a href="{{url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])}}">
-						<img alt="" src="{{ asset('resources/upload/'.$item_pr_cate->image)}}"/>
+						<img class="img" alt="" src="{{ asset('resources/upload/'.$item_pr_cate->image)}}"/>
 						<div class="cover">
-							<img alt="" src="{{ asset('resources/upload/'.$item_pr_cate->image)}}"/>
+							<img alt="" class="img" src="{{ asset('resources/upload/'.$item_pr_cate->image)}}"/>
 						</div>
 					</a>
-					<a href="{{url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])}}" class="product-button"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+					<a href="{{url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])}}" class="product-button"><i class="fa fa-hand-o-right"></i> Xem chi tiết</a>
 				</div>
 
 				<a href="variable-product-page.html">
@@ -92,9 +92,10 @@
 						
 					</section>
 				</a>
-				@endforeach
+				
 			</figure>
 		</div>
+		@endforeach
 		<!-- Pagination -->
 		<!-- <div class="pagination-container">
 			<nav class="pagination">

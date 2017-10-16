@@ -15,3 +15,9 @@
     text-align: center !important;
     margin-bottom: 20px !important;
 }
+#wrapper .img {
+	height: 250px !important;
+}
+.image-cart{
+	width: 50px !important;
+}

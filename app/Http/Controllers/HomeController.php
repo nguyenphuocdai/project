@@ -47,12 +47,14 @@ class HomeController extends Controller
     }
     public function categories($category_id)
     {
+
         //lấy các sản phẩm theo loại
         $pr_cate = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image')->where('category_id',$category_id)->paginate(6);
         return view('pages.shopcategories',compact('pr_cate'));
     }
     public function detail($product_id)
     {   
+
         //click vào thì lượt xem tăng 1
         $pr_view = DB::table('products')->where('product_id',$product_id)->increment('view',1);
         $img = DB::table('images')->select('product_id','image')->where('product_id',$product_id)->get();
@@ -117,7 +119,7 @@ class HomeController extends Controller
       
         $total = Cart::total(0,",",".");
         
-        return view('frontend.pages.shopping-cart',compact('content','total'));
+        return view('pages.shopping-cart',compact('content','total'));
         
     }
 
@@ -210,7 +212,7 @@ class HomeController extends Controller
         $total = Cart::total(0,",",".");
         
        
-        return view('frontend.pages.checkout',compact('content','total'));
+        return view('pages.checkout',compact('content','total'));
     }
      public function postThanhToan(Request $r)
     {   
