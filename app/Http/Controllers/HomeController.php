@@ -39,13 +39,17 @@ class HomeController extends Controller
         $pr = DB::table('products')->select('product_id','name','price','alias','image','created_at')->orderBy('product_id','DESC')->limit(4)->get();
         //lấy các sp xem nhiều
         $pr_view = DB::table('products')->select('product_id','name','price','alias','image')->orderBy('view','DESC')->limit(3)->get();
-        return view('frontend.pages.home',compact('pr','pr_view','pr_cate'));
+        return view('pages.home',compact('pr','pr_view','pr_cate'));
+    }
+    public function getcategories()
+    {
+        return view('pages.allshop',compact('pr_cate'));
     }
     public function categories($category_id)
     {
         //lấy các sản phẩm theo loại
         $pr_cate = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image')->where('category_id',$category_id)->paginate(6);
-        return view('frontend.pages.cate',compact('pr_cate'));
+        return view('pages.shopcategories',compact('pr_cate'));
     }
     public function detail($product_id)
     {   
@@ -56,7 +60,7 @@ class HomeController extends Controller
         $pr_detail = DB::table('products')->where('product_id',$product_id)->first();
         // lấy ra sản phẩm tượng tự
         $pr_relate = DB::table('products')->where('category_id',$pr_detail->category_id)->where('product_id','<>',$product_id)->inRandomOrder()->limit(4)->get();
-        return view('frontend.pages.detail',compact('pr_detail','img','pr_relate'));
+        return view('pages.detail-product',compact('pr_detail','img','pr_relate'));
     }
     // đã chuyển sang contactcontroller để kiểm tra request
 

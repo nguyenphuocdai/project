@@ -9,7 +9,7 @@ class ContactController extends Controller
 {
     public function getLienHe()
     {
-         return view('frontend.pages.contact');
+         return view('pages.contact');
 
     }
     public function postLienHe(ContactRequest $ct)
@@ -20,11 +20,11 @@ class ContactController extends Controller
         Mail::send('blanks', $data, function ($message) {
             $message->from(Request::input('txtEmail'), 'Khách Hàng');
             
-            $message->to('khaquy09112@gmail.com', 'Lavender - XuKha')->subject('Liên hệ mua hàng');
+            $message->to('hoanghoang360@gmail.com', 'Trizzy Shop')->subject('Liên hệ mua hàng');
         });
         echo 
         "<script>
-            alert('Cảm ơn bạn đã liên hệ bạn trong thời gian sớm nhất !');
+            alert('Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất, Cảm ơn bạn đã quan tâm!');
             window.location='".url('/')."';
         </script>";
 
@@ -42,6 +42,6 @@ class ContactController extends Controller
     }
     public function getGioiThieu()
     {
-        return view('frontend.components.introduce');
+        return view('pages.about');
     }
 }

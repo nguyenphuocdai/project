@@ -89,6 +89,7 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 
 
 Route::get('/', 'HomeController@index');
+Route::get('shop',['as'=>'getcategories','uses'=>'HomeController@getcategories']);
 Route::get('loai-san-pham/{category_id}/{alias}',['as'=>'categories','uses'=>'HomeController@categories']);
 Route::get('chi-tiet-san-pham/{product_id}/{alias}',['as'=>'chitietsanpham','uses'=>'HomeController@detail']);
 

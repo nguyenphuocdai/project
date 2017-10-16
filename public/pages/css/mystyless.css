@@ -1,0 +1,10 @@
+.caption.dark h2, .caption.dark h3 {
+	color : #ffffff !important;
+}
+.price-promotion{
+	 text-decoration: line-through !important;
+	 color: #96979d !important;
+}
+.break-work{
+	word-break:  break-all;
+}
