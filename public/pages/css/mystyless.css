@@ -8,3 +8,10 @@
 .break-work{
 	word-break:  break-all;
 }
+.success-custom{
+	background-color: #dff0d8 !important;
+    border-color: #d0e9c6 !important;
+    color: #3c763d !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+}

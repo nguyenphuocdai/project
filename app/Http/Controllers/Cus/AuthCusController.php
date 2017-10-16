@@ -50,7 +50,7 @@ class AuthCusController extends Controller
 
     public function showLoginForm()
     {
-        return view('frontend.pages.login');
+        return view('pages.login-customer');
     }
 
     public function postLogin(LoginRequest $r)
@@ -61,7 +61,7 @@ class AuthCusController extends Controller
         );
         if(Auth::guard("customers")->attempt($login))
         {
-            return redirect()->route('dathang');
+            return redirect('/');
         }
         else
         {

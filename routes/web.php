@@ -97,6 +97,7 @@ Route::get('gioi-thieu',['as'=>'getGioiThieu','uses'=>'ContactController@getGioi
 
 Route::get('lien-he',['as'=>'getLienHe','uses'=>'ContactController@getLienHe']);
 Route::post('lien-he',['as'=>'postLienHe','uses'=>'ContactController@postLienHe']);
+Route::get('lien-he-thanh-cong',['as'=>'getLienheSucess','uses'=>'ContactController@getLienheSucess']);
 
 Route::get('mua-hang/{product_id}/{tensanpham}',['as'=>'muahang','uses'=>'HomeController@getMuaHang']);
 

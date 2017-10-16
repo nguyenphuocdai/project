@@ -24,8 +24,7 @@ class RegisterCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'txtName'=>'required',
-            'txtUsername'=>'required|unique:customers,username|alpha_dash|regex:/^[(a-zA-Z\s)]+$/u',
+            'txtUsername'=>'required|unique:customers,username|alpha_dash',
             'txtPassword'=>'required',
             'txtRePassword'=>'required|same:txtPassword',
             'txtEmail'=>'required|unique:customers,email|email',
@@ -37,7 +36,6 @@ class RegisterCustomerRequest extends FormRequest
         return [
             'txtUsername.required'=>'Bạn chưa nhập tài khoản !',
              'txtUsername.alpha_dash'=>'Tài khoản vui lòng viết liền và không sử dụng dấu!',
-            'txtUsername.regex'=>'Vui lòng nhập tài khoản không dấu !',
             'txtUsername.unique'=>'Tài khoản đã tồn tại, vui lòng chọn tài khoản khác!',
             'txtName.required'=>'Bạn chưa nhập tên !',
             'txtPassword.required'=>'Bạn chưa nhập mật khẩu !',

@@ -16,18 +16,12 @@ class ContactController extends Controller
     {   
       
         $data=['hoten'=>Request::input('txtName'),'email'=>Request::input('txtEmail'),'sodienthoai'=>Request::input('txtPhone'),'tinnhan'=>Request::input('txtMessage')];
-        
         Mail::send('blanks', $data, function ($message) {
-            $message->from(Request::input('txtEmail'), 'Khách Hàng');
+            $message->from(Request::input('txtEmail'), 'Khách hàng từ Trizzy');
             
-            $message->to('hoanghoang360@gmail.com', 'Trizzy Shop')->subject('Liên hệ mua hàng');
+            $message->to('hoanghoang360@gmail.com', 'Trizzy Shop')->subject('KHÁCH HÀNG LIÊN HỆ');
         });
-        echo 
-        "<script>
-            alert('Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất, Cảm ơn bạn đã quan tâm!');
-            window.location='".url('/')."';
-        </script>";
-
+        return redirect()->route('getLienheSucess');
     }
     public function getMuaHang($product_id)
     {   
@@ -43,5 +37,8 @@ class ContactController extends Controller
     public function getGioiThieu()
     {
         return view('pages.about');
+    }
+    public function getLienheSucess(){
+        return view('pages.contact-sucess');
     }
 }

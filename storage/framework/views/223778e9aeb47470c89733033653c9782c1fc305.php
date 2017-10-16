@@ -85,6 +85,7 @@
 <script src="<?php echo e(url('public/pages/scripts/stacktable.js')); ?>"></script>
 <script src="<?php echo e(url('public/pages/scripts/custom.js')); ?>"></script>
 <script src="<?php echo e(url('public/pages/scripts/switcher.js')); ?>"></script>
+<script src="<?php echo e(url('public/pages/scripts/myscript.js')); ?>"></script>
 </body>
 
 </html>

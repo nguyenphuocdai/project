@@ -1,21 +1,26 @@
-Thông tin đăng ký thành viên từ website Lavender - XuKha!!!
-<br/>
+Thông tin đăng ký thành viên từ website Trizzy-Shop!!!
+<br>
+<br>
 Họ tên thành viên: <?php echo e($hoten); ?>
 
-<br/>
+<br>
 Tài Khoản: <?php echo e($taikhoan); ?>
 
-<br/>
+<br>
 Mật khẩu: <?php echo e($matkhau); ?>
 
-<br/>
+<br>
 Email : <?php echo e($email); ?>
 
-<br/>
+<br>
 Số Điện thoại: <?php echo e($sodienthoai); ?>
 
-<br/>
+<br>
 Địa chỉ: <?php echo e($diachi); ?>
 
-<br/>
+<br>
+<br>
+
 ----Chúc bạn mua sắm vui vẻ !!----
+<br>
+Địa chỉ: Tầng 19, Tòa nhà Saigon Centre – Tháp 2, 67 Lê Lợi, Phường Bến Nghé, Quận 1, Tp. Hồ Chí Minh, Việt Nam.

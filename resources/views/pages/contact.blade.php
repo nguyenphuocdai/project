@@ -21,7 +21,7 @@
 
 <!-- Container -->
 <div class="container">
-<div class="four columns">
+<div class="five columns">
 
 	<!-- Information -->
 	<div class="widget margin-top-10">
@@ -76,7 +76,7 @@ Cơ quan cấp: Phòng Đăng ký kinh doanh – Sở kế hoạch và Đầu t�
 </div>
 
 <!-- Contact Form -->
-<div class="twelve columns">
+<div class="eleven columns">
 	<div class="extra-padding left">
 		<h3 class="headline">Liên hệ</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
 		@include('admin.danger.danger')
@@ -87,7 +87,7 @@ Cơ quan cấp: Phòng Đăng ký kinh doanh – Sở kế hoạch và Đầu t�
 			<mark id="message"></mark>
 
 			<!-- Form -->
-			<form method="post" name="contactform" id="contactform" action="{{url('lien-he')}}">
+			<form method="POST" action="{{url('lien-he')}}">
 				<input type="hidden" name="_token" value="{{csrf_token()}}"> 
 				<fieldset>
 
@@ -97,12 +97,12 @@ Cơ quan cấp: Phòng Đăng ký kinh doanh – Sở kế hoạch và Đầu t�
 					</div>
 					<div>
 						<label>Số điện thoại: <span>*</span></label>
-						<input name="txtPhone" type="text" id="name" />
+						<input name="txtPhone" type="text" id="name" value="{{old('txtPhone')}}"/>
 					</div>
 
 					<div>
 						<label >Email: <span>*</span></label>
-						<input name="txtEmail" type="email" id="email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" />
+						<input name="txtEmail" type="email" id="email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" value="{{old('txtEmail')}}"/>
 					</div>
 
 					<div>
@@ -112,7 +112,7 @@ Cơ quan cấp: Phòng Đăng ký kinh doanh – Sở kế hoạch và Đầu t�
 
 				</fieldset>
 				<div id="result"></div>
-				<input type="submit" class="submit" id="submit" value="Gửi tin nhắn" />
+				<input type="submit" class="submit" id="submit_id" value="Gửi tin nhắn" />
 				<div class="clearfix"></div>
 			</form>
 

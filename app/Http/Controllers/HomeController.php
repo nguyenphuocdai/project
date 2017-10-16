@@ -174,7 +174,7 @@ class HomeController extends Controller
     }
     public function getDangKyNguoiDung()
     {
-        return view('frontend.pages.register');
+        return view('pages.register');
     }
 
     public function postDangKyNguoiDung(RegisterCustomerRequest $rcr)
@@ -196,14 +196,13 @@ class HomeController extends Controller
         Auth::guard("customers")->attempt($login);
         
         $data=['hoten'=>Request::input('txtName'),'taikhoan'=>Request::input('txtUsername'),'diachi'=>Request::input('txtAddress'),'sodienthoai'=>Request::input('txtPhone'),'email'=>Request::input('txtEmail'),'matkhau'=>Request::input('txtPassword')];
-        
         Mail::send('cus-register', $data, function ($message) 
         {
-            $message->from('khaquy09112@gmail.com', 'Lavender - Xu Kha'); 
+            $message->from('hoanghoang360@gmail.com', 'Trizzy-Shop'); 
 
-            $message->to(Request::input('txtEmail'), Request::input('txtName'))->subject('Đăng ký thành viên');
+            $message->to(Request::input('txtEmail'), Request::input('txtName'))->subject('ĐĂNG KÝ THÀNH VIÊN');
         });
-        return redirect()->route('dathang')->with(['flash_level'=>'success','flash_message'=>'Đăng ký thành viên thành công. Vui lòng kiểm tra email để xem thông tin!']);
+        return redirect('dang-ky-khach-hang')->with(['flash_level'=>'success','flash_message'=>'Đăng ký thành viên thành công. Vui lòng kiểm tra email để xem thông tin!']);
     }
      public function getThanhToan()
     {
