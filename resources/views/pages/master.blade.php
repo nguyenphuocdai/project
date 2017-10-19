@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="{{url('public/pages/css/style.css')}}">
 <link rel="stylesheet" href="{{url('public/pages/css/mystyless.css')}}">
 <link rel="stylesheet" href="{{url('public/pages/css/colors/green.css')}}" id="colors">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -61,6 +62,7 @@
 ================================================== -->
 <script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);
 </script>
+
 <script src="{{url('public/pages/scripts/jquery-1.11.0.min.js')}}"></script>
 <script src="{{url('public/pages/scripts/jquery-migrate-1.2.1.min.js')}}"></script>
 <script src="{{url('public/pages/scripts/jquery.jpanelmenu.js')}}"></script>
@@ -86,6 +88,7 @@
 <script src="{{url('public/pages/scripts/custom.js')}}"></script>
 <script src="{{url('public/pages/scripts/switcher.js')}}"></script>
 <script src="{{url('public/pages/scripts/myscript.js')}}"></script>
+@yield('script')
 </body>
 
 </html>

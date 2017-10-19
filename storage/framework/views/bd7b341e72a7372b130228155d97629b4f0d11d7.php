@@ -72,7 +72,7 @@
 		<!-- Product #1 --><?php $__currentLoopData = $pr_cate; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_pr_cate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 		<div class="four shop columns">
 			<figure class="product">
-				
+				<div class="product-discount">SALE</div>
 				<div class="mediaholder">
 					<a href="<?php echo e(url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])); ?>">
 						<img class="img" alt="" src="<?php echo e(asset('resources/upload/'.$item_pr_cate->image)); ?>"/>

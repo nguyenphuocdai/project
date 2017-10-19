@@ -9,7 +9,7 @@ Mật khẩu: {{$matkhau}}
 <br>
 Email : {{$email}}
 <br>
-Số Điện thoại: {{$sodienthoai}}
+Số điện thoại: {{$sodienthoai}}
 <br>
 Địa chỉ: {{$diachi}}
 <br>

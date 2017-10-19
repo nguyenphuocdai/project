@@ -5,12 +5,13 @@ use Cart;
 use App\Http\Requests\CustomerRequest;
 use App\Http\Requests\QuantityRequest;
 use App\Http\Requests\RegisterCustomerRequest;
-use Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\customers;
 use App\orders;
 use App\orders_detail;
+use App\products;
 use Hash;
 use Auth;
 use Validator;
@@ -64,43 +65,7 @@ class HomeController extends Controller
         $pr_relate = DB::table('products')->where('category_id',$pr_detail->category_id)->where('product_id','<>',$product_id)->inRandomOrder()->limit(4)->get();
         return view('pages.detail-product',compact('pr_detail','img','pr_relate'));
     }
-    // đã chuyển sang contactcontroller để kiểm tra request
 
-    // public function getLienHe()
-    // {
-    //      return view('frontend.pages.contact');
-
-    // }
-    // public function postLienHe(Request $r)
-    // {   
-    //     //lấy tin nhắn trên form khách hàng gởi cho mình.
-    //     $this->validate($r, 
-    //     [
-    //         'txtName' => 'required',
-    //         'txtEmail'=>'required|email',
-    //         'txtPhone'=>'required',
-    //         'txtMessage'=>'required'
-    //     ],
-    //     [
-    //         'txtName.required' => 'Chưa nhập Họ và Tên',
-    //         'txtEmail.email' => 'Nhập sai định dạng email',
-    //          'txtPhone.required' => 'Chưa nhập Họ và Tên',   
-    //         'txtMessage.required' => 'Chưa nhập Họ và Tên',
-    //     ]);
-    //     $data=['hoten'=>Request::input('txtName'),'email'=>Request::input('txtEmail'),'sodienthoai'=>Request::input('txtPhone'),'tinnhan'=>Request::input('txtMessage')];
-        
-    //     Mail::send('blanks', $data, function ($message) {
-    //         $message->from(Request::input('txtEmail'), 'Khách Hàng');
-            
-    //         $message->to('khaquy09112@gmail.com', 'Lavender - XuKha')->subject('Liên hệ mua hàng');
-    //     });
-    //     echo 
-    //     "<script>
-    //         alert('Cảm ơn bạn đã liên hệ bạn trong thời gian sớm nhất !');
-    //         window.location='".url('/')."';
-    //     </script>";
-
-    // }
     public function getMuaHang($product_id)
     {   
         //lấy các thông tin cần thiết cho giỏ hàng
@@ -108,7 +73,6 @@ class HomeController extends Controller
         $pr_buy = DB::table('products')->where('product_id',$product_id)->first();
         Cart::add(array('id'=>$product_id,'name'=>$pr_buy->name,'qty'=>1,'price'=>$pr_buy->price,'options'=>array('img'=> $pr_buy->image)));
         $tamp = Cart::content();
-        
         return redirect()->route('giohang');
 
     }
@@ -118,7 +82,6 @@ class HomeController extends Controller
         $content = Cart::content();
       
         $total = Cart::total(0,",",".");
-        
         return view('pages.shopping-cart',compact('content','total'));
         
     }
@@ -144,16 +107,19 @@ class HomeController extends Controller
         return redirect()->route('giohang');
     }
     
-    public function capnhat(Request $r)
+    public function capnhat(Request $request)
     {
-        
-        if(Request::ajax())
-        {
-                $id = Request::get('id');
-                $qty = Request::get('qty');
-                Cart::update($id,$qty);
-                echo "oke";
-        }
+        // $sp = products::where('id',Cart::get($request->rowId)->id);
+        // $sldd = Cart::get($request->rowId)->qty;
+        // if ($request->qty > $sp->soluong) {
+        //     return 'Không đủ';
+        // } else {
+            Cart::update($request->rowId, $request->qty);
+        // }
+        // 
+        $thanhtien = Cart::get($request->rowId)->price *Cart::get($request->rowId)->qty;
+        return response()->json(['thanhtien' => number_format($thanhtien,0,",","."), 'tongtien' => Cart::subtotal(0)]);
+
     }
    
     public function theogia100()
@@ -285,9 +251,9 @@ class HomeController extends Controller
                                      $data=[];
                                      Mail::send('orderSuccess', $data, function ($message) 
                                     {
-                                        $message->from('khaquy09112@gmail.com', 'Lavender - XuKha'); 
+                                        $message->from('hoanghoang360@gmail.com', 'Trizzy-Shop'); 
 
-                                        $message->to(Auth::guard("customers")->user()->email,'Khách Hàng')->subject('Thông báo mua hàng từ Lavender - XuKha');
+                                        $message->to(Auth::guard("customers")->user()->email,'Khách Hàng')->subject('Thông báo mua hàng từ Trizzy-Shop');
                                     });
                                 
  
@@ -315,9 +281,9 @@ class HomeController extends Controller
                                     $data=['note'=> $order_detail->note,'product_id'=>$order_detail->product_id];
                                      Mail::send('notificationMail', $data, function ($message) 
                                     {
-                                        $message->from('khaquy09112@gmail.com', 'Lavender - XuKha'); 
+                                        $message->from('hoanghoang360@gmail.com', 'Trizzy-Shop'); 
 
-                                        $message->to(Auth::guard("customers")->user()->email,'Khách Hàng')->subject('Thông báo mua hàng từ Lavender - XuKha');
+                                        $message->to(Auth::guard("customers")->user()->email,'Khách Hàng')->subject('Thông báo mua hàng từ Trizzy-Shop');
                                     });
                                 }
 

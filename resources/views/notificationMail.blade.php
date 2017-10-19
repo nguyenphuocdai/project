@@ -1,4 +1,4 @@
-Lavender - XuKha 
+Trizzy-Shop
 <br>
 Thông báo đến bạn !
 <br>

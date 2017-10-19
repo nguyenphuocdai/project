@@ -31,8 +31,8 @@
 
 			<ul id="categories">
 				<?php $menu = DB::table('categories')->get(); ?>
-						<?php $__currentLoopData = $menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_menu): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-				<li><a href="#"><?php echo e($item_menu->name); ?><span>(8)</span></a>
+					<?php $__currentLoopData = $menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_menu): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+				<li><a href="#"><?php echo e($item_menu->name); ?><span>(*)</span></a>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 			<div class="clearfix"></div>
 
@@ -69,28 +69,32 @@
 	<!-- Products -->
 	<div class="twelve columns products">
 
-		<!-- Product #1 -->
+		<!-- Product #1 --><?php $__currentLoopData = $pr_cate; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_pr_cate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 		<div class="four shop columns">
 			<figure class="product">
+				<div class="product-discount">SALE</div>
 				<div class="mediaholder">
-					<a href="variable-product-page.html">
-						<img alt="" src="<?php echo e(url('public/pages/images/shop_item_01.jpg')); ?>"/>
+					<a href="<?php echo e(url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])); ?>">
+						<img class="img" alt="" src="<?php echo e(asset('resources/upload/'.$item_pr_cate->image)); ?>"/>
 						<div class="cover">
-							<img alt="" src="<?php echo e(url('public/pages/images/shop_item_01_hover.jpg')); ?>"/>
+							<img alt="" class="img" src="<?php echo e(asset('resources/upload/'.$item_pr_cate->image)); ?>"/>
 						</div>
 					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+					<a href="<?php echo e(url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])); ?>" class="product-button"><i class="fa fa-hand-o-right"></i> Xem chi tiết</a>
 				</div>
 
 				<a href="variable-product-page.html">
 					<section>
-						<span class="product-category">Skirts</span>
-						<h5>Brown Mini Skirt</h5>
-						<span class="product-price">$79.00</span>
+						<span class="product-category"><?php echo e($item_pr_cate->name); ?></span>
+						<span class="product-price price-promotion"><?php echo e(number_format($item_pr_cate->price*1.2,0,",",".")); ?></span>
+						<span class="product-price "><?php echo e(number_format($item_pr_cate->price,0,",",".")); ?></span>
+						
 					</section>
 				</a>
+				
 			</figure>
 		</div>
+		<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 		<!-- Pagination -->
 		<!-- <div class="pagination-container">
 			<nav class="pagination">

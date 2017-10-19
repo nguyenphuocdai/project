@@ -45,7 +45,7 @@
             <td class="total"> 
             <!--update-->
             
-              <a href="#" class="cart-update" id="{{$item_content->rowId}}"><img class="tooltip-test "    data-original-title="Update" src="public/frontend/img/updatenew.png" alt=""></a>
+              <a class="cart-update" id="{{$item_content->rowId}}"><img class="tooltip-test "    data-original-title="Update" src="public/frontend/img/updatenew.png" alt=""></a>
 
               <!-- delete -->
               <a href="{{ url('xoa-san-pham',['id'=>$item_content->rowId]) }}"><img class="tooltip-test" data-original-title="Remove"  src="public/frontend/img/removenew.png" alt=""></a></td>

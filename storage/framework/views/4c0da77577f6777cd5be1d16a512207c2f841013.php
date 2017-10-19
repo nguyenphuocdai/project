@@ -1,5 +1,4 @@
-@extends('pages.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="titlebar">
 	<div class="container">
 		<div class="sixteen columns">
@@ -75,8 +74,7 @@
 	</div>
 	<div class="clearfix"></div>
 	<a href="checkout-delivery.html" class="continue button color">Đồng ý</a>
-	{{-- 			<a href="checkout-delivery.html"><div class="checkout-section"><span>2</span> Delivery</div></a>
-	<a href="checkout-payment-order-review.html"><div class="checkout-section"><span>3</span> Payment & Order Review</div></a> --}}
+	
 </div>
 <!-- Billing Details / Enc -->
 <!-- Checkout Cart -->
@@ -93,22 +91,22 @@
 		</tr>
 		
 		<!-- Item #1 -->
-		@foreach($content as $item_content)
+		<?php $__currentLoopData = $content; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_content): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 		<tr>
-			<td class="hide-on-mobile"><img src="{{ asset('resources/upload/'.$item_content->options->img)}}" alt=""/></td>
-			<td class="cart-title"><a href="#">{{ $item_content->name }}</a></td>
-			<td>{{number_format($item_content->price,0,",",".")}}</td>
-			<td class="qty-checkout">{{$item_content->qty}}</td>
-			<td class="cart-total">{{number_format($item_content->price*$item_content->qty,0,",",".")}}</td>
+			<td class="hide-on-mobile"><img src="<?php echo e(asset('resources/upload/'.$item_content->options->img)); ?>" alt=""/></td>
+			<td class="cart-title"><a href="#"><?php echo e($item_content->name); ?></a></td>
+			<td><?php echo e(number_format($item_content->price,0,",",".")); ?></td>
+			<td class="qty-checkout"><?php echo e($item_content->qty); ?></td>
+			<td class="cart-total"><?php echo e(number_format($item_content->price*$item_content->qty,0,",",".")); ?></td>
 		</tr>
-		@endforeach
+		<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 	</table>
 	<!-- Apply Coupon Code / Buttons -->
 	<table class="cart-table bottom">
 		<tr>
 			<th class="checkout-totals">
 				<div class="checkout-subtotal">
-					Tổng tiền: <span>{{ $total }}</span>
+					Tổng tiền: <span><?php echo e($total); ?></span>
 				</div>
 			</th>
 		</tr>
@@ -118,4 +116,5 @@
 </div>
 <!-- Container / End -->
 <div class="margin-top-50"></div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

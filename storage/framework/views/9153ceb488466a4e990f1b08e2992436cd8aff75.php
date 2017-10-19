@@ -13,7 +13,7 @@ Mật khẩu: <?php echo e($matkhau); ?>
 Email : <?php echo e($email); ?>
 
 <br>
-Số Điện thoại: <?php echo e($sodienthoai); ?>
+Số điện thoại: <?php echo e($sodienthoai); ?>
 
 <br>
 Địa chỉ: <?php echo e($diachi); ?>

@@ -21,3 +21,17 @@
 .image-cart{
 	width: 50px !important;
 }
+a.cart-remove {
+	margin-right: 5px;
+	background-color: #3acf87 !important;
+    color: #ffffff !important;
+}
+input.qty {
+    padding: 10px 15px !important;
+}
+.qty {
+    width: 35px !important;
+    height: 22px;
+    text-align: center;
+    float: left;
+}
