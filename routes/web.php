@@ -116,11 +116,11 @@ Route::post('dang-nhap-khach-hang',['as'=>'post-login','uses'=>'Cus\AuthCusContr
 
 Route::get('dang-xuat-khach-hang',['as'=>'getdangxuat','uses'=>'Cus\AuthCusController@getDangXuat']);
 
-Route::get('dang-ky-khach-hang',['as'=>'dangky','uses'=>'HomeController@getDangKyNguoiDung']);
-Route::post('dang-ky-khach-hang',['as'=>'dangky','uses'=>'HomeController@postDangKyNguoiDung']);
+Route::get('dang-ky-khach-hang',['as'=>'dangky','uses'=>'CheckOutController@getDangKyNguoiDung']);
+Route::post('dang-ky-khach-hang',['as'=>'dangky','uses'=>'CheckOutController@postDangKyNguoiDung']);
 
-Route::get('dat-hang',['as'=>'dathang','uses'=>'HomeController@getThanhToan']);
-Route::post('dat-hang',['as'=>'dathang','uses'=>'HomeController@postThanhToan']);
+Route::get('dat-hang',['as'=>'dathang','uses'=>'CheckOutController@getThanhToan']);
+Route::post('dat-hang',['as'=>'dathang','uses'=>'CheckOutController@postThanhToan']);
 
 Route::get('re-set',['as'=>'reset','uses'=>'UsersController@getResetPassword']);
 Route::get('tin-tuc',['as'=>'tintuc','uses'=>'NewsController@getTinTuc']);

@@ -18,8 +18,8 @@
 ================================================== -->
 <link rel="stylesheet" href="{{url('public/pages/css/style.css')}}">
 <link rel="stylesheet" href="{{url('public/pages/css/mystyless.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url('public/pages/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{url('public/pages/css/colors/green.css')}}" id="colors">
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

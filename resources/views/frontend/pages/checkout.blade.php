@@ -59,10 +59,6 @@
                       </div>-->
                     </div>
                     <div class="control-group">
-                      <!--<label class="control-label"  >Mật khẩu: <span class="red">*</span></label>-->
-                      <!--<div class="controls">
-                        <input type="text" class=""  value="{{old('txtPassword')}}" name="txtPassword" >
-                      </div>-->
                     </div>
                   </div>
                   <!--chưa cần dùng-->
@@ -75,64 +71,8 @@
                       echo "Nếu chưa có tài khoản nhấn vào đây";
                        ?>
                      </label></a>
-                      <!--<div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>-->
                     </div>
-                    <!--<div class="control-group">
-                      <label class="control-label" >Company Id</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Address 1<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Address 2</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >City<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Post Code<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Country<span class="red">*</span></label>
-                      <div class="controls">
-                        <select >
-                          <option>Please Select</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Region / State<span class="red">*</span></label>
-                      <div class="controls">
-                        <select >
-                          <option>Please Select</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                      </div>
-                    </div>-->
+                    
                   </div>
                 </fieldset>
             </div>

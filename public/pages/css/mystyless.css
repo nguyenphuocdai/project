@@ -27,7 +27,8 @@ a.cart-remove {
     color: #ffffff !important;
 }
 input.qty {
-    padding: 10px 15px !important;
+    padding: 10px 15px 12px !important;
+    border: none !important;
 }
 .qty {
     width: 35px !important;
@@ -35,3 +36,38 @@ input.qty {
     text-align: center;
     float: left;
 }
+.container-slider{
+    max-width:  970px !important;
+}
+.share-buttons a{
+    height: 30px !important;
+}
+.qtyplus, .qtyminus, a.cart-remove{
+    font-size: 15px !important;
+}
+input.qty {
+    padding: 19px 12px !important;
+}
+.linking a.button {
+        padding: 14px 15px 8px 52px !important;
+}
+.linking a.button.adc:before{
+        padding: 13px 15px 8px 12px !important; 
+}
+.update-button{
+    border: none !important;
+    height: 40px !important;
+    width: 40px !important;
+}
+.check-cart {
+    background-color: #3acf87 !important;
+}
+.address-italic{
+    font-style: italic;
+}
+.address-italic-input{
+    width: 100%;
+}
+.continue{ 
+background-color: #3acf87 !important;
+color : #ffffff !important; }

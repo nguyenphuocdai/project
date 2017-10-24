@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<div class="container fullwidth-element home-slider">
+<div class="container fullwidth-element home-slider container-slider">
 
 	<div class="tp-banner-container">
 		<div class="tp-banner">

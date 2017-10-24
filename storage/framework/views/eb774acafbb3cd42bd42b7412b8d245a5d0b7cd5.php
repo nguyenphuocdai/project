@@ -25,14 +25,18 @@
 ================================================== -->
 	<div class="eight columns" >
 		<div class="slider-padding">
-			<div id="product-slider" class="royalSlider rsDefault">
-			    <img class="rsImg" src="<?php echo e(asset('resources/upload/'.$pr_detail->image)); ?>" data-rsTmb="<?php echo e(asset('resources/upload/'.$pr_detail->image)); ?>" alt="" />
+			<div id="product-slider" class="">
+			    <img class="rsImg" src="<?php echo e(asset('resources/upload/'.$pr_detail->image)); ?>"/>
 			 </div>
+			 <div style="display: inline-flex;">
+			 	<?php $__currentLoopData = $img; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $detail): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+			 	<img class="" src="<?php echo e(asset('resources/upload/product_image/'.$detail->image)); ?>" style="width: 100px;height: 100px">
+			 	<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+			 </div>
+			 
 			 <div class="clearfix"></div>
 		</div>
 	</div>
-
-
 <!-- Content
 ================================================== -->
 	<div class="eight columns">
@@ -75,16 +79,7 @@
 			
 
 			<section class="linking">
-
-					<form action='#'>
-					    <div class="qtyminus"></div>
-					    <input type='text' name="quantity" value='1' class="qty" />
-					    <div class="qtyplus"></div>
-					</form>
-
 					<a href="<?php echo e(url('mua-hang',[$pr_detail->product_id,$pr_detail->alias])); ?>" class="button adc">Thêm vào giỏ hàng</a>
-					<div class="clearfix"></div>
-
 			</section>
 
 		</div>

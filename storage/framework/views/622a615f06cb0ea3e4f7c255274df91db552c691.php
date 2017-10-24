@@ -46,11 +46,11 @@
 					<td><?php echo e(number_format($item_content->price,0,",",".")); ?></td>
 
 
-					<td class="quantity"><input style="width: 60px!important" id="so-luong-<?php echo e($item_content->rowId); ?>" class="span1 qty" type="number" value="<?php echo e($item_content->qty); ?>" name="quantity"/></td>
+					<td class="quantity"><input style="width: 60px!important" id="so-luong-<?php echo e($item_content->rowId); ?>" class="span1 qty" type="number" min="1" size="1" value="<?php echo e($item_content->qty); ?>" name="quantity"/></td>
 
 
 					<td><a href="<?php echo e(url('xoa-san-pham',['id'=>$item_content->rowId])); ?>" class="cart-remove"></a>
-						<button onclick="capnhat('<?php echo e($item_content->rowId); ?>')" type="button" class="cart-update" id="<?php echo e($item_content->rowId); ?>">
+						<button onclick="capnhat('<?php echo e($item_content->rowId); ?>')" type="button" class="cart-update update-button" id="<?php echo e($item_content->rowId); ?>">
 							<img class="tooltip-test" data-original-title="Update" src="public/frontend/img/updatenew.png" alt="">
 						</button>
 					</td>
@@ -112,11 +112,11 @@
 		    	},
 		    	dataType: 'text',
 		    	success: function (response) {
-		    		console.log(response);
+		    		// console.log(response);
 		    		if (response != 'Không đủ') {
 
 		    			gh = JSON.parse(response);
-		    			console.log(gh);
+		    			// console.log(gh);
 		    			$("#thanh-tien-" + rowid).html(gh.thanhtien + ' <u>đ</u>');
 						$("#tongtien").html(gh.tongtien + ' <u>đ</u>');
 
