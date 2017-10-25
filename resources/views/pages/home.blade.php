@@ -100,12 +100,6 @@
 
 	<!-- Carousel -->
 	<div id="new-arrivals" class="showbiz-container sixteen columns" >
-
-		<!-- Navigation -->
-		<div class="showbiz-navigation">
-			<div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
-			<div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
-		</div>
 		<div class="clearfix"></div>
 
 		<!-- Products -->
@@ -113,15 +107,15 @@
 			<div class="overflowholder">
 
 				<ul>
-
-					<!-- Product #1 -->
+					@foreach($pr_new as $new)
 					<li>
 						<figure class="product">
 							<div class="mediaholder">
 								<a href="variable-product-page.html">
-									<img alt="" src="{{url('public/pages/images/shop_item_01.jpg')}}"/>
+									<img alt="" src="{{ asset('resources/upload/product_image/'.$new->image)}}" style="width: 220px;height: 220px" />
 									<div class="cover">
-										<img alt="" src="{{url('public/pages/images/shop_item_01_hover.jpg')}}"/>
+										<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$new->product_id)->first();?>
+										<img alt="" src="{{ asset('resources/upload/product_image/'.$coverImage->image)}}" style="width: 220px;height: 220px"/>
 									</div>
 								</a>
 								<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
@@ -129,13 +123,14 @@
 
 							<a href="variable-product-page.html">
 								<section>
-									<span class="product-category">Skirts</span>
-									<h5>Brown Mini Skirt</h5>
-									<span class="product-price">$79.00</span>
+									<span class="product-category">{{ $new->name }}</span>
+									<h5 style="text-decoration: line-through;">{{number_format($new->price*1.2,0,",",".")}}</h5>
+									<span class="product-price">{{number_format($new->price,0,",",".")}}</span>
 								</section>
 							</a>
 						</figure>
 					</li>
+					@endforeach
 				</ul>
 				<div class="clearfix"></div>
 
@@ -164,30 +159,20 @@
 	<div class="one-third column">
 
 		<!-- Headline -->
-		<h3 class="headline">Sản phẩm bán chạy</h3>
+		<h3 class="headline">Sản phẩm có sẵn</h3>
 		<span class="line margin-bottom-0"></span>
 		<div class="clearfix"></div>
 
 
 		<ul class="product-list">
-
-			<li><a href="#">
-				<img src="{{url('public/pages/images/small_product_list_01.jpg')}}" alt="" />
-				<div class="product-list-desc">Canvas Backpack <i>$59.00</i></div>
-			</a></li>
-
-			<li><a href="#">
-				<img src="{{url('public/pages/images/small_product_list_02.jpg')}}" alt="" />
-				<div class="product-list-desc">Long Sleeve Shirt <i>$29.00</i></div>
-			</a></li>
-
-			<li><a href="#">
-				<img src="{{url('public/pages/images/small_product_list_03.jpg')}}" alt="" />
-				<div class="product-list-desc">Tommy Hilfiger Shirt Beat <i>$89.00</i></div>
+		@foreach($pr_quantity as $pr)
+			<li><a href="{{url('shop')}}">
+				<img src="{{ asset('resources/upload/product_image/'.$pr->image)}}" alt="" style="width: 95px;height: 80px" />
+				<div class="product-list-desc">{{ $pr->name }}<i>{{number_format($pr->price,0,",",".") }}</i></div>
 			</a></li>
 
 			<li><div class="clearfix"></div></li>
-
+		@endforeach
 		</ul>
 
 	</div>
@@ -251,24 +236,13 @@
 
 
 		<ul class="product-list discount">
-
-			<li><a href="#">
-				<img src="{{url('public/pages/images/small_product_list_07.jpg')}}" alt="" />
-				<div class="product-list-desc">Short Sleeve Polo Shirt <i>$29.00<b>$19.00</b></i></div>
+			@foreach($pr_view as $view)
+			<li><a href="{{url('shop')}}">
+				<img src="{{ asset('resources/upload/product_image/'.$view->image)}}" alt="" style="width: 95px;height: 80px;" />
+				<div class="product-list-desc">{{ $view->name }}<i>{{number_format($view->price*1.2,0,",",".") }}<b>{{number_format($view->price,0,",",".") }}</b></i></div>
 			</a></li>
-
-			<li><a href="#">
-				<img src="{{url('public/pages/images/small_product_list_08.jpg')}}" alt="" />
-				<div class="product-list-desc">Long Sleeve Shirt <i>$99.00<b>$79.00</b></i></div>
-			</a></li>
-
-			<li><a href="#">
-				<img src="{{url('public/pages/images/small_product_list_09.jpg')}}" alt="" />
-				<div class="product-list-desc">Tommy Hilfiger Shirt Beat <i>$499.00<b>$399.00</b></i></div>
-			</a></li>
-
 			<li><div class="clearfix"></div></li>
-
+			@endforeach
 		</ul>
 
 	</div>

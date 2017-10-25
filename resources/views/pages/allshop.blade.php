@@ -18,198 +18,31 @@
 
 	<!-- Products -->
 	<div class="products">
-
+		@foreach($pr as $allpr)
 		<!-- Product #1 -->
 		<div class="four columns">
 			<figure class="product">
 				<div class="mediaholder">
 					<a href="variable-product-page.html">
-						<img alt="" src="images/shop_item_01.jpg"/>
+						<img alt="" src="{{ asset('resources/upload/'.$allpr->image)}}" style="width: 220px;height: 220px" />
 						<div class="cover">
-							<img alt="" src="images/shop_item_01_hover.jpg"/>
+							<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$allpr->product_id)->first();?>
+							<img alt="" src="{{ asset('resources/upload/'.$coverImage->image)}}" style="width: 220px;height:220px"/>
 						</div>
 					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+					<a href="{{url('mua-hang',[$allpr->product_id,$allpr->alias])}}" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 				</div>
 
 				<a href="variable-product-page.html">
 					<section>
-						<span class="product-category">Skirts</span>
-						<h5>Brown Mini Skirt</h5>
-						<span class="product-price">$79.00</span>
+						<span class="product-category">{{ $allpr->name }}</span>
+						<h5 style="text-decoration: line-through;">{{number_format($allpr->price*1.2,0,",",".") }}</h5>
+						<span class="product-price">{{number_format($allpr->price,0,",",".") }}</span>
 					</section>
 				</a>
 			</figure>
 		</div>
-
-
-		<!-- Product #2 -->
-		<div class="four columns">
-			<figure class="product">
-				<div class="mediaholder">
-					<a href="single-product-page.html">
-						<img alt="" src="images/shop_item_02.jpg"/>
-						<div class="cover">
-							<img alt="" src="images/shop_item_02_hover.jpg"/>
-						</div>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-				</div>
-
-				<a href="single-product-page.html">
-					<section>
-						<span class="product-category">Shoes</span>
-						<h5>Glory High Shoes </h5>
-						<span class="product-price">$99.00</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-
-		<!-- Product #3 -->
-		<div class="four columns">
-			<figure class="product">
-				<div class="product-discount">SALE</div>
-				<div class="mediaholder">
-					<a href="variable-product-page.html">
-						<img alt="" src="images/shop_item_03.jpg"/>
-						<div class="cover">
-							<img alt="" src="images/shop_item_03_hover.jpg"/>
-						</div>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-				</div>
-
-				<a href="variable-product-page.html">
-					<section>
-						<span class="product-category">Suits</span>
-						<h5>Wool Two-Piece Suit</h5>
-						<span class="product-price-discount">$499.00<i>$399.00</i></span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-
-		<!-- Product #4 -->
-		<div class="four columns">
-			<figure class="product">
-				<div class="mediaholder">
-					<a href="variable-product-page.html">
-						<img alt="" src="images/shop_item_04.jpg"/>
-						<div class="cover">
-							<img alt="" src="images/shop_item_04_hover.jpg"/>
-						</div>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-				</div>
-
-				<a href="variable-product-page.html">
-					<section>
-						<span class="product-category">Shirts</span>
-						<h5>Vintage Stripe Jumper</h5>
-						<span class="product-price">$49.00</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-
-		<!-- Product #5 -->
-		<div class="four columns">
-			<figure class="product">
-				<div class="mediaholder">
-					<a href="single-product-page.html">
-						<img alt="" src="images/shop_item_05.jpg"/>
-						<div class="cover">
-							<img alt="" src="images/shop_item_05_hover.jpg"/>
-						</div>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-				</div>
-
-				<a href="single-product-page.html">
-					<section>
-						<span class="product-category">Accessories</span>
-						<h5>Vintage Sunglasses</h5>
-						<span class="product-price">$29.00</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-
-		<!-- Product #6 -->
-		<div class="four columns">
-			<figure class="product">
-				<div class="mediaholder">
-					<a href="variable-product-page.html">
-						<img alt="" src="images/shop_item_06.jpg"/>
-						<div class="cover">
-							<img alt="" src="images/shop_item_06_hover.jpg"/>
-						</div>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-				</div>
-
-				<a href="variable-product-page.html">
-					<section>
-						<span class="product-category">Shirts</span>
-						<h5>Solid Blue Polo Shirt</h5>
-						<span class="product-price">$29.00</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-
-		<!-- Product #7 -->
-		<div class="four columns">
-			<figure class="product">
-				<div class="mediaholder">
-					<a href="variable-product-page.html">
-						<img alt="" src="images/shop_item_07.jpg"/>
-						<div class="cover">
-							<img alt="" src="images/shop_item_07_hover.jpg"/>
-						</div>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-				</div>
-
-				<a href="variable-product-page.html">
-					<section>
-						<span class="product-category">Shirts</span>
-						<h5>Shirt in Navy Stripe</h5>
-						<span class="product-price">$49.00</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-
-		<!-- Product #8 -->
-		<div class="four columns">
-			<figure class="product">
-				<div class="mediaholder">
-					<a href="single-product-page.html">
-						<img alt="" src="images/shop_item_09.jpg"/>
-						<div class="cover">
-							<img alt="" src="images/shop_item_09_hover.jpg"/>
-						</div>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-				</div>
-
-				<a href="single-product-page.html">
-					<section>
-						<span class="product-category">Shirts</span>
-						<h5>Long Sleeve Check Shirt</h5>
-						<span class="product-price">$69.00</span>
-					</section>
-				</a>
-			</figure>
-		</div>
+		@endforeach
 		<div class="clearfix"></div>
 
 

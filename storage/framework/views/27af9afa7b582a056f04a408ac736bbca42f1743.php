@@ -37,7 +37,7 @@
 	<!-- Logo -->
 	<div class="four columns">
 		<div id="logo">
-			<h1><a href="index.html"><img src="<?php echo e(url('public/pages/images/logo.png')); ?>" alt="Trizzy" /></a></h1>
+			<h1><a href="<?php echo e(url('/')); ?>"><img src="<?php echo e(url('public/pages/images/logo.png')); ?>" alt="Trizzy" /></a></h1>
 		</div>
 	</div>
 	<!-- Additional Menu -->
@@ -47,14 +47,14 @@
 				<li><a href="<?php echo e(route('giohang')); ?>">Giỏ hàng</a></li>
 				<li><a href="wishlist.html">So sánh <span>(2)</span></a></li>
 				<li><a href="<?php echo e(route('dathang')); ?>">Thanh toán</a></li>
-				<li><a href="<?php echo e(route('show-login')); ?>"><?php
+				<li><a><?php
 					if(Auth::guard('customers')->check())
 					{
 					echo "Chào, ".Auth::guard('customers')->user()->name;
 					}
 					else
 					{
-					echo "Đăng Nhập";
+					echo "<a href=`{{ route('show-login') }}`>Đăng Nhập</a>";
 					}
 					
 				?></a></li>
@@ -77,30 +77,27 @@
 		<div id="cart">
 			<!-- Button -->
 			<div class="cart-btn">
-				<a href="#" class="button adc">$178.00</a>
+				<a href="#" class="button adc"><?php echo e(Cart::total(0,",",".")); ?></a>
 			</div>
 			<div class="cart-list">
 				<div class="arrow"></div>
 				<div class="cart-amount">
-					<span>2 items in the shopping cart</span>
+					<span>Sản phẩm được chọn (<?php echo e(Cart::count()); ?>) </span>
+
 				</div>
 				<ul>
+					<?php $__currentLoopData = Cart::Content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cart): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 					<li>
-						<a href="#"><img src="<?php echo e(url('public/pages/images/small_product_list_08.jpg')); ?>" alt="" /></a>
-						<a href="#">Converse All Star Trainers</a>
-						<span>1 x $79.00</span>
+						<a href="<?php echo e(url('gio-hang')); ?>"><img src="<?php echo e(asset('resources/upload/product_image/'.$cart->options->img)); ?>" alt="" /></a>
+						<a href="<?php echo e(url('gio-hang')); ?>"><?php echo e($cart->name); ?></a>
+						<span><?php echo e($cart->qty); ?> x <?php echo e(number_format($cart->price,0,",",".")); ?> đ</span>
 						<div class="clearfix"></div>
 					</li>
-					<li>
-						<a href="#"><img src="<?php echo e(url('public/pages/images/small_product_list_09.jpg')); ?>" alt="" /></a>
-						<a href="#">Tommy Hilfiger <br /> Shirt Beat</a>
-						<span>1 x $99.00</span>
-						<div class="clearfix"></div>
-					</li>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 				</ul>
 				<div class="cart-buttons button">
-					<a href="shopping-cart.html" class="view-cart" ><span data-hover="View Cart"><span>Xem giỏ hàng</span></span></a>
-					<a href="checkout-billing-details.html" class="checkout"><span data-hover="Checkout">Thanh toán</span></a>
+					<a href="<?php echo e(url('gio-hang')); ?>" class="view-cart" ><span data-hover="View Cart"><span>Xem giỏ hàng</span></span></a>
+					<a href="<?php echo e(route('dathang')); ?>" class="checkout"><span data-hover="Checkout">Thanh toán</span></a>
 				</div>
 				<div class="clearfix">
 				</div>
@@ -131,7 +128,9 @@
 					<ul>
 						<?php $menu = DB::table('categories')->get(); ?>
 						<?php $__currentLoopData = $menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_menu): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-						<li><a href="<?php echo e(url('loai-san-pham',[$item_menu->category_id,$item_menu->alias])); ?>"><?php echo e($item_menu->name); ?></a></li>
+						<li style="min-width: 206px"><a href="<?php echo e(url('loai-san-pham',[$item_menu->category_id,$item_menu->alias])); ?>"
+							style="text-transform: uppercase;"
+							><?php echo e($item_menu->name); ?></a></li>
 						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 					</ul>
 				</li>
@@ -142,7 +141,7 @@
 					<a href="<?php echo e(url('gioi-thieu')); ?>">Giới thiệu</a>
 				</li>
 				<li class="demo-button">
-					<a href="#">Tin tức</a>
+					<a href="<?php echo e(url('tin-tuc')); ?>">Tin tức</a>
 				</li>
 				<li class="dropdown">
 					<a href="<?php echo e(url('lien-he')); ?>">Liên hệ</a>

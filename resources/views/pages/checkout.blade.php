@@ -64,7 +64,7 @@
 <!-- Billing Details / Enc -->
 <!-- Checkout Cart -->
 <div class="sixteen columns">
-	<div class="checkout-section cart check-cart">GIỎ HÀNG</div>
+	<div class="checkout-section cart check-cart">KIỂM TRA GIỎ HÀNG</div>
 	<!-- Cart -->
 	<table class="checkout cart-table responsive-table">
 		<tr>
@@ -78,7 +78,7 @@
 		<!-- Item #1 -->
 		@foreach($content as $item_content)
 		<tr>
-			<td class="hide-on-mobile"><img src="{{ asset('resources/upload/'.$item_content->options->img)}}" alt=""/></td>
+			<td class="hide-on-mobile"><img class="checkout-image" src="{{ asset('resources/upload/'.$item_content->options->img)}}" alt=""/></td>
 			<td class="cart-title"><a href="#">{{ $item_content->name }}</a></td>
 			<td>{{number_format($item_content->price,0,",",".")}}</td>
 			<td class="qty-checkout">{{$item_content->qty}}</td>

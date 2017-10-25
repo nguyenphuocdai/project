@@ -110,12 +110,13 @@ class NewsController extends Controller
     }
     public function getTinTuc()
     {
-        $news = DB::table('news')->orderBy('created_at','DESC')->paginate(4);
-        return view('frontend.pages.news',compact('news'));
+        $news = DB::table('news')->orderBy('created_at','DESC')->paginate(2);
+        return view('pages.news',compact('news'));
+
     }
     public function getTinTucChiTiet($news_id)
     {
         $detail = DB::table('news')->where('news_id',$news_id)->first();
-        return view('frontend.pages.news_detail',compact('detail'));
+        return view('pages.news_detail',compact('detail'));
     }
 }

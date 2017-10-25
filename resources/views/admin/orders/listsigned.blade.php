@@ -1,6 +1,5 @@
 @extends('admin.master')
 @section('content')
-</style>
 <div class="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
@@ -65,9 +64,7 @@
                                 </td>
 
                                 <td>
-                                 <?php
-                                    // echo \Carbon\Carbon::createFromTimeStamp(strtotime($item["datesigned"]))->diffForHumans()
-                                   
+                                 <?php                                   
                                         $dateTime = new DateTime($item->datesigned);
                                          echo $dateTime->format('d-m-Y H:i');
                                     ?>

@@ -20,13 +20,6 @@ class StatisticsController extends Controller
     }
     public function postChooseDay(Request $r)
     {
-    	
-    	// $t1 = new DateTime($r->txtStartDate);
-     //    $t1->format('YYYY-mm-dd hh:mm:ss');
-     //    $t2 = new DateTime($r->txtStartDate);
-     //    $t2->format('YYYY-mm-dd hh:mm:ss');
-
-    	//dd($r->all());
     	$tamp = DB::table('orders_detail')->select('product_id', DB::raw('sum(quantity) as total'))->whereBetween('date_signed',[$r->txtStartDate,$r->txtEndDate])->groupBy('product_id')->orderBy('total','desc')->get();
         $sd= $r->txtStartDate;
         $ed = $r->txtEndDate;

@@ -19,7 +19,7 @@
 	height: 250px !important;
 }
 .image-cart{
-	width: 50px !important;
+	width: 120px !important;
 }
 a.cart-remove {
 	margin-right: 5px;
@@ -71,3 +71,15 @@ input.qty {
 .continue{ 
 background-color: #3acf87 !important;
 color : #ffffff !important; }
+.cart-btn a.button{
+        padding: 12px 14px 8px 52px !important;
+}
+.cart-btn a.button.adc::before {
+    padding-top:  13px !important
+}
+.checkout-image {
+    width:  100px;
+}
+.post-content {
+    margin : 0 !important;
+}

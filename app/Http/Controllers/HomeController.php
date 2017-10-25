@@ -14,6 +14,7 @@ use App\orders_detail;
 use App\products;
 use Hash;
 use Auth;
+use View;
 use Validator;
 class HomeController extends Controller
 {
@@ -35,23 +36,24 @@ class HomeController extends Controller
     public function index()
     {   
         //lấy các mới nhất
-        $pr_cate = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image','created_at')->orderBy('created_at','DESC')->limit(3)->get();
+        $pr_new = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image','created_at')->orderBy('created_at','DESC')->limit(4)->get();
         //đã xóa giao diện cũ
         $pr = DB::table('products')->select('product_id','name','price','alias','image','created_at')->orderBy('product_id','DESC')->limit(4)->get();
         //lấy các sp xem nhiều
         $pr_view = DB::table('products')->select('product_id','name','price','alias','image')->orderBy('view','DESC')->limit(3)->get();
-        return view('pages.home',compact('pr','pr_view','pr_cate'));
+        $pr_quantity = DB::table('products')->select('product_id','name','price','alias','image','quantity')->orderBy('quantity','DESC')->limit(3)->get();
+        return view('pages.home',compact('pr','pr_view','pr_new','pr_quantity'));
     }
     public function getcategories()
-    {
-        return view('pages.allshop',compact('pr_cate'));
+    {   
+        $pr = DB::table('products')->get();
+        return view('pages.allshop',compact('pr'));
     }
     public function categories($category_id)
-    {
-
-        //lấy các sản phẩm theo loại
+    {        //lấy các sản phẩm theo loại
         $pr_cate = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image')->where('category_id',$category_id)->paginate(6);
         return view('pages.shopcategories',compact('pr_cate'));
+
     }
     public function detail($product_id)
     {   
@@ -89,22 +91,6 @@ class HomeController extends Controller
         return view('pages.shopping-cart',compact('content','total'));
         
     }
-
-    // public function getDatHang()
-    // {
-    //     if(Auth::guard('customers')->user())
-    //     {
-
-    //     }
-    //     else 
-    //     {
-    //      echo 
-    //     "<script>
-    //         alert('Vui lòng đăng nhập trước khi đặt hàng');
-    //         window.location='".url('dat-hang')."';
-    //     </script>";
-    //     }
-    // }
     public function getXoaSanPham($id)
     {
         Cart::remove($id);
@@ -113,37 +99,55 @@ class HomeController extends Controller
     
     public function capnhat(Request $request)
     {
-        // $sp = products::where('id',Cart::get($request->rowId)->id);
-        // $sldd = Cart::get($request->rowId)->qty;
-        // if ($request->qty > $sp->soluong) {
-        //     return 'Không đủ';
-        // } else {
-            Cart::update($request->rowId, $request->qty);
-        // }
-        // 
+        Cart::update($request->rowId, $request->qty);
         $thanhtien = Cart::get($request->rowId)->price *Cart::get($request->rowId)->qty;
         return response()->json(['thanhtien' => number_format($thanhtien,0,",","."), 'tongtien' => Cart::subtotal(0)]);
 
     }
    
-    public function theogia100()
+    public function cate1()
+    {
+        $cate1 = DB::table('products')->whereBetween('price', [100000,2000000 ])->orderBy('price','DESC')->paginate(6);
+        return view('pages.priceCate1',compact('cate1','pr_cate'));
+    }
+     public function cate2()
     {
         //sản phẩm giá 100-300
-        $price_100 = DB::table('products')->whereBetween('price', [100000,300000 ])->orderBy('price','DESC')->paginate(6);
-        return view('frontend.pages.price100',compact('price_100'));
+        $cate2 = DB::table('products')->whereBetween('price', [2000000,5000000 ])->orderBy('price','DESC')->paginate(6);
+        return view('pages.priceCate2',compact('cate2'));
     }
-     public function theogia300()
+    public function cate3()
     {
         //sản phẩm giá 100-300
-        $price_300 = DB::table('products')->whereBetween('price', [300000,500000 ])->orderBy('price','DESC')->paginate(6);
-        return view('frontend.pages.price300',compact('price_300'));
+        $cate3 = DB::table('products')->whereBetween('price', [5000000,10000000 ])->orderBy('price','DESC')->paginate(6);
+        return view('pages.priceCate3',compact('cate3'));
     }
-     public function theogia500()
+    public function cate4()
     {
         //sản phẩm giá 100-300
-        $price_500 = DB::table('products')->where('price','>','500000')->orderBy('price','DESC')->paginate(6);
-        return view('frontend.pages.price500',compact('price_500'));
+        $cate4 = DB::table('products')->whereBetween('price', [10000000,15000000 ])->orderBy('price','DESC')->paginate(6);
+        return view('pages.priceCate4',compact('cate4'));
     }
+     public function cate5()
+    {
+        //sản phẩm giá 100-300
+        $cate5 = DB::table('products')->where('price','>','15000000')->orderBy('price','DESC')->paginate(6);
+        return view('pages.priceCate5',compact('cate5'));
+    }
+    public function categoriesYield($category_id)
+    {        //lấy các sản phẩm theo loại
+        $pr_cate = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image')->where('category_id',$category_id)->paginate(6);
+        return view('pages.categoriesYield',compact('pr_cate'));
+    }
+    public function sortPrice(){
+        $sortPrice = DB::table('products')->select('product_id','name','price','alias','image')->orderBy('price','DESC')->paginate(6);
+        return view('pages.sortPrice',compact('sortPrice'));
+    }
+    public function sortPriceSmall(){
+        $sortPriceSmall = DB::table('products')->select('product_id','name','price','alias','image')->orderBy('price','ASC')->paginate(6);
+        return view('pages.sortPriceSmall',compact('sortPriceSmall'));
+    }
+    
     
    
 }

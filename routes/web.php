@@ -91,6 +91,7 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 Route::get('/', 'HomeController@index');
 Route::get('shop',['as'=>'getcategories','uses'=>'HomeController@getcategories']);
 Route::get('loai-san-pham/{category_id}/{alias}',['as'=>'categories','uses'=>'HomeController@categories']);
+Route::get('loai-san-pham/{category_id}/{alias}',['as'=>'categories','uses'=>'HomeController@categoriesYield']);
 Route::get('chi-tiet-san-pham/{product_id}/{alias}',['as'=>'chitietsanpham','uses'=>'HomeController@detail']);
 
 Route::get('gioi-thieu',['as'=>'getGioiThieu','uses'=>'ContactController@getGioiThieu']);
@@ -107,9 +108,14 @@ Route::get('xoa-san-pham/{id}',['as'=>'xoasanpham','uses'=>'HomeController@getXo
 
 Route::post('cap-nhat',['as'=>'capnhat','uses'=>'HomeController@capnhat']);
 
-Route::get('theo-gia-100',['as'=>'theogia100','uses'=>'HomeController@theogia100']);
-Route::get('theo-gia-300',['as'=>'theogia100','uses'=>'HomeController@theogia300']);
-Route::get('theo-gia-500',['as'=>'theogia100','uses'=>'HomeController@theogia500']);
+Route::get('theo-gia-cate1',['as'=>'cate1','uses'=>'HomeController@cate1']);
+Route::get('theo-gia-cate2',['as'=>'cate2','uses'=>'HomeController@cate2']);
+Route::get('theo-gia-cate3',['as'=>'cate3','uses'=>'HomeController@cate3']);
+Route::get('theo-gia-cate4',['as'=>'cate4','uses'=>'HomeController@cate4']);
+Route::get('theo-gia-cate5',['as'=>'cate5','uses'=>'HomeController@cate5']);
+Route::get('sortPrice',['as'=>'sortPrice','uses'=>'HomeController@sortPrice']);
+Route::get('sortPriceSmall',['as'=>'sortPriceSmall','uses'=>'HomeController@sortPriceSmall']);
+
 
 Route::get('dang-nhap-khach-hang',['as'=>'show-login','uses'=>'Cus\AuthCusController@showLoginForm']);
 Route::post('dang-nhap-khach-hang',['as'=>'post-login','uses'=>'Cus\AuthCusController@postLogin']);

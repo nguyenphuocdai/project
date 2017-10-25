@@ -7,6 +7,6 @@ $tamp = DB::table('products')->where('product_id',$product_id)->first();
 echo $tamp->name." ";
 ?></h4>
 <br>
-chúng tôi sẽ giao đến bạn đầy đủ ! Xin cảm ơn.
+Chúng tôi sẽ giao đến bạn đầy đủ ! Xin cảm ơn.
 
 
