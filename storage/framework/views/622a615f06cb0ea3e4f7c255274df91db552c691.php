@@ -1,5 +1,4 @@
-@extends('pages.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="titlebar">
 	<div class="container">
 		<div class="sixteen columns">
@@ -14,14 +13,15 @@
 		</div>
 	</div>
 </section>
-@include('admin.danger.danger')
+<?php echo $__env->make('admin.danger.danger', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <div class="row">
 	<div class="col-lg-12">
-		@if(Session::has('flash_message'))
-		<div class="alert alert-{{Session::get('flash_level')}}">
-			{{Session::get('flash_message')}}
+		<?php if(Session::has('flash_message')): ?>
+		<div class="alert alert-<?php echo e(Session::get('flash_level')); ?>">
+			<?php echo e(Session::get('flash_message')); ?>
+
 		</div>
-		@endif
+		<?php endif; ?>
 	</div>
 </div>
 <div class="container cart">
@@ -37,35 +37,35 @@
 				<th>Tổng tiền</th>
 			</tr>
 			<form method="post" action="">
-				<input type="hidden" name="_token" value="{{csrf_token()}}">
+				<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 				<!-- Item #1 -->
-				@foreach($content as $item_content)
+				<?php $__currentLoopData = $content; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_content): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 				<tr>
-					<td><img class="image-cart" src="{{ asset('resources/upload/'.$item_content->options->img)}}" width="50" height="50" alt=""/></td>
-					<td class="cart-title"><a href="#">{{ $item_content->name }}</a></td>
-					<td class="cart-price">{{number_format($item_content->price,0,",",".")}}</td>
+					<td><img class="image-cart" src="<?php echo e(asset('resources/upload/'.$item_content->options->img)); ?>" width="50" height="50" alt=""/></td>
+					<td class="cart-title"><a href="#"><?php echo e($item_content->name); ?></a></td>
+					<td class="cart-price"><?php echo e(number_format($item_content->price,0,",",".")); ?></td>
 
 
-					<td class="quantity"><input style="width: 60px!important" id="so-luong-{{ $item_content->rowId }}" class="span1 qty" type="number" min="1" size="1" value="{{$item_content->qty}}" name="quantity"/></td>
+					<td class="quantity"><input style="width: 60px!important" id="so-luong-<?php echo e($item_content->rowId); ?>" class="span1 qty" type="number" min="1" size="1" value="<?php echo e($item_content->qty); ?>" name="quantity"/></td>
 
 
-					<td><a href="{{ url('xoa-san-pham',['id'=>$item_content->rowId]) }}" class="cart-remove"></a>
-						<button onclick="capnhat('{{ $item_content->rowId }}')" type="button" class="cart-update update-button" id="{{$item_content->rowId}}">
+					<td><a href="<?php echo e(url('xoa-san-pham',['id'=>$item_content->rowId])); ?>" class="cart-remove"></a>
+						<button onclick="capnhat('<?php echo e($item_content->rowId); ?>')" type="button" class="cart-update update-button" id="<?php echo e($item_content->rowId); ?>">
 							<img class="tooltip-test" data-original-title="Update" src="public/frontend/img/updatenew.png" alt="">
 						</button>
 					</td>
-					<td class="cart-total" ><span id="thanh-tien-{{ $item_content->rowId }}">{{number_format($item_content->price*$item_content->qty,0,",",".")}}</span></td>
+					<td class="cart-total" ><span id="thanh-tien-<?php echo e($item_content->rowId); ?>"><?php echo e(number_format($item_content->price*$item_content->qty,0,",",".")); ?></span></td>
 				</tr>
-				@endforeach
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 			</form>
 		</table>
 		<table class="cart-table bottom">
 			<tr>
 				<th>
 					<div class="cart-btns" style="width: 100%">
-						<a href="{{ route('dathang') }}" class="button color cart-btns proceed">Thanh toán</a>
+						<a href="<?php echo e(route('dathang')); ?>" class="button color cart-btns proceed">Thanh toán</a>
 
-						<a href="{{ url('shop') }}" class="button color cart-btns proceed left">tiếp tục mua sắm</a>
+						<a href="<?php echo e(url('shop')); ?>" class="button color cart-btns proceed left">tiếp tục mua sắm</a>
 					</div>
 				</th>
 			</tr>
@@ -85,7 +85,7 @@
 			</tr>
 			<tr>
 				<th>Tổng cộng hóa đơn</th>
-				<td><strong id="tongtien">{{$total}}</strong></td>
+				<td><strong id="tongtien"><?php echo e($total); ?></strong></td>
 			</tr>
 		</table>
 		<br>
@@ -94,9 +94,9 @@
 </div>
 <div class="margin-top-40"></div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
 
 	function capnhat(rowid) {
@@ -104,7 +104,7 @@
 		    // alert($('input[name=_token]').val());
 		    // return false;
 		    $.ajax({
-		    	url: '{{ url('cap-nhat') }}',
+		    	url: '<?php echo e(url('cap-nhat')); ?>',
 		    	type: 'post',
 		    	data: {
 		    		'rowId': rowid,
@@ -129,5 +129,7 @@
 
 		}
 	</script>
-	@endsection
+	<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('pages.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

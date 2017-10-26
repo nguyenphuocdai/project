@@ -35,6 +35,8 @@ class HomeController extends Controller
      */
     public function index()
     {   
+        // dd(Cart::content()->groupBy('id')->count());
+
         //lấy các mới nhất
         $pr_new = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image','created_at')->orderBy('created_at','DESC')->limit(4)->get();
         //đã xóa giao diện cũ
@@ -82,7 +84,6 @@ class HomeController extends Controller
         return redirect()->route('giohang');
 
     }
-
     public function getGioHang()
     {   //lấy các thứ hiện tại 
         $content = Cart::content();

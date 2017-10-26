@@ -1,5 +1,4 @@
-@extends('pages.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- Titlebar
 ================================================== -->
 <section class="titlebar">
@@ -11,8 +10,8 @@
 				<ul>
 					<li><a href="#">Trang chủ</a></li>
 					<?php $pr = DB::table('categories')->select('name','category_id')->where('category_id',$pr_detail->category_id)->first(); ?>
-					<li><a href="#">{{ $pr->name }}</a></li>
-					<li>{{$pr_detail->name}}</li>
+					<li><a href="#"><?php echo e($pr->name); ?></a></li>
+					<li><?php echo e($pr_detail->name); ?></li>
 				</ul>
 			</nav>
 		</div>
@@ -24,15 +23,15 @@
 	<div class="eight columns" >
 		<div class="slider-padding">
 			<div id="product-slider" class="">
-				@foreach ($img as $detail)
-				<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}">
-				@endforeach
-				{{-- <img class="rsImg" src="{{ asset('resources/upload/'.$pr_detail->image)}}"/> --}}
+				<?php $__currentLoopData = $img; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $detail): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+				<img class="" src="<?php echo e(asset('resources/upload/product_image/'.$detail->image)); ?>">
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+				
 			</div>
 			<div style="display: inline-flex;">
-				@foreach ($img as $detail)
-				<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}" style="width: 100px;height: 100px">
-				@endforeach
+				<?php $__currentLoopData = $img; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $detail): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+				<img class="" src="<?php echo e(asset('resources/upload/product_image/'.$detail->image)); ?>" style="width: 100px;height: 100px">
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 			</div>
 			
 			<div class="clearfix"></div>
@@ -45,8 +44,8 @@
 			
 			<!-- Headline -->
 			<section class="title">
-				<h2>{{$pr_detail->name}}</h2>
-				<span class="product-price-discount">{{number_format($pr_detail->price*1.2,0,",",".") }}<i>{{number_format($pr_detail->price,0,",",".") }}</i></span>
+				<h2><?php echo e($pr_detail->name); ?></h2>
+				<span class="product-price-discount"><?php echo e(number_format($pr_detail->price*1.2,0,",",".")); ?><i><?php echo e(number_format($pr_detail->price,0,",",".")); ?></i></span>
 				<div class="reviews-counter">
 					<div class="rating five-stars">
 						<div class="star-rating"></div>
@@ -71,7 +70,7 @@
 				<div class="clearfix"></div>
 			</section>
 			<section class="linking">
-				<a href="{{url('mua-hang',[$pr_detail->product_id,$pr_detail->alias])}}"  style="margin-left: 0;" class="button adc">Thêm vào giỏ hàng</a>
+				<a href="<?php echo e(url('mua-hang',[$pr_detail->product_id,$pr_detail->alias])); ?>"  style="margin-left: 0;" class="button adc">Thêm vào giỏ hàng</a>
 			</section>
 		</div>
 	</div>
@@ -81,7 +80,7 @@
 		<!-- Tabs Navigation -->
 		<ul class="tabs-nav">
 			<li class="active"><a href="#tab1">Mô tả sản phẩm</a></li>
-			{{-- <li><a href="#tab2">Thông tin bổ sung</a></li> --}}
+			
 			<li><a href="#tab3">Đánh giá <span class="tab-reviews">(3)</span></a></li>
 		</ul>
 		<!-- Tabs Content -->
@@ -94,28 +93,28 @@
 				<section class="comments">
 					<ul>
 						<?php  $t= DB::table('comments')->where('product_id',$pr_detail->product_id)->orderBy('created_at','desc')->get(); ?>
-						@foreach($t as $tcm)
+						<?php $__currentLoopData = $t; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tcm): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 						<li>
 							<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
 							<div class="comment-content"><div class="arrow-comment"></div>
 							<div class="comment-by"><strong><?php echo DB::table('customers')->where('customer_id',$tcm->customer_id)->first()->name." : "; ?></strong><span class="date"><?php echo " ( ".DB::table('customers')->where('customer_id',$tcm->customer_id)->first()->created_at." )"; ?></span>
-							{{-- <div class="rating five-stars"><div class="star-rating"></div><div class="star-bg"></div></div> --}}
+							
 						</div>
-						<p>{{$tcm->comment}}</p>
+						<p><?php echo e($tcm->comment); ?></p>
 					</div>
 				</li>
-				@endforeach
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 			</ul>
 			<a href="#small-dialog" class="popup-with-zoom-anim button color">Viết bình luận</a>
 			<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
 				<h3 class="headline">Viết bình luận</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
 				<!-- Form -->
-				<form id="add-comment" class="add-comment" method="post" action="{{url('comment/'.$pr_detail->product_id)}}">
-					<input type="hidden" name="_token" value="{{csrf_token()}}">
+				<form id="add-comment" class="add-comment" method="post" action="<?php echo e(url('comment/'.$pr_detail->product_id)); ?>">
+					<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 					<fieldset>
 						<div>
 							<label>Bình luận: <span>*</span></label>
-							<textarea cols="40" rows="3" value="{{old('txtComment')}}" name="txtComment"></textarea>
+							<textarea cols="40" rows="3" value="<?php echo e(old('txtComment')); ?>" name="txtComment"></textarea>
 						</div>
 					</fieldset>
 					<button type="submit" class="btn-primary">Bình luận</button>
@@ -137,30 +136,31 @@
 <!-- Products -->
 <div class="products">
 <!-- Product #1 -->
-@foreach($pr_relate as $pr)
+<?php $__currentLoopData = $pr_relate; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pr): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 <div class="four columns">
 	<figure class="product">
 		<div class="mediaholder">
 			<a href="#">
-				<img alt="" src="{{ asset('resources/upload/product_image/'.$pr->image)}}"/>
+				<img alt="" src="<?php echo e(asset('resources/upload/product_image/'.$pr->image)); ?>"/>
 				<div class="cover">
-					@foreach ($img as $detail)
-					<img class="" src="{{ asset('resources/upload/product_image/'.$pr->image)}}">
-					@endforeach
+					<?php $__currentLoopData = $img; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $detail): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+					<img class="" src="<?php echo e(asset('resources/upload/product_image/'.$pr->image)); ?>">
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 				</div>
 			</a>
 			<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 		</div>
 		<a href="#">
 			<section>
-				<span class="product-category">{{ $pr->name }}</span>
-				<span class="product-price">{{ number_format($pr->price,0,",",".") }}</span>
+				<span class="product-category"><?php echo e($pr->name); ?></span>
+				<span class="product-price"><?php echo e(number_format($pr->price,0,",",".")); ?></span>
 			</section>
 		</a>
 	</figure>
 </div>
-@endforeach
+<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 </div>
 </div>
 <div class="margin-top-50"></div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

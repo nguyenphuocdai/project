@@ -83,3 +83,12 @@ color : #ffffff !important; }
 .post-content {
     margin : 0 !important;
 }
+.cart-title,.cart-total,.cart-price{
+    padding-top: 15px !important;
+}
+.left {
+    float: left !important;
+}
+.the-team-content, .from-the-blog-content {
+        padding: 25px 15px !important;
+}

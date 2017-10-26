@@ -82,7 +82,7 @@
 			<div class="cart-list">
 				<div class="arrow"></div>
 				<div class="cart-amount">
-					<span>Sản phẩm được chọn (<?php echo e(Cart::count()); ?>) </span>
+					<span>Sản phẩm được chọn (<?php echo e(Cart::content()->groupBy('id')->count()); ?>) </span>
 
 				</div>
 				<ul>
