@@ -44,8 +44,9 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
     public function redirectToProvider_facebook()
-    {
-        return Socialite::driver('facebook')->redirect();
+    {   
+        $social =  Socialite::driver('facebook')->redirect();
+        return $social;
     }
     public function handleProviderCallback_facebook()
     {
@@ -53,9 +54,11 @@ class LoginController extends Controller
             $user = Socialite::driver('facebook')->user();
             dd($user);
         } catch (Exception $e) {
+            dd($e);
             return redirect('/');
         }
         $findUser = Users::where('email',$user->getEmail())->first();
+        dd($findUser);
         if ($findUser){
             Auth::login($findUser);
         }

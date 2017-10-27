@@ -48,9 +48,14 @@ class HomeController extends Controller
     }
     public function getcategories()
     {   
-        $pr = DB::table('products')->get();
+        $pr = DB::table('products')->paginate(6);
         return view('pages.allshop',compact('pr'));
     }
+     public function getsearch(Request $req){
+        $products = Products::where('name','like','%'.$req->key.'%')->orWhere('keywords',$req->key)->orWhere('price',$req->key)->paginate(6);
+        return view('pages.searchProduct',['msg'=>'Kết quả tìm kiếm: '. $req->key],compact('products'));
+    }
+
     public function categories($category_id)
     {        //lấy các sản phẩm theo loại
         $pr_cate = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image')->where('category_id',$category_id)->paginate(6);
@@ -59,9 +64,9 @@ class HomeController extends Controller
     }
     public function detail($product_id)
     {   
-
         //click vào thì lượt xem tăng 1
         $pr_view = DB::table('products')->where('product_id',$product_id)->increment('view',1);
+        $display_view = DB::table('products')->where('product_id',$product_id)->first();
         $img = DB::table('images')->select('product_id','image')->where('product_id',$product_id)->get();
         //lấy ra sản phẩm
         $imgarray = array();
@@ -71,7 +76,7 @@ class HomeController extends Controller
         $pr_detail = DB::table('products')->where('product_id',$product_id)->first();
         // lấy ra sản phẩm tượng tự
         $pr_relate = DB::table('products')->where('category_id',$pr_detail->category_id)->where('product_id','<>',$product_id)->inRandomOrder()->limit(4)->get();
-        return view('pages.detail-product',compact('pr_detail','img','pr_relate'));
+        return view('pages.detail-product',compact('pr_detail','img','pr_relate','display_view'));
     }
 
     public function getMuaHang($product_id)

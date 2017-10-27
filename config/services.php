@@ -35,10 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'facebook' => [
-        'client_id' => env('FACEBOOK_CLIENT_ID'),
-        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-        'redirect' => 'http://lrv.dev/login/facebook/callback',
-    ],
+    'client_id' => '965885426898514',
+    'client_secret' =>'02c30425eff17f1ed23dbce5a7eb537b',
+    'redirect' => 'http://lrv.dev/login/facebook/callback',
+],
     'google' => [
     'client_id' => '578960884547-1e7poqoffde95l2ovrmr4684197k6qtl.apps.googleusercontent.com',
     'client_secret' => 'zpm1pLsnLzl7zHPCtLq3A_Ip',

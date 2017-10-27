@@ -102,6 +102,8 @@ Route::get('lien-he-thanh-cong',['as'=>'getLienheSucess','uses'=>'ContactControl
 
 Route::get('mua-hang/{product_id}/{tensanpham}',['as'=>'muahang','uses'=>'HomeController@getMuaHang']);
 
+Route::get('tim-kiem','HomeController@getsearch');
+
 Route::get('gio-hang',['as'=>'giohang','uses'=>'HomeController@getGioHang']);
 
 Route::get('xoa-san-pham/{id}',['as'=>'xoasanpham','uses'=>'HomeController@getXoaSanPham']);

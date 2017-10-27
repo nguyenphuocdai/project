@@ -1,5 +1,4 @@
-@extends('pages.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="titlebar">
 	<div class="container">
 		<div class="sixteen columns">
@@ -19,8 +18,8 @@
 <!-- Content
 ================================================== -->
 <!-- Container -->
-<form action="{{ url('dat-hang') }}" method="post" accept-charset="utf-8">
-	<input type="hidden" name="_token" value="{{csrf_token()}}">
+<form action="<?php echo e(url('dat-hang')); ?>" method="post" accept-charset="utf-8">
+	<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 <div class="container">
 	
 	
@@ -54,13 +53,7 @@
 </div>
 </div>
 <div class="container">
-{{-- <div class="eight columns">
-	<!-- Billing Details Content -->
-	<div class="checkout-section active"><span>2</span>Chi tiết thanh toán</div>
 
-	<div class="clearfix"></div>
-	
-</div> --}}
 <!-- Billing Details / Enc -->
 <!-- Checkout Cart -->
 <div class="sixteen columns">
@@ -76,22 +69,22 @@
 		</tr>
 		
 		<!-- Item #1 -->
-		@foreach($content as $item_content)
+		<?php $__currentLoopData = $content; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_content): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		<tr>
-			<td class="hide-on-mobile"><img class="checkout-image" src="{{ asset('resources/upload/'.$item_content->options->img)}}" alt=""/></td>
-			<td class="cart-title"><a href="#">{{ $item_content->name }}</a></td>
-			<td>{{number_format($item_content->price,0,",",".")}}</td>
-			<td class="qty-checkout">{{$item_content->qty}}</td>
-			<td class="cart-total">{{number_format($item_content->price*$item_content->qty,0,",",".")}}</td>
+			<td class="hide-on-mobile"><img class="checkout-image" src="<?php echo e(asset('resources/upload/'.$item_content->options->img)); ?>" alt=""/></td>
+			<td class="cart-title"><a href="#"><?php echo e($item_content->name); ?></a></td>
+			<td><?php echo e(number_format($item_content->price,0,",",".")); ?></td>
+			<td class="qty-checkout"><?php echo e($item_content->qty); ?></td>
+			<td class="cart-total"><?php echo e(number_format($item_content->price*$item_content->qty,0,",",".")); ?></td>
 		</tr>
-		@endforeach
+		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	</table>
 	<!-- Apply Coupon Code / Buttons -->
 	<table class="cart-table bottom">
 		<tr>
 			<th class="checkout-totals">
 				<div class="checkout-subtotal">
-					Tổng tiền: <span>{{ $total }}</span>
+					Tổng tiền: <span><?php echo e($total); ?></span>
 				</div>
 			</th>
 		</tr>
@@ -103,4 +96,5 @@
 </form>
 <!-- Container / End -->
 <div class="margin-top-50"></div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
