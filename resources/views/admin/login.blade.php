@@ -58,6 +58,8 @@
                                     
                                 </div>
                             </fieldset>
+                            <button class="btn btn-fb"><a href="{!! url('auth/facebook') !!}">F+</a></button>
+                            <button class="btn btn-fb"><a href="">G+</a></button>
                         </form>
                     </div>
                 </div>

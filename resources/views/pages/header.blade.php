@@ -24,7 +24,7 @@
 				<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
 				<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
 				<li><a class="dribbble" href="#"><i class="icon-dribbble"></i></a></li>
-				<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+				<li><a class="gplus" href="{!! url('login/google') !!}"><i class="icon-gplus"></i></a></li>
 				<li><a class="pinterest" href="#"><i class="icon-pinterest"></i></a></li>
 			</ul>
 		</div>
@@ -47,17 +47,29 @@
 				<li><a href="{{ route('giohang') }}">Giỏ hàng</a></li>
 				<li><a href="wishlist.html">So sánh <span>(2)</span></a></li>
 				<li><a href="{{ route('dathang') }}">Thanh toán</a></li>
-				<li><a><?php
+				<li><a href="{{ url('dang-nhap-khach-hang') }}">
+					<?php
+					
+					if(Auth::guard('customers')->check())
+					{
+					}
+					else
+					{
+					echo "Đăng Nhập";
+					}
+					
+					?>
+					
+				</a></li>
+				<li><a>
+					<?php
 					if(Auth::guard('customers')->check())
 					{
 					echo "Chào, ".Auth::guard('customers')->user()->name;
 					}
-					else
-					{
-					echo "<a href=`{{ route('show-login') }}`>Đăng Nhập</a>";
-					}
+					?>
 					
-				?></a></li>
+				</a></li>
 				<li><a href="{{ url('dang-ky-khach-hang') }}"><?php
 					if(Auth::guard('customers')->check())
 					{

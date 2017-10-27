@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Huynh Anh Quy">
      <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Lavender - Xu Kha</title>
+    <title>Trizzy - Shop</title>
     <base href="{{asset('')}}">
     
 	 <link href="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">

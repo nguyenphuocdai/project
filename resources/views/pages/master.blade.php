@@ -8,7 +8,7 @@
 <!-- Basic Page Needs
 ================================================== -->
 <meta charset="utf-8">
-<title>Trizzy</title>
+<title>Trizzy - Developer</title>
 
 <!-- Mobile Specific Metas
 ================================================== -->
@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="{{url('public/pages/css/mystyless.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('public/pages/css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('public/pages/css/colors/green.css')}}" id="colors">
- 
+ <link rel="shortcut icon" href="{{url('public/favicon.ico')}}">
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->

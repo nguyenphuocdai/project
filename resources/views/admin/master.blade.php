@@ -96,6 +96,9 @@
                             <!-- /input-group -->
                         </li>
                         <li>
+                            <a href=""><i class="glyphicon glyphicon-calendar"></i>Tổng quan</a>
+                        </li>
+                        <li>
                             <a href=""><i class="glyphicon glyphicon-star"></i> Loại Sản Phẩm<span class="fa arrow "></span></a>
                             <ul class="nav nav-second-level">
                                  <li>
