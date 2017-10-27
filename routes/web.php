@@ -133,8 +133,12 @@ Route::get('tin-tuc',['as'=>'tintuc','uses'=>'NewsController@getTinTuc']);
 Route::get('tin-tuc/chi-tiet/{news_id}',['as'=>'tintucchitiet','uses'=>'NewsController@getTinTucChiTiet']);
 Route::post('comment/{pr_id}','CommentController@postComment');
 
-// Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider');
-// Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider_facebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback_facebook');
 
 Route::get('login/google', 'Auth\LoginController@redirectToProvider');
 Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('login/github', 'Auth\LoginController@redirectToProvider_github');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback_github');
