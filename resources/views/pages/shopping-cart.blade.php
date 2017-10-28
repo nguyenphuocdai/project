@@ -54,7 +54,7 @@
 							<img class="tooltip-test" data-original-title="Update" src="public/frontend/img/updatenew.png" alt="">
 						</button>
 					</td>
-					<td class="cart-total" ><span id="thanh-tien-{{ $item_content->rowId }}">{{number_format($item_content->price*$item_content->qty,0,",",".")}}</span></td>
+					<td class="cart-total" ><span id="thanh-tien-{{ $item_content->rowId }}">{{number_format($item_content->price*$item_content->qty,0,",",".")}} đ</span></td>
 				</tr>
 				@endforeach
 			</form>
@@ -78,11 +78,10 @@
 
 			<tr>
 				<th>Tổng cộng hóa đơn</th>
-				<td><strong id="tongtien">{{$total}}</strong></td>
+				<td><strong id="tongtien">{{$subtotal}}</strong></td>
 			</tr>
 		</table>
 		<br>
-		<!-- <a href="#" class="calculate-shipping"><i class="fa fa-arrow-circle-down"></i> Calculate Shipping</a> -->
 	</div>
 </div>
 <div class="margin-top-40"></div>

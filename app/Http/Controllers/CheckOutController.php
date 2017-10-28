@@ -55,10 +55,11 @@ class CheckOutController extends Controller
      public function getThanhToan()
     {
         $content = Cart::content();
-        $total = Cart::total(0,",",".");
+        $sub = Cart::subtotal();
+        $subtotal = Cart::subtotal(0,",",".");
         
        
-        return view('pages.checkout',compact('content','total'));
+        return view('pages.checkout',compact('content','subtotal'));
     }
      public function postThanhToan(Request $r)
     {   

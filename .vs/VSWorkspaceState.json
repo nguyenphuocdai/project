@@ -8,9 +8,8 @@
     "\\app\\Http\\Controllers",
     "\\app\\Http\\Controllers\\Cus",
     "\\resources",
-    "\\resources\\assets",
-    "\\resources\\views\\pages"
+    "\\resources\\assets"
   ],
-  "SelectedNode": "\\resources\\assets\\js",
+  "SelectedNode": "\\app\\Providers",
   "PreviewInSolutionExplorer": false
 }

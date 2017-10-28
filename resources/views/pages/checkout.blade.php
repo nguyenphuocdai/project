@@ -92,7 +92,7 @@
 				<tr>
 					<th class="checkout-totals">
 						<div class="checkout-subtotal">
-							TỔNG TIỀN: <span>{{ $total }}</span>
+							TỔNG TIỀN: <span>{{ $subtotal }}</span>
 						</div>
 					</th>
 				</tr>

@@ -86,7 +86,7 @@
 		<div id="cart">
 			<!-- Button -->
 			<div class="cart-btn">
-				<a href="#" class="button adc">{{Cart::total(0,",",".") }}</a>
+				<a href="#" class="button adc">{{Cart::subtotal(0,",",".") }}</a>
 			</div>
 			<div class="cart-list">
 				<div class="arrow"></div>

@@ -86,17 +86,16 @@ class HomeController extends Controller
         $pr_buy = DB::table('products')->where('product_id',$product_id)->first();
         Cart::add(array('id'=>$product_id,'name'=>$pr_buy->name,'qty'=>1,'price'=>$pr_buy->price,'options'=>array('img'=> $pr_buy->image)));
         $tamp = Cart::content();
-
         return redirect()->route('giohang');
 
     }
     public function getGioHang()
     {   //lấy các thứ hiện tại 
         $content = Cart::content();
-        
-        $total = Cart::total(0,",",".");
-        dd(Cart::total());
-        return view('pages.shopping-cart',compact('content','total'));
+        $sub = Cart::subtotal();
+        $subtotal = Cart::subtotal(0,",",".");
+
+        return view('pages.shopping-cart',compact('content','subtotal'));
         
     }
     public function getXoaSanPham($id)
@@ -126,19 +125,16 @@ class HomeController extends Controller
     }
     public function cate3()
     {
-        //sản phẩm giá 100-300
         $cate3 = DB::table('products')->whereBetween('price', [5000000,10000000 ])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate3',compact('cate3'));
     }
     public function cate4()
     {
-        //sản phẩm giá 100-300
         $cate4 = DB::table('products')->whereBetween('price', [10000000,15000000 ])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate4',compact('cate4'));
     }
      public function cate5()
     {
-        //sản phẩm giá 100-300
         $cate5 = DB::table('products')->where('price','>','15000000')->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate5',compact('cate5'));
     }

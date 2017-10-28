@@ -17,7 +17,7 @@ use Stripe\Error\Card;
 class PaymentController extends Controller
 {
     public function index(){
-    	$total = Cart::total(0);
+    	$total = Cart::subtotal(0);
         $convertTotal = str_replace(',', '', $total);
     	return view('pages.payment',compact('convertTotal'));
     }
@@ -30,7 +30,6 @@ class PaymentController extends Controller
     		'exp_year' =>'required',
     		'exp_month' =>'required',
     		'cvv_no' => 'required',
-    		// 'amount_order' =>'required',
     	]);
     	$input = $request->all();
     	if($validator->passes()){
