@@ -36,7 +36,7 @@
 		<div style="
 			margin-top: 50px;
 			float: right;
-		padding-right: 40px;">{{ $products->render() }}</div>
+		padding-right: 40px;">{{ $products->links() }}</div>
 	</div>
 	<div style="text-align: center;"><?php if($products->isEmpty()) {?>
 		Rất tiếc, sản phẩm bạn tìm shop chưa có hoặc đã hết.

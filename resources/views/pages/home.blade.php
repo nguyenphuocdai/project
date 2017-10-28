@@ -104,7 +104,6 @@
 							<a href="variable-product-page.html">
 								<section>
 									<span class="product-category">{{ $new->name }}</span>
-									<h5 style="text-decoration: line-through;">{{number_format($new->price*1.2,0,",",".")}}</h5>
 									<span class="product-price">{{number_format($new->price,0,",",".")}}</span>
 								</section>
 							</a>
@@ -191,7 +190,7 @@
 			@foreach($pr_view as $view)
 			<li><a href="{{url('chi-tiet-san-pham',[$view->product_id,$view->alias])}}">
 				<img src="{{ asset('resources/upload/product_image/'.$view->image)}}" alt="" style="width: 95px;height: 80px;" />
-				<div class="product-list-desc">{{ $view->name }}<i>{{number_format($view->price*1.2,0,",",".") }}<b>{{number_format($view->price,0,",",".") }}</b></i></div>
+				<div class="product-list-desc">{{ $view->name }}<i><b>{{number_format($view->price,0,",",".") }}</b></i></div>
 			</a></li>
 			<li><div class="clearfix"></div></li>
 			@endforeach

@@ -18,7 +18,6 @@
 				<a href="variable-product-page.html">
 					<section>
 						<span class="product-category">{{$item_pr_cate->name}}</span>
-						<span class="product-price price-promotion">{{number_format($item_pr_cate->price*1.2,0,",",".") }}</span>
 						<span class="product-price ">{{number_format($item_pr_cate->price,0,",",".") }}</span>
 						
 					</section>

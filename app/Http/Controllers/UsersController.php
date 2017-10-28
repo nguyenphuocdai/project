@@ -58,8 +58,7 @@ class UsersController extends Controller
       
         if(Auth::attempt($login))
         {
-            echo "ok";
-            return redirect()->route('admin.products.list');
+            return redirect('admin/tong-quan');
         }
         else
         {

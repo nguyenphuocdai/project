@@ -75,14 +75,7 @@
 	<div class="eight columns cart-totals">
 		<h3 class="headline">Giỏ hàng thanh toán</h3><span class="line"></span><div class="clearfix"></div>
 		<table class="cart-table margin-top-5">
-			<tr>
-				<th>Tổng cộng</th>
-				<td><strong></strong></td>
-			</tr>
-			<tr>
-				<th>Phí vận chuyển</th>
-				<td>Free Shipping</td>
-			</tr>
+
 			<tr>
 				<th>Tổng cộng hóa đơn</th>
 				<td><strong id="tongtien">{{$total}}</strong></td>
@@ -101,8 +94,6 @@
 
 	function capnhat(rowid) {
 		var soluong = parseInt($('#so-luong-' + rowid).val());
-		    // alert($('input[name=_token]').val());
-		    // return false;
 		    $.ajax({
 		    	url: '{{ url('cap-nhat') }}',
 		    	type: 'post',
@@ -113,11 +104,9 @@
 		    	},
 		    	dataType: 'text',
 		    	success: function (response) {
-		    		// console.log(response);
 		    		if (response != 'Không đủ') {
 
 		    			gh = JSON.parse(response);
-		    			// console.log(gh);
 		    			$("#thanh-tien-" + rowid).html(gh.thanhtien + ' <u>đ</u>');
 						$("#tongtien").html(gh.tongtien + ' <u>đ</u>');
 

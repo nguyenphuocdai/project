@@ -165,6 +165,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -231,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Str'   => Illuminate\Support\Str::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
     ],
 
 ];

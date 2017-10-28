@@ -16,8 +16,8 @@ class OrdersController extends Controller
     //lấy danh sách đơn hàng chưa duyệt
    public function getList()
    {
-        $order = orders::select('*')->where('status',0)->orderBy('created_at','DESC')->get();
-       return view('admin.orders.list',compact('order'));
+      $order = orders::select('*')->where('status',0)->orderBy('created_at','DESC')->get();
+      return view('admin.orders.list',compact('order'));
    }
    //lấy danh sách đơn hàng đã duyệt
    public function getListSigned()
@@ -29,6 +29,7 @@ class OrdersController extends Controller
    public function getOrders_Detail($order_id)
    {
         $orders_detail = DB::table('orders_detail')->where('order_id',$order_id)->get();
+        dd($orders_detail);
          
        return view('admin.orders.orders_detail',compact('orders_detail'));
    }

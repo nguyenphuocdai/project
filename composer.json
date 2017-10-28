@@ -10,7 +10,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "gloudemans/shoppingcart": "^2.3",
         "barryvdh/laravel-dompdf": "^0.8.0",
-        "laravel/socialite": "^3.0"
+        "laravel/socialite": "^3.0",
+        "cartalyst/stripe-laravel": "7.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

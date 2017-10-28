@@ -46,7 +46,7 @@
 			<!-- Headline -->
 			<section class="title">
 				<h2>{{$pr_detail->name}}</h2>
-				<span class="product-price-discount">{{number_format($pr_detail->price*1.2,0,",",".") }}<i>{{number_format($pr_detail->price,0,",",".") }}</i></span>
+				<span class="product-price-discount"><i>{{number_format($pr_detail->price,0,",",".") }}</i></span>
 				<div class="reviews-counter">
 					<span style="margin-top: 12px;">Lượt xem</span>
 					<span style="text-align: center;color: olivedrab;margin-top: 20px;">{{ $display_view->view }}</span>

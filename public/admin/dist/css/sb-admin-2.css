@@ -94,12 +94,8 @@ body {
     padding: 15px;
 }
 
-.sidebar ul li {
-    border-bottom: 1px solid #e7e7e7;
-}
-
 .sidebar ul li a.active {
-    background-color: #eee;
+    background-color: #3e2b2b;
 }
 
 .sidebar .arrow {
@@ -132,7 +128,7 @@ body {
         z-index: 1;
         position: absolute;
         width: 250px;
-        margin-top: 51px;
+        margin-top: 50px;
     }
 
     .navbar-top-links .dropdown-messages,
@@ -351,4 +347,14 @@ table.dataTable thead .sorting:after {
 
 .panel-yellow a:hover {
     color: #df8a13;
+}
+a:hover, a:focus {
+    color: #333 !important;
+    background-color: #f7f7f7 !important;
+}
+a {
+    color: #ffffff !important;
+}
+.paginate_button a {
+  color : black !important;
 }

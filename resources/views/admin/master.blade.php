@@ -11,7 +11,7 @@
     <base href="{{asset('')}}">
     <!-- Bootstrap Core CSS -->
     <link href="{{ url('public/admin/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-
+     <link rel="shortcut icon" href="{{url('public/favicon.ico')}}">
     <!-- MetisMenu CSS -->
     <link href="{{ url('public/admin/bower_components/metisMenu/dist/metisMenu.min.css') }}" rel="stylesheet">
 
@@ -40,14 +40,15 @@
     </script>
     <script src="{{ url('public/admin/js/func_ckfinder.js') }}"></script>
 
+
 </head>
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" style="background-color: #0088cc">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;background: #EBE7E4;">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;background: #0088cc;">
             <div class="navbar-header" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -55,7 +56,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href=""><h4 style="font-weight: bold; margin-left: 35px; color: #37C0B0;">Hệ thống quản lý</h4></a>
+                <a class="navbar-brand" href="admin/tong-quan"><h4 style="font-weight: bold; color: rgba(255,255,255,0.9);margin-top: 0 !important;font-size: 24px;">Hệ thống quản lý</h4></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -65,7 +66,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                         <i class="fa fa-cog"></i> Tài Khoản <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
+                    <ul class="dropdown-menu dropdown-user" style="    background-color: black;">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i>Chào <?php echo Auth::user()->username;  ?> </a>
                         </li>
                         <li><a href="{{route('admin.users.edit',Auth::user()->user_id)}}"><i class="fa fa-gear fa-fw"></i> Cập Nhật Thông Tin</a>
@@ -83,10 +84,10 @@
             <div class="navbar-default sidebar" role="navigation" style="background: #EBE7E4;">
                 <div class="sidebar-nav navbar-collapse" style="background: #EBE7E4;" >
                     
-                    <ul class="nav" id="side-menu" style="background: #EBE7E4;">
+                    <ul class="nav" id="side-menu" style="background-color: #0088cc;">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">
                                         <i class="fa fa-search"></i>
@@ -96,7 +97,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href=""><i class="glyphicon glyphicon-calendar"></i>Tổng quan</a>
+                            <a href="admin/tong-quan"><i class="glyphicon glyphicon-calendar"></i>Tổng quan</a>
                         </li>
                         <li>
                             <a href=""><i class="glyphicon glyphicon-star"></i> Loại Sản Phẩm<span class="fa arrow "></span></a>
@@ -185,8 +186,8 @@
         <!-- Page Content -->
       
 
-        <div id="page-wrapper">
-            <div class="container-fluid" style="margin-top: 5px">
+        <div id="page-wrapper" style="height: 100% !important;">
+            <div class="container-fluid">
                 <div class="row">
                     <!-- /.col-lg-12 -->
                    <!-- chứa nội dung -->

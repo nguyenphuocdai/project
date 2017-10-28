@@ -17,10 +17,9 @@
 					<a href="{{url('mua-hang',[$allpr->product_id,$allpr->alias])}}" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 				</div>
 
-				<a href="variable-product-page.html">
+				<a href="{{url('chi-tiet-san-pham',[$allpr->product_id,$allpr->alias])}}">
 					<section>
 						<span class="product-category">{{ $allpr->name }}</span>
-						<h5 style="text-decoration: line-through;">{{number_format($allpr->price*1.2,0,",",".") }}</h5>
 						<span class="product-price">{{number_format($allpr->price,0,",",".") }}</span>
 					</section>
 				</a>

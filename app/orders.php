@@ -8,7 +8,7 @@ class orders extends Model
 {
     protected $table ='orders';
     protected $primaryKey = 'order_id';
-    protected $fillable=['order_id','user_id','customer_id'];
+    protected $fillable=['user_id','customer_id'];
     public $timestamps = true;
     public function customer(){
 
@@ -20,7 +20,7 @@ class orders extends Model
     }
     public function order_detail(){
 
-        return $this->hasMany('App\orders_detail');
+        return $this->hasOne('App\orders_detail');
     }
     
 }

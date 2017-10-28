@@ -52,7 +52,7 @@ class HomeController extends Controller
         return view('pages.allshop',compact('pr'));
     }
      public function getsearch(Request $req){
-        $products = Products::where('name','like','%'.$req->key.'%')->orWhere('keywords',$req->key)->orWhere('price',$req->key)->paginate(6);
+        $products = Products::where('name','like','%'.$req->key.'%')->orWhere('keywords',$req->key)->orWhere('price',$req->key)->paginate(10);
         return view('pages.searchProduct',['msg'=>'Kết quả tìm kiếm: '. $req->key],compact('products'));
     }
 
@@ -86,14 +86,16 @@ class HomeController extends Controller
         $pr_buy = DB::table('products')->where('product_id',$product_id)->first();
         Cart::add(array('id'=>$product_id,'name'=>$pr_buy->name,'qty'=>1,'price'=>$pr_buy->price,'options'=>array('img'=> $pr_buy->image)));
         $tamp = Cart::content();
+
         return redirect()->route('giohang');
 
     }
     public function getGioHang()
     {   //lấy các thứ hiện tại 
         $content = Cart::content();
-      
+        
         $total = Cart::total(0,",",".");
+        dd(Cart::total());
         return view('pages.shopping-cart',compact('content','total'));
         
     }
@@ -106,7 +108,7 @@ class HomeController extends Controller
     public function capnhat(Request $request)
     {
         Cart::update($request->rowId, $request->qty);
-        $thanhtien = Cart::get($request->rowId)->price *Cart::get($request->rowId)->qty;
+        $thanhtien = Cart::get($request->rowId)->price * Cart::get($request->rowId)->qty;
         return response()->json(['thanhtien' => number_format($thanhtien,0,",","."), 'tongtien' => Cart::subtotal(0)]);
 
     }

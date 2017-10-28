@@ -67,6 +67,7 @@
                                  <?php                                   
                                         $dateTime = new DateTime($item->datesigned);
                                          echo $dateTime->format('d-m-Y H:i');
+                                         
                                     ?>
                                 </td>
 

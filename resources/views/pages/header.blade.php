@@ -43,7 +43,6 @@
 		<div id="additional-menu">
 			<ul>
 				<li><a href="{{ route('giohang') }}">Giỏ hàng</a></li>
-				<li><a href="wishlist.html">So sánh <span>(2)</span></a></li>
 				<li><a href="{{ route('dathang') }}">Thanh toán</a></li>
 				<li><a href="{{ url('dang-nhap-khach-hang') }}">
 					<?php
@@ -69,15 +68,15 @@
 					
 				</a></li>
 				<li><a href="{{ url('dang-ky-khach-hang') }}"><?php
-					if(Auth::guard('customers')->check())
-					{
-					}
-					else
-					echo "Đăng Ký";
+						if(Auth::guard('customers')->check())
+						{
+						}
+						else
+						echo "Đăng Ký";
 				?></a></li>
 				<li><a href="{{ url('dang-xuat-khach-hang') }}"><?php if(Auth::guard('customers')->check())
-					{
-					echo "Đăng Xuất";
+						{
+						echo "Đăng Xuất";
 				} ?></a></li>
 			</ul>
 		</div>
@@ -93,7 +92,6 @@
 				<div class="arrow"></div>
 				<div class="cart-amount">
 					<span>Sản phẩm được chọn ({{Cart::content()->groupBy('id')->count() }}) </span>
-
 				</div>
 				<ul>
 					@foreach(Cart::Content() as $cart)
@@ -128,7 +126,7 @@
 		<a href="#menu" class="menu-trigger"><i class="fa fa-bars"></i> Menu</a>
 		<nav id="navigation">
 			<ul class="menu" id="responsive">
-				<li><a href="index.html" class="current homepage" id="current">Home</a></li>
+				<li><a href="{{ url('/') }}" class="current homepage" id="current">Home</a></li>
 				
 				<li class="demo-button">
 					<a href="{{ url('/') }}">Trang chủ</a>
@@ -140,7 +138,7 @@
 						@foreach($menu as $item_menu)
 						<li style="min-width: 206px"><a href="{{url('loai-san-pham',[$item_menu->category_id,$item_menu->alias])}}"
 							style="text-transform: uppercase;"
-							>{{$item_menu->name}}</a></li>
+						>{{$item_menu->name}}</a></li>
 						@endforeach
 					</ul>
 				</li>

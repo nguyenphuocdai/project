@@ -38,7 +38,7 @@ return [
     'client_id' => '965885426898514',
     'client_secret' =>'02c30425eff17f1ed23dbce5a7eb537b',
     'redirect' => 'http://lrv.dev/login/facebook/callback',
-],
+    ],
     'google' => [
     'client_id' => '578960884547-1e7poqoffde95l2ovrmr4684197k6qtl.apps.googleusercontent.com',
     'client_secret' => 'zpm1pLsnLzl7zHPCtLq3A_Ip',
@@ -48,6 +48,9 @@ return [
     'client_id' => 'd2a19dc5b074b88ba005',
     'client_secret' => 'c61e67fa821cb92328d9cd5005ef4cc530070efc',
     'redirect' => 'http://lrv.dev/login/github/callback',
-],
+    ],
+    // 'stripe' => [
+    //     'secret' => 'sk_test_NHwuPHxgDl3SoiqvnmjDVTY1',
+    // ],
 
 ];

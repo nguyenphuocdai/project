@@ -11,6 +11,9 @@ Route::post('test/delimage','ProductsController@deleteImageProduct')->name('dele
 Auth::routes();
 // ,'middleware'=>'Login'
 Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
+	Route::get('tong-quan', function() {
+	    return view('admin.master');
+	});
 	Route::group(['prefix'=>'categories'],function(){
 		Route::get('list',['as'=>'admin.categories.list','uses'=>'CategoriesController@getList']);
 
@@ -144,3 +147,6 @@ Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider_github');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback_github');
+
+Route::get('payment',['as'=>'payment','uses'=>'PaymentController@index']);
+Route::post('payment','PaymentController@payment');
