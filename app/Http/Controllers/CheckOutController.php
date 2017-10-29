@@ -162,9 +162,9 @@ class CheckOutController extends Controller
         else
         {
             echo "<script>
-                            alert('Vui lòng đăng nhập trước khi đặt hàng!');
-                            window.location='".url('dat-hang')."';
-                        </script>";
+                    alert('Vui lòng đăng nhập trước khi đặt hàng!');
+                    window.location='".url('dat-hang')."';
+                </script>";
         }
         
     }

@@ -21,7 +21,6 @@
 		<!-- Social Icons -->
 		<div class="six columns">
 			<ul class="social-icons">
-				<li><a class="facebook" href="{!! url('login/facebook') !!}"><i class="icon-facebook"></i></a></li>
 				<li><a class="github" href="{!! url('login/github') !!}"><i class="icon-github"></i></a></li>
 				<li><a class="gplus" href="{!! url('login/google') !!}"><i class="icon-gplus"></i></a></li>
 			</ul>

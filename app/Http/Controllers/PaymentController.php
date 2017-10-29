@@ -72,6 +72,7 @@ class PaymentController extends Controller
                     /**
                     * Write Here Your Database insert logic.
                     */
+
                     \Session::put('success','Thanh toán thành công, Cám ơn bạn đã quan tâm Shop.');
                      return redirect('payment');
                 } else {
