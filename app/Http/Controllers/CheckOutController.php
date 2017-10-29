@@ -49,7 +49,7 @@ class CheckOutController extends Controller
 
             $message->to(Request::input('txtEmail'), Request::input('txtName'))->subject('ĐĂNG KÝ THÀNH VIÊN');
         });
-        return redirect('dang-ky-khach-hang')->with(['flash_level'=>'success','flash_message'=>'Đăng ký thành viên thành công. Vui lòng kiểm tra email để xem thông tin!']);
+        return redirect('/')->with(['flash_level'=>'success','flash_message'=>'Đăng ký thành viên thành công. Vui lòng kiểm tra email để xem thông tin!']);
     }
 	
      public function getThanhToan()

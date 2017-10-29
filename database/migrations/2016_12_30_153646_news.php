@@ -16,8 +16,8 @@ class News extends Migration
         Schema::create('news', function(Blueprint $table){
             $table->increments('news_id');
             $table->string('tittle');
+            $table->string('intro');
             $table->longText('content');
-            $table->datetime('date_upload');
             $table->string('image');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');

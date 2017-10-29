@@ -41,16 +41,19 @@ return [
     ],
     'google' => [
     'client_id' => '578960884547-1e7poqoffde95l2ovrmr4684197k6qtl.apps.googleusercontent.com',
-    'client_secret' => 'zpm1pLsnLzl7zHPCtLq3A_Ip',
-    'redirect' => 'http://lrv.dev/login/google/callback',
+        'client_secret' => 'zpm1pLsnLzl7zHPCtLq3A_Ip',
+        'redirect' => 'http://lrv.dev/login/google/callback',
     ],
     'github' => [
-    'client_id' => 'd2a19dc5b074b88ba005',
-    'client_secret' => 'c61e67fa821cb92328d9cd5005ef4cc530070efc',
-    'redirect' => 'http://lrv.dev/login/github/callback',
+        'client_id' => 'd2a19dc5b074b88ba005',
+        'client_secret' => 'c61e67fa821cb92328d9cd5005ef4cc530070efc',
+        'redirect' => 'http://lrv.dev/login/github/callback',
     ],
-    // 'stripe' => [
-    //     'secret' => 'sk_test_NHwuPHxgDl3SoiqvnmjDVTY1',
-    // ],
+    'nexmo' => [
+        'key' => env('NEXMO_KEY'),
+        'secret' => env('NEXMO_SECRET'),
+        'sms_from' => '15556666666',
+    ],
+
 
 ];

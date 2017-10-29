@@ -20,6 +20,8 @@ class OrdersDetail extends Migration
             $table->foreign('order_id')->references('order_id')->on('orders')->onDelete('cascade');
             $table->integer('quantity');
             $table->integer('price');
+            $table->integer('note');
+            $table->datetime('date_signed');
             $table->float('total');
             $table->timestamps();
         });

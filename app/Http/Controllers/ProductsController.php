@@ -19,10 +19,6 @@ class ProductsController extends Controller
 {
     public function getList()
     {   
-        
-       
-       
-       
         $data = products::select('product_id','name','price','quantity','created_at','image','category_id','user_id')->orderBy('product_id','DESC')->get();
         return view('admin.products.list',compact('data'));
     }
@@ -205,23 +201,4 @@ class ProductsController extends Controller
             return "Oke";
         }
     }
-
-    // public function deleteImageProduct(){
-    //     if(Request::ajax())
-    //     {
-    //         $idHinh = (int)Request::get('idHinh');
-    //         $image = images::find('idHinh');
-    //         if(!empty($image))
-    //         {
-    //             $img = 'resources/upload/product_image/'.$image->image;
-    //             if(File::exists($img))
-    //             {
-    //                 File::delete($img);
-    //             }
-    //             $image->delete();
-    //         }
-            
-    //         return "Oke";
-    //     }
-    // }
 }

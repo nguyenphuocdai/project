@@ -19,7 +19,6 @@ class Categories extends Migration
             $table->string('alias');
             $table->longText('describe');
             $table->string('keywords');
-            $table->integer('order');
             $table->timestamps();
         });
     }

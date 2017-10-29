@@ -16,7 +16,9 @@ class Products extends Migration
           Schema::create('products', function(Blueprint $table){
             $table->increments('product_id');
             $table->string('name')->unique();
+            $table->string('alias'); 
             $table->integer('price');
+            $table->integer('discount');
             $table->integer('quantity');
             $table->string('origin'); 
             $table->integer('view');
@@ -26,7 +28,6 @@ class Products extends Migration
             $table->string('keywords');
             $table->string('size');
             $table->longText('describe');
-            $table->integer('order');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->integer('category_id')->unsigned();

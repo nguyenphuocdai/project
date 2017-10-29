@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Cart;
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Validator;
@@ -17,9 +18,18 @@ use Stripe\Error\Card;
 class PaymentController extends Controller
 {
     public function index(){
+        if(Auth::guard('customers')->check())
+        {
     	$total = Cart::subtotal(0);
         $convertTotal = str_replace(',', '', $total);
     	return view('pages.payment',compact('convertTotal'));
+    }   else {
+        echo "
+            <script>
+                alert('Vui lòng đăng nhập trước khi thanh toán online');
+                window.location='".url('dat-hang')."';
+            </script>";
+    }
     }
 
     public function payment(Request $request){

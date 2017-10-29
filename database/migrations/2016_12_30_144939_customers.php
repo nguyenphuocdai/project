@@ -15,14 +15,17 @@ class Customers extends Migration
     {
         Schema::create('customers', function(Blueprint $table){
             $table->increments('customer_id');
+            $table->string('name');
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password',60);
             $table->string('address');
-            $table->integer('sex');
-            $table->datetime('date_register');
             $table->integer('phone_number');
-            $table->string('thumbnail');
+            $table->string('google_id')->nullable();
+            $table->string('facebook_id')->nullable();
+            $table->string('github_id')->nullable();
+            $table->string('phone_social')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

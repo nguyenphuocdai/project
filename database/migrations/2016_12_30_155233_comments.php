@@ -15,9 +15,7 @@ class Comments extends Migration
     {
         Schema::create('comments', function(Blueprint $table){
             $table->increments('comment_id');
-            $table->string('name');
             $table->string('comment');
-            $table->datetime('date_comment');
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('cascade');
             $table->integer('product_id')->unsigned();
