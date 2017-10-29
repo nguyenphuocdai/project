@@ -71,8 +71,8 @@
                                     ?>
                                 </td>
 
-                                <td class="center"><a href="{{route('detail',$item->order_id)}}">Click để xem</a></td>
-                               <td><a href="{{route('admin.orders.getPDF',$item->order_id)}}"><i class="fa fa-file-pdf-o fa-2x" style=""></i></a></td>
+                                <td class="center"><a href="{{route('detail',$item->order_id)}}" style="color: blue !important;">Click để xem</a></td>
+                               <td><a href="{{route('admin.orders.getPDF',$item->order_id)}}" style="color: blue !important;"><i class="fa fa-file-pdf-o fa-2x" style=""></i></a></td>
                                 
                             </tr>
                             @endforeach

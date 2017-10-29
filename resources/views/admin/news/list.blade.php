@@ -44,8 +44,8 @@
                                 <img width="80px" height="80px" class="image-responsive" alt="" src="resources/news/{{$n->image}}"/>
                                 </td>
                                 <td ><?php echo DB::table('users')->where('user_id',$n->user_id)->first()->username; ?></td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')" href="{{route('admin.news.delete',$n->news_id)}}"> Xóa</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.news.edit',$n->news_id)}}">Cập Nhật</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')" href="{{route('admin.news.delete',$n->news_id)}}" style="color:red !important"> Xóa</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.news.edit',$n->news_id)}}" style="color:blue !important">Cập Nhật</a></td>
                             </tr>
                             @endforeach
                         </tbody>

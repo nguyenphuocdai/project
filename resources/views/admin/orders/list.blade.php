@@ -49,11 +49,11 @@
                         <td>
                             <?php
                             $customer_receive = DB::table('orders')->where('order_id',$item->order_id)->first();
-                            $customer = DB::table('customers')->where('customer_id',$customer_receive->customer_id)->first();                         
+                            $customer = DB::table('customers')->where('customer_id',$customer_receive->customer_id)->first();
                             if($customer_receive->address_receive == ""){
-                                echo $customer->address; 
+                            echo $customer->address;
                             }else
-                                echo $customer_receive->address_receive;
+                            echo $customer_receive->address_receive;
                             ?>
                         </td>
                         <td>
@@ -67,9 +67,19 @@
                             
                             {{$item->created_at->format('H:i d-m-Y ')}}
                         </td>
-                        <td class="center"><a href="{{route('detail',$item->order_id)}}">Click để xem </a></td>
-                        <td>
-                           
+                        <td class="center" ><a href="{{route('detail',$item->order_id)}}" style="color: #337ab7 !important">Click để xem </a></td>
+                        <td><?php
+                            $check=DB::table('orders_detail')->where('order_id',$item->order_id)->first();
+                            // dd($check);
+
+                            $tamp = DB::table('products')->where('product_id',$check->product_id)->first();
+                            // dd($check,$tamp)
+                            if($check->note==0)
+                            echo "Đủ sản phẩm để giao";
+                            else
+                            echo "Chưa đủ sản phẩm </br>".substr($check->note,1,2)." ".$tamp->name;
+                            ?>
+                            {{-- {{ $check->note}} --}}
                         </td>
                         <td class="center"><a href="{{route('admin.orders.delete',$item->order_id)}}" onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')"><i class="btn btn-warning fa fa-trash"> Xóa</i> </a></td>
                     </tr>
@@ -83,5 +93,4 @@
     </div>
     <!-- /.container-fluid -->
 </div>
-
 @endsection

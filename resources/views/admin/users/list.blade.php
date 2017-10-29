@@ -45,8 +45,8 @@
                                 @endif
                                 </td>
                                 <td>{{$item->email}}</td>
-                                <td class="center"><i class="fa fa-times-circle-o  fa-fw"></i><a href="{{ URL::route('admin.users.delete',$item['user_id'])}} " onclick="return xacnhanxoa('Bạn có muốn xóa thành viên ?')"> Xóa</a></td>
-                                 <td class="center"><i class="fa fa-info-circle fa-fw"></i> <a href="{{ URL::route('admin.users.edit',$item->user_id)}}">Cập nhật</a></td>
+                                <td class="center"><i class="fa fa-times-circle-o  fa-fw"></i><a href="{{ URL::route('admin.users.delete',$item['user_id'])}} " onclick="return xacnhanxoa('Bạn có muốn xóa thành viên ?')" style="color:red !important"> Xóa</a></td>
+                                 <td class="center"><i class="fa fa-info-circle fa-fw"></i> <a href="{{ URL::route('admin.users.edit',$item->user_id)}}" style="color:blue !important">Cập nhật</a></td>
                                 
                             </tr>
                             @endforeach

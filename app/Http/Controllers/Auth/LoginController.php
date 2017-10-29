@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Socialite;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use Exception;
 use App\Users;
+use App\customers;
 use App\Http\Controllers\Auth\bcrypt;
 
 class LoginController extends Controller
@@ -39,42 +40,8 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct()
-    {   
-      
-        $this->middleware('guest', ['except' => 'logout']);
-    }
-    public function redirectToProvider_facebook()
-    {   
-        $social =  Socialite::driver('facebook')->redirect();
-        return $social;
-    }
-    public function handleProviderCallback_facebook()
     {
-        try {
-            $user = Socialite::driver('facebook')->user();
-            dd($user);
-        } catch (Exception $e) {
-            dd($e);
-            return redirect('/');
-        }
-        $findUser = Users::where('email',$user->getEmail())->first();
-        dd($findUser);
-        if ($findUser){
-            Auth::login($findUser);
-        }
-        else{
-        $newUser = new Users;
-        $newUser->email = $user->getEmail();
-        $newUser->username = $user->getName();
-        $newUser->password = bcrypt(123456);
-        $newUser->remember_token = $user->token;
-        dd($newUser);
-        $newUser->save();
-
-        Auth::login($newUser);
-
-    }   
-        return redirect('/');
+        $this->middleware('guest')->except('logout');
     }
 
 //google
@@ -86,24 +53,28 @@ class LoginController extends Controller
     {
         try {
             $user = Socialite::driver('google')->stateless()->user();
+
         } catch (Exception $e) {
             return redirect('/');
         }
-        $findUser = Users::where('email',$user->getEmail())->first();
+        $findUser = customers::where('email',$user->getEmail())->first();
         if ($findUser){
-            Auth::login($findUser);
+        Auth::guard('customers')->loginUsingId($findUser->customer_id, true);
         }
         else{
-        $newUser = new Users;
+        $newUser = new customers;
         $newUser->google_id = $user->getId();
         $newUser->email = $user->getEmail();
         $newUser->username = $user->getName();
+        $newUser->name = $user->getName();
         $newUser->password = bcrypt(123456);
         $newUser->remember_token = $user->token;
-        dd($newUser);
+        
         $newUser->save();
 
-        Auth::login($newUser);
+        // Auth::login($newUser);
+        Auth::guard('customers')->loginUsingId($newUser->customer_id, true);
+
 
     }   
         return redirect('/');
@@ -116,23 +87,25 @@ class LoginController extends Controller
     {
         try {
             $user = Socialite::driver('github')->stateless()->user();
+            dd($user);
         } catch (Exception $e) {
             return redirect('/');
         }
-        $findUser = Users::where('email',$user->getEmail())->first();
+        $findUser = customers::where('email',$user->getEmail())->first();
         if ($findUser){
-            Auth::login($findUser);
+            Auth::guard('customers')->loginUsingId($findUser->customer_id, true);
         }
         else{
-        $newUser = new Users;
+        $newUser = new customers;
         $newUser->github_id = $user->getId();
         $newUser->email = $user->getEmail();
+        $newUser->name = $user->getNickname();
         $newUser->username = $user->getNickname();
         $newUser->password = bcrypt(123456);
         $newUser->remember_token = $user->token;
         $newUser->save();
 
-        Auth::login($newUser);
+        Auth::guard('customers')->loginUsingId($newUser->customer_id, true);
 
     }   
         return redirect('/');

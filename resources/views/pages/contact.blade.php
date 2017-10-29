@@ -50,7 +50,7 @@ Cơ quan cấp: Phòng Đăng ký kinh doanh – Sở kế hoạch và Đầu t�
 			<div>
 				<ul class="contact-informations second">
 					<li><i class="fa fa-phone"></i> <p>+84 933 588 295</p></li>
-					<li><i class="fa fa-globe"></i> <p>www.trizzy.com</p></li>
+					<li><i class="fa fa-globe"></i> <p>www.lrv.dev</p></li>
 					<li><i class="fa fa-envelope"></i> <p class="break-work">hoanghoang360@gmail.com</p></li>
 				</ul>
 			</div>
@@ -77,7 +77,6 @@ Cơ quan cấp: Phòng Đăng ký kinh doanh – Sở kế hoạch và Đầu t�
 
 <!-- Contact Form -->
 <div class="eleven columns">
-	<div class="extra-padding left">
 		<h3 class="headline">Liên hệ</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
 		@include('admin.danger.danger')
 		<!-- Contact Form -->	
@@ -118,7 +117,6 @@ Cơ quan cấp: Phòng Đăng ký kinh doanh – Sở kế hoạch và Đầu t�
 
 		</section>
 		<!-- Contact Form / End -->
-	</div>
 </div>
 </div>
 <!-- Container / End -->

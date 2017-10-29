@@ -139,8 +139,8 @@ Route::get('tin-tuc/chi-tiet/{news_id}',['as'=>'tintucchitiet','uses'=>'NewsCont
 Route::post('comment/{pr_id}','CommentController@postComment');
 
 
-Route::get('login/facebook', 'Auth\LoginController@redirectToProvider_facebook');
-Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback_facebook');
+// Route::get('login/facebook', 'Auth\LoginController@redirectToProvider_facebook');
+// Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback_facebook');
 
 Route::get('login/google', 'Auth\LoginController@redirectToProvider');
 Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');

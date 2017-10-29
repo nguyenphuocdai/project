@@ -28,24 +28,32 @@
 			<div class="checkout-section cart check-cart">THÔNG TIN KHÁCH HÀNG</div>
 			<ul class="address-review">
 				<li><?php if(Auth::guard('customers')->user())
-					{
-					$tamp = Auth::guard('customers')->user();
-					echo "<div>Tài khoản: ".$tamp->username."</div>";
-					
-					echo "<div>Họ và tên: ".$tamp->name."</div>";
-					
-					echo "<div>Số điện thoại: ".$tamp->phone_number."</div>";
-					echo "<div>Địa chỉ nhận hàng: ".$tamp->address."</div>";
-					echo "<div class='address-italic'>Địa chỉ nhận hàng (Trường hợp không dùng địa chỉ đăng ký vui lòng điền vào ô sau):</div> "."<input class='address-italic-input' type='text' name='txtAddresreceive' />";
-					}
-					else{
-					echo "<strong>Nếu chưa có tài khoản</strong>"." "."<a class=color-text href=dang-ky-khach-hang>Ấn vào đây </a>";
-					}
+							{
+								$tamp = Auth::guard('customers')->user();
+								echo "<div>Tài khoản: ".$tamp->username."</div>";
+							
+								echo "<div>Họ và tên: ".$tamp->name."</div>";
+								if($tamp->phone_number == ""){
+									echo "<div class='address-italic'>Số điện thoại (*)(Trường hợp đăng nhập với tài khoản google hoặc github vui lòng ghi rõ địa chỉ vào ô sau):</div> "."<input class='address-italic-input' type='text' name='phone_social' />";
+								}
+								else{
+									echo "<div>Số điện thoại: ".$tamp->phone_number."</div>";
+								}
+								if($tamp->address == ""){
+									echo "<div class='address-italic'>Địa chỉ nhận hàng (*) (Trường hợp đăng nhập với tài khoản google hoặc github vui lòng ghi rõ địa chỉ vào ô sau):</div> "."<input class='address-italic-input' type='text' name='txtAddresreceive' />";
+								}else{
+								echo "<div>Địa chỉ nhận hàng: ".$tamp->address."</div>";
+								echo "<div class='address-italic'>Địa chỉ nhận hàng khác (Nếu muốn nhận hàng ở địa chỉ khác vui lòng ghi cụ thể vào ô sau):</div> "."<input class='address-italic-input' type='text' name='txtAddresreceive' />";
+								}
+							}
+							else{
+								echo "<strong>Nếu chưa có tài khoản</strong>"." "."<a class=color-text href=dang-ky-khach-hang>Ấn vào đây </a>";
+							}
 				?></li>
 				<li><label class="" ><?php if(Auth::guard('customers')->user())
-					echo "";
-					else
-					echo "<strong>Vui lòng đăng nhập để có thể đặt hàng</strong> "."<a class=color-text href=dang-nhap-khach-hang>Ấn vào đây </a>";
+							echo "";
+							else
+							echo "<strong>Vui lòng đăng nhập để có thể đặt hàng</strong> "."<a class=color-text href=dang-nhap-khach-hang>Ấn vào đây </a>";
 					?>
 				</label></li>
 			</ul>

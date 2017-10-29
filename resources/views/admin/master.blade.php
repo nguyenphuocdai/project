@@ -186,7 +186,7 @@
         <!-- Page Content -->
       
 
-        <div id="page-wrapper" style="height: 100% !important;">
+        <div id="page-wrapper" style="height: 100% !important;min-height: 100%">
             <div class="container-fluid">
                 <div class="row">
                     <!-- /.col-lg-12 -->

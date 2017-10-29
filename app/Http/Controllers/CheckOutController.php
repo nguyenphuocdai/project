@@ -81,6 +81,7 @@ class CheckOutController extends Controller
                 $order = new orders();
                 $order->customer_id= $cus->customer_id;
                 $order->address_receive=Request::input('txtAddresreceive');
+                $order->phone_social=Request::input('phone_social');
                 $order->save();
 
                 $content= Cart::content();

@@ -44,7 +44,6 @@
                                 <td width="10px"><?php echo $i++ ?>
                                 </td>
                                 <td>{{$item->name}}</td>
-                                <!-- số 0 là lấy số chữ số 0 sau cùng, chuyển ,->. -->
                                 <td>{{number_format($item->price,'0',',','.')}} VND</td>
                                 <td width="15px"><?php if($item->quantity==0)
                                 echo "Hết hàng";
@@ -68,14 +67,10 @@
                                     {{$user_up->username}}
                                     @endif
                                 </td>
-                                <!--<td>
-                                    <?php
-                                    echo \Carbon\Carbon::createFromTimeStamp(strtotime($item["created_at"]))->diffForHumans()
-                                    ?>
-                                </td>-->
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{ URL::route('admin.products.delete',$item['product_id']) }} " onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')"> Xóa</a></td>
+                                </td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{ URL::route('admin.products.delete',$item['product_id']) }} " onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')" style="color:red !important"> Xóa</a></td>
                                
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{ URL::route('admin.products.edit',$item->product_id)}}">Cập nhật</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{ URL::route('admin.products.edit',$item->product_id)}}" style="color:blue !important">Cập nhật</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -84,7 +79,6 @@
                 </div>
                 <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
         </div>
         
 @endsection
