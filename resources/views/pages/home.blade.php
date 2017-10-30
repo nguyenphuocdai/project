@@ -9,8 +9,9 @@
 					<img src="{{url('public/pages/images/banner1.jpg')}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 					<div class="caption dark sfb fadeout" data-x="750" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
 						<h2>Urban Style</h2>
-						<h3>Thiết kế nội thất</h3>
-						<a href="shop-with-sidebar.html" class="caption-btn">Xem thêm</a>
+						<h3>{{ Lang::locale() === "en" ? 'Interior design ':'Thiết kế nội thất' }}
+</h3>
+						<a href="shop-with-sidebar.html" class="caption-btn">{{ Lang::locale() === "en" ? 'read more':'Xem thêm' }}</a>
 					</div>
 				</li>
 				<!-- Slide 2  -->
@@ -18,7 +19,7 @@
 					<img src="{{url('public/pages/images/banner2.jpg')}}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 					<div class="caption sfb fadeout" data-x="145" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
 						<h2>Dress Sharp</h2>
-						<h3>Thiết kế kiến trúc</h3>
+						<h3>{{ Lang::locale() === "en" ? 'Interior design ':'Thiết kế nội thất' }}</h3>
 						<a href="shop-with-sidebar.html" class="caption-btn">Xem thêm</a>
 					</div>
 				</li>
@@ -27,7 +28,7 @@
 					<img src="{{url('public/pages/images/banner3.jpg')}}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 					<div class="caption dark sfb fadeout" data-x="850" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
 						<h2>New In</h2>
-						<h3>Thi công nội thất</h3>
+						<h3>{{ Lang::locale() === "en" ? 'Interior Practice ':'Thiết kế nội thất' }}</h3>
 						<a href="shop-with-sidebar.html" class="caption-btn">Xem thêm</a>
 					</div>
 				</li>
@@ -43,8 +44,8 @@
 			<figure>
 				<img src="{{url('public/pages/images/nhabep1.jpg')}}" alt="" />
 				<figcaption>
-				<h3>Nhà Bếp</h3>
-				<span>Nhà bếp hiện đại và tân cổ điển</span>
+				<h3>{{ Lang::locale() === "en" ? 'Kitchen':'Nhà Bếp' }}</h3>
+				<span>{{ Lang::locale() === "en" ? 'The Kitchen House and Modern Savings':'Nhà bếp hiện đại và tân cổ điển' }}</span>
 				</figcaption>
 			</figure>
 		</a>
@@ -54,8 +55,9 @@
 			<figure>
 				<img src="{{url('public/pages/images/phongngu.jpg')}}" alt="" />
 				<figcaption>
-				<h3>Phòng Ngủ</h3>
-				<span>Phòng ngủ hiện đại và tân cổ điển</span>
+				<h3>{{ Lang::locale() === "en" ? 'Bedroom':'Phòng ngủ' }}</h3>
+				<span>{{ Lang::locale() === "en" ? 'Petalia and Modern Savings':'Phòng ngủ hiện đại và tân cổ điển' }} 
+</span>
 				</figcaption>
 			</figure>
 		</a>
@@ -65,8 +67,8 @@
 			<figure>
 				<img src="{{url('public/pages/images/phongkhach.jpg')}}" alt="" />
 				<figcaption>
-				<h3>Phòng Khách</h3>
-				<span>Phòng khách hiện đại và tân cổ điển</span>
+				<h3>{{ Lang::locale() === "en" ? 'Living room':'Phòng Khách' }} </h3>
+				<span>{{ Lang::locale() === "en" ? 'Guest Roomfront and Modern Savings':'Phòng khách hiện đại và tân cổ điển' }}</span>
 				</figcaption>
 			</figure>
 		</a>
@@ -78,7 +80,7 @@
 <div class="container">
 	<!-- Headline -->
 	<div class="sixteen columns">
-		<h3 class="headline">Sản phẩm mới</h3>
+		<h3 class="headline">{{ Lang::locale() === "en" ? 'New product':'Sản phẩm mới' }} </h3>
 		<span class="line margin-bottom-0"></span>
 	</div>
 	<!-- Carousel -->
@@ -122,15 +124,17 @@
 <div class="parallax-banner fullwidth-element"  data-background="#000" data-opacity="0.45" data-height="200">
 	<img src="{{url('public/pages/images/parallax.jpg')}}" alt="" />
 	<div class="parallax-overlay"></div>
-	<div class="parallax-title">Giảm giá đến hết mùa hè<span>Lên đến 35% cho khách hàng mới</span></div>
+	<div class="parallax-title">{{ Lang::locale() === "en" ? 'DISCOUNT TO THE SUMMER':'Giảm giá đến hết mùa hè' }}<span>{{ Lang::locale() === "en" ? 'UP TO 35% FOR NEW CUSTOMERS':'Lên đến 35% cho khách hàng mới' }}</span></div>
 </div>
-<!-- Product Lists
+<!-- Product Lists 
+
+UP TO 35% FOR NEW CUSTOMERS
 ================================================== -->
 <div class="container margin-bottom-25">
 	<!-- Best Sellers -->
 	<div class="one-third column">
 		<!-- Headline -->
-		<h3 class="headline">Sản phẩm có sẵn</h3>
+		<h3 class="headline">{{ Lang::locale() === "en" ? 'Product Available':'Sản phẩm có sẵn' }} </h3>
 		<span class="line margin-bottom-0"></span>
 		<div class="clearfix"></div>
 		<ul class="product-list">
@@ -143,47 +147,11 @@
 			@endforeach
 		</ul>
 	</div>
-	<!-- Top Rated -->
-	<div class="one-third column">
-		<!-- Headline -->
-		<h3 class="headline">Sản phẩm theo đánh giá</h3>
-		<span class="line margin-bottom-0"></span>
-		<div class="clearfix"></div>
-		<ul class="product-list top-rated">
-			<li><a href="#">
-				<img src="{{url('public/pages/images/small_product_list_04.jpg')}}" alt="" />
-				<div class="product-list-desc with-rating">Brogue Boots in Leather <i>$99.00</i>
-					<div class="rating five-stars">
-						<div class="star-rating"></div>
-						<div class="star-bg"></div>
-					</div>
-				</div>
-			</a></li>
-			<li><a href="#">
-				<img src="{{url('public/pages/images/small_product_list_05.jpg')}}" alt="" />
-				<div class="product-list-desc with-rating">Slim Jeans With Blue Tint <i>$79.00</i>
-					<div class="rating four-stars">
-						<div class="star-rating"></div>
-						<div class="star-bg"></div>
-					</div>
-				</div>
-			</a></li>
-			<li><a href="#">
-				<img src="{{url('public/pages/images/small_product_list_06.jpg')}}" alt="" />
-				<div class="product-list-desc with-rating">New Look Fairisle Scarf <i>$19.00</i>
-					<div class="rating three-stars">
-						<div class="star-rating"></div>
-						<div class="star-bg"></div>
-					</div>
-				</div>
-			</a></li>
-			<li><div class="clearfix"></div></li>
-		</ul>
-	</div>
 	<!-- Weekly Sales -->
 	<div class="one-third column">
 		<!-- Headline -->
-		<h3 class="headline">Sản phẩm xem nhiều nhất</h3>
+		<h3 class="headline">{{ Lang::locale() === "en" ? 'Most viewed products':'Sản phẩm xem nhiều nhất ' }} 
+</h3>
 		<span class="line margin-bottom-0"></span>
 		<div class="clearfix"></div>
 		<ul class="product-list discount">
@@ -203,7 +171,7 @@
 <div class="container" >
 	<!-- Headline -->
 	<div class="sixteen columns" >
-		<h3 class="headline">Các bài viết mới nhất</h3>
+		<h3 class="headline">{{ Lang::locale() === "en" ? 'LATEST ARTICLES':'Các bài viết mới nhất' }}</h3>
 		<span class="line margin-bottom-30"></span>
 	</div>
 	<?php $news = DB::table('news')->paginate(4); ?>
@@ -219,7 +187,7 @@
 				<a href="blog-single-post.html"><h5>{{$n->tittle}}</h5></a>
 				<i>{{ $n->created_at }}</i>
 				<span style="text-transform: lowercase;">{{ str_limit($n->intro, $limit = 60, $end = ' ...') }}</span>
-				<a href="{{ url('tin-tuc/chi-tiet/'.$n->news_id ) }}" class="button" style="width: 100%;text-align: center">XEM BÀI VIẾT</a>
+				<a href="{{ url('tin-tuc/chi-tiet/'.$n->news_id ) }}" class="button" style="width: 100%;text-align: center">{{ Lang::locale() === "en" ? 'READ MORE':'XEM BÀI VIẾT' }}</a>
 			</section>
 		</article>
 		

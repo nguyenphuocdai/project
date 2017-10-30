@@ -146,3 +146,9 @@ Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback
 
 Route::get('payment',['as'=>'payment','uses'=>'PaymentController@index']);
 Route::post('payment','PaymentController@payment');
+
+Route::post('/language',array(
+	'before' =>'csrf',
+	'as' => 'language-chooser',
+	'uses' => 'LanguageController@chooser'
+));

@@ -6,21 +6,30 @@
 				<li><i class="fa fa-phone"></i> 0933 588 295</li>
 				<li><i class="fa fa-envelope"></i>hoanghoang360@gmail.com</li>
 				<li>
-					<div class="top-bar-dropdown">
-						<span>Tiếng Việt</span>
+					<div class="top-bar-dropdown" >
+						{{-- <span>Tiếng Việt</span>
 						<ul class="options">
 							<li><div class="arrow"></div></li>
-							<li><a href="#">English</a></li>
+							<li><a href="" id="languageSwitcher" value="en">English</a></li>
 							<li><a href="#">Polish</a></li>
 							<li><a href="#">Deutsch</a></li>
-						</ul>
+						</ul> --}}
+						
 					</div>
 				</li>
 			</ul>
 		</div>
 		<!-- Social Icons -->
 		<div class="six columns">
-			<ul class="social-icons">
+			<ul class="social-icons" >
+				<form action="{{ URL::route('language-chooser') }}" method="post" accept-charset="utf-8" style="display: inline-flex;margin-top: 10px;">
+							{{ csrf_field() }}
+							<select name="locale">
+								<option value="tv">Tiếng việt</option>
+								<option value="en" {{ Lang::locale() === "en" ? 'selected':'' }}>English</option>
+							</select>
+							<input type="submit" name="" value="{{ Lang::locale() === "en" ? 'Choose':'Chọn' }}" style="padding-bottom: 0;font-size: 10px;padding-top: 0;">
+						</form>
 				<li><a class="github" href="{!! url('login/github') !!}"><i class="icon-github"></i></a></li>
 				<li><a class="gplus" href="{!! url('login/google') !!}"><i class="icon-gplus"></i></a></li>
 			</ul>
@@ -28,6 +37,11 @@
 	</div>
 </div>
 <div class="clearfix"></div>
+@if(Session::has('alert-success'))
+                        <div class="alert alert-{{Session::get('flash_level')}}">
+                            {{Session::get('alert-success')}}
+                        </div>
+@endif
 <!-- Header
 ================================================== -->
 <div class="container">
@@ -41,8 +55,8 @@
 	<div class="twelve columns">
 		<div id="additional-menu">
 			<ul>
-				<li><a href="{{ route('giohang') }}">Giỏ hàng</a></li>
-				<li><a href="{{ route('dathang') }}">Thanh toán</a></li>
+				<li><a href="{{ route('giohang') }}">{{ Lang::locale() === "en" ? 'Cart':'Giỏ hàng' }}</a></li>
+				<li><a href="{{ route('dathang') }}">{{ Lang::locale() === "en" ? 'Payment':'Thanh toán' }}</a></li>
 				<li><a href="{{ url('dang-nhap-khach-hang') }}">
 					<?php
 					
@@ -51,7 +65,7 @@
 					}
 					else
 					{
-					echo "Đăng Nhập";
+					echo Lang::locale() == "en" ? 'Login': 'Đăng nhập';
 					}
 					
 					?>
@@ -61,7 +75,7 @@
 					<?php
 					if(Auth::guard('customers')->check())
 					{
-					echo "Chào, ".Auth::guard('customers')->user()->name;
+					echo Lang::locale() == "en" ? 'Hello,'.Auth::guard('customers')->user()->name : 'Chào,'.Auth::guard('customers')->user()->name;
 					}
 					?>
 					
@@ -71,11 +85,11 @@
 						{
 						}
 						else
-						echo "Đăng Ký";
+						echo Lang::locale() == "en" ? 'Register': 'Đăng ký';
 				?></a></li>
 				<li><a href="{{ url('dang-xuat-khach-hang') }}"><?php if(Auth::guard('customers')->check())
 						{
-						echo "Đăng Xuất";
+						echo Lang::locale() == "en" ? 'Logout': 'Đăng xuất';
 				} ?></a></li>
 			</ul>
 		</div>
@@ -103,8 +117,8 @@
 					@endforeach
 				</ul>
 				<div class="cart-buttons button">
-					<a href="{{ url('gio-hang') }}" class="view-cart" ><span data-hover="View Cart"><span>Xem giỏ hàng</span></span></a>
-					<a href="{{ route('dathang') }}" class="checkout"><span data-hover="Checkout">Thanh toán</span></a>
+					<a href="{{ url('gio-hang') }}" class="view-cart" ><span data-hover="View Cart"><span>{{ Lang::locale() === "en" ? 'See Cart ':'Xem giỏ hàng' }}</span></span></a>
+					<a href="{{ route('dathang') }}" class="checkout"><span data-hover="Checkout">{{ Lang::locale() === "en" ? 'Payment':'Thanh toán' }}</span></a>
 				</div>
 				<div class="clearfix">
 				</div>
@@ -114,7 +128,7 @@
 		<nav class="top-search">
 			<form action="{{ url('tim-kiem') }}" method="get">
 				<button type="submit"><i class="fa fa-search"></i></button>
-				<input class="search-field" type="text" name="key" placeholder="Tìm kiếm ..." value=""/>
+				<input class="search-field" type="text" name="key" placeholder="{{ Lang::locale() === "en" ? 'Search ...':'Tìm kiếm ...' }}" value=""/>
 			</form>
 		</nav>
 	</div>
@@ -128,10 +142,10 @@
 				<li><a href="{{ url('/') }}" class="current homepage" id="current">Home</a></li>
 				
 				<li class="demo-button">
-					<a href="{{ url('/') }}">Trang chủ</a>
+					<a href="{{ url('/') }}">{{ Lang::locale() === "en" ? 'Home':'Trang chủ' }}</a>
 				</li>
 				<li class="dropdown">
-					<a href="#">Danh mục sản Phẩm</a>
+					<a href="#">{{ Lang::locale() === "en" ? 'Category':'Danh mục sản Phẩm' }}</a>
 					<ul>
 						<?php $menu = DB::table('categories')->get(); ?>
 						@foreach($menu as $item_menu)
@@ -142,16 +156,16 @@
 					</ul>
 				</li>
 				<li class="demo-button">
-					<a href="{{ url('shop') }}">Sản phẩm</a>
+					<a href="{{ url('shop') }}">{{ Lang::locale() === "en" ? 'Product':'Sản phẩm' }}</a>
 				</li>
 				<li class="demo-button">
-					<a href="{{ url('gioi-thieu') }}">Giới thiệu</a>
+					<a href="{{ url('gioi-thieu') }}">{{ Lang::locale() === "en" ? 'Introduce':'Giới thiệu' }}</a>
 				</li>
 				<li class="demo-button">
-					<a href="{{ url('tin-tuc') }}">Tin tức</a>
+					<a href="{{ url('tin-tuc') }}">{{ Lang::locale() === "en" ? 'NEW':'Tin tức' }}</a>
 				</li>
 				<li class="dropdown">
-					<a href="{{ url('lien-he') }}">Liên hệ</a>
+					<a href="{{ url('lien-he') }}">{{ Lang::locale() === "en" ? 'Contact':'Liên hệ' }}</a>
 				</li>
 			</ul>
 		</nav>
