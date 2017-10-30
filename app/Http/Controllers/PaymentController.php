@@ -91,12 +91,13 @@ class PaymentController extends Controller
                     */
                 
                 $cus = Auth::guard('customers')->user();
-
                 $order = new orders();
                 $order->customer_id= $cus->customer_id;
                 $order->address_receive = $cus->address;
                 $order->phone_social = $cus->phone_number;
+                $order->datesigned = $cus->created_at;
                 $order->save();
+
                 $content= Cart::content();
                         foreach($content as $item)
                         {
