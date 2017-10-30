@@ -83,7 +83,6 @@ class CheckOutController extends Controller
                 $order->address_receive=Request::input('txtAddresreceive');
                 $order->phone_social=Request::input('phone_social');
                 $order->save();
-
                 $content= Cart::content();
                 $total = Cart::total(0,",",".");
                 

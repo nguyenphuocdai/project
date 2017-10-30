@@ -28,9 +28,7 @@ class OrdersController extends Controller
    }
    public function getOrders_Detail($order_id)
    {
-        $orders_detail = DB::table('orders_detail')->where('order_id',$order_id)->get();
-        dd($orders_detail);
-         
+        $orders_detail = DB::table('orders_detail')->where('order_id',$order_id)->get();         
        return view('admin.orders.orders_detail',compact('orders_detail'));
    }
    //cập nhật trạng thái đơn hàng

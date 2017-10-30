@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Auth;
 
-
 Route::get('dangnhap','UsersController@getDangNhap');
 Route::post('dangnhap','UsersController@postDangNhap');
 Route::get('dangxuat','UsersController@getDangXuat');
@@ -11,9 +10,9 @@ Route::post('test/delimage','ProductsController@deleteImageProduct')->name('dele
 Auth::routes();
 // ,'middleware'=>'Login'
 Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
-	Route::get('tong-quan', function() {
-	    return view('admin.master');
-	});
+
+	Route::get('tong-quan', 'DashboardController@index');
+	
 	Route::group(['prefix'=>'categories'],function(){
 		Route::get('list',['as'=>'admin.categories.list','uses'=>'CategoriesController@getList']);
 
@@ -37,9 +36,6 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 
 		Route::get('edit/{product_id}',['as'=>'admin.products.edit','uses'=>'ProductsController@getEdit']);
 		Route::post('edit/{product_id}',['as'=>'admin.products.edit','uses'=>'ProductsController@postEdit']); 
-		// Route::get('edit/{id}',['as'=>'admin.products.edit','uses'=>'ProductsController@getEdit']);
-		// Route::post('edit/{id}',['as'=>'admin.products.edit','uses'=>'ProductsController@postEdit']); 
-
 
 		Route::post('delimage','ProductsController@getDelImage')->name('deleteImageProduct');
 	}); 

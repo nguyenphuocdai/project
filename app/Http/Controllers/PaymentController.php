@@ -11,19 +11,36 @@ use URL;
 use Session;
 use Redirect;
 use Input;
+use App\customers;
+use App\orders;
+use App\orders_detail;
+use App\products;
 use App\Users;
+use DB;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Stripe\Error\Card;
+use Mail;
 
 class PaymentController extends Controller
 {
     public function index(){
+
+        $total = Cart::subtotal(0);
+        $convertTotal = str_replace(',', '', $total);
         if(Auth::guard('customers')->check())
         {
-    	$total = Cart::subtotal(0);
-        $convertTotal = str_replace(',', '', $total);
-    	return view('pages.payment',compact('convertTotal'));
-    }   else {
+            if(count(Cart::content())<1)
+            {
+                 echo 
+                        "<script>
+                            alert('Giỏ hàng rỗng !');
+                            window.location='".url('dat-hang')."';
+                        </script>";
+            }else{
+               return view('pages.payment',compact('convertTotal'));
+            }
+        }   
+        else {
         echo "
             <script>
                 alert('Vui lòng đăng nhập trước khi thanh toán online');
@@ -72,6 +89,73 @@ class PaymentController extends Controller
                     /**
                     * Write Here Your Database insert logic.
                     */
+                
+                $cus = Auth::guard('customers')->user();
+
+                $order = new orders();
+                $order->customer_id= $cus->customer_id;
+                $order->address_receive = $cus->address;
+                $order->phone_social = $cus->phone_number;
+                $order->save();
+                $content= Cart::content();
+                        foreach($content as $item)
+                        {
+                            // dd($item->qty);
+                            $t=DB::table('products')->where('product_id',$item->id)->first()->quantity;
+                            if($item->qty*1 <= $t)
+                            {
+                                    $order_detail = new orders_detail();
+                                    $order_detail->order_id=$order->order_id;
+
+                                    $order_detail->product_id = $item->id;
+
+                                    $order_detail->quantity = $item->qty;
+
+                                    $order_detail->price = $item->price;
+
+                                    $order_detail->total =$item->qty*$item->price;
+                                    $tamp = $item->rowId;
+                                    DB::table('products')->where('product_id',$item->id)->decrement('quantity',$item->qty);
+                                    Cart::remove($tamp);
+                                    $order_detail->save();
+                                     $data=[];
+                                     Mail::send('orderSuccess', $data, function ($message) 
+                                    {
+                                        $message->from('hoanghoang360@gmail.com', 'Trizzy-Shop'); 
+
+                                        $message->to(Auth::guard("customers")->user()->email,'Khách Hàng')->subject('Thông báo mua hàng từ Trizzy-Shop');
+                                    });
+                                
+ 
+                            }
+                            else{
+                                    $order_detail = new orders_detail();
+                                    $order_detail->order_id=$order->order_id;
+
+                                    $order_detail->product_id = $item->id;
+
+                                    $order_detail->quantity = $item->qty;
+
+                                    $order_detail->price = $item->price;
+
+                                    $order_detail->total =$item->qty*$item->price;
+                                    $order_detail->note = $t-$item->qty*1;
+                                    $tamp = $item->rowId;
+                                    DB::table('products')->where('product_id',$item->id)->update(['quantity' => 0]);;
+                                    Cart::remove($tamp);
+
+                                    $order_detail->save();
+                                    //số lượng nhỏ hơn db phải gởi mail !
+                                    $data=['note'=> $order_detail->note,'product_id'=>$order_detail->product_id];
+                                     Mail::send('notificationMail', $data, function ($message) 
+                                    {
+                                        $message->from('hoanghoang360@gmail.com', 'Trizzy-Shop'); 
+
+                                        $message->to(Auth::guard("customers")->user()->email,'Khách Hàng')->subject('Thông báo mua hàng từ Trizzy-Shop');
+                                    });
+                            }
+                        }
+
 
                     \Session::put('success','Thanh toán thành công, Cám ơn bạn đã quan tâm Shop.');
                      return redirect('payment');

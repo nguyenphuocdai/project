@@ -54,6 +54,11 @@ return [
         'secret' => env('NEXMO_SECRET'),
         'sms_from' => '15556666666',
     ],
+    'botman' => [
+    // ...
+    'facebook_token' => env('FACEBOOK_TOKEN'),
+    'facebook_app_secret' => env('FACEBOOK_APP_SECRET')
+],
 
 
 ];
