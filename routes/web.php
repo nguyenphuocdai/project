@@ -13,6 +13,8 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 
 	Route::get('tong-quan', 'DashboardController@index');
 	
+	Route::get('chat','ChatController@index');
+
 	Route::group(['prefix'=>'categories'],function(){
 		Route::get('list',['as'=>'admin.categories.list','uses'=>'CategoriesController@getList']);
 
@@ -146,6 +148,9 @@ Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback
 
 Route::get('payment',['as'=>'payment','uses'=>'PaymentController@index']);
 Route::post('payment','PaymentController@payment');
+
+Route::get('404',['as'=>'404','uses'=>'PaymentController@_404']);
+Route::get('success',['as'=>'success','uses'=>'PaymentController@success']);
 
 Route::post('/language',array(
 	'before' =>'csrf',

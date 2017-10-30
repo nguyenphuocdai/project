@@ -51,7 +51,7 @@
 
 					<td><a href="{{ url('xoa-san-pham',['id'=>$item_content->rowId]) }}" class="cart-remove"></a>
 						<button onclick="capnhat('{{ $item_content->rowId }}')" type="button" class="cart-update update-button" id="{{$item_content->rowId}}">
-							<img class="tooltip-test" data-original-title="Update" src="public/frontend/img/updatenew.png" alt="">
+							<img class="tooltip-test" data-original-title="Update" src="{{ url('public/pages/images/btnupdate.jpg') }}" alt="">
 						</button>
 					</td>
 					<td class="cart-total" ><span id="thanh-tien-{{ $item_content->rowId }}">{{number_format($item_content->price*$item_content->qty,0,",",".")}} đ</span></td>

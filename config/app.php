@@ -166,6 +166,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+        MercurySeries\Flashy\FlashyServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -234,6 +235,7 @@ return [
         'Str'   => Illuminate\Support\Str::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
     ],
 
 ];

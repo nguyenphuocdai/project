@@ -11,6 +11,7 @@ use App\orders;
 use App\orders_detail;
 use Hash;
 use DateTime;
+use Flashy;
 class OrdersController extends Controller
 {
     //lấy danh sách đơn hàng chưa duyệt
@@ -40,18 +41,13 @@ class OrdersController extends Controller
         $now=  new DateTime(date('Y/m/d H:i:s'));
               DB::table('orders')->where('order_id',$order)->update(['datesigned'=>$now]);
               DB::table('orders_detail')->where('order_id',$order)->update(['date_signed'=>$now,'note'=>0]);
-
-         $data=[];
-         Mail::send('confrimOrder', $data, function ($message) 
-           {
-         $message->from('hoanghoang360@gmail.com', 'Trizzy-Shop'); 
-           $message->to(Auth::guard("customers")->user()->email,'KHÁCH HÀNG')->subject('Thông báo mua hàng từ Trizzy-Shop');
-           });
+        Flashy::success('Duyệt đơn hàng thành công.', 'http://your-awesome-link.com');
         return redirect()->route('admin.orders.list');
    }
    public function getDelete($order_id)
    {
      $order = orders::find($order_id);
+     Flashy::error('Xóa đơn hàng thành công.', 'http://your-awesome-link.com');
      $order->delete();
      return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Xóa thành công !']);
    }

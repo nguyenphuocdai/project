@@ -17,11 +17,9 @@
 
     <!-- Custom CSS -->
     <link href="{{ url('public/admin/dist/css/sb-admin-2.css') }}" rel="stylesheet">
-
-    
     <!-- Custom Fonts -->
     <link href="{{ url('public/admin/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
+    @yield('css')
     <!-- DataTables CSS -->
     <link href="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
     <link href="{{ url('public/admin/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
@@ -34,11 +32,12 @@
     <script src="{{ url('public/admin/js/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ url('public/admin/js/ckfinder/ckfinder.js') }}"></script>
    
-
+    @yield('script')
     <script type="text/javascript">
         var baseURL="{{url('/')}}"
     </script>
     <script src="{{ url('public/admin/js/func_ckfinder.js') }}"></script>
+
 
 
 </head>
@@ -75,7 +74,8 @@
     </script>
      <script src="{{ url('public/admin/js/bootstrap-datetimepicker.min.js') }}">
     </script>
-
+    @include('flashy::message')
+    
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     
 </body>

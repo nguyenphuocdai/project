@@ -78,6 +78,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="public/admin/dist/js/sb-admin-2.js"></script>
+    @include('flashy::message')
 
 </body>
 

@@ -13,6 +13,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\Password;
+use Flashy;
 class UsersController extends Controller
 {
     public function getList()
@@ -73,6 +74,7 @@ class UsersController extends Controller
 
     public function getDangXuat(){
             Auth::logout();
+            Flashy::error('Đăng xuất thành công', 'http://your-awesome-link.com');
             return redirect('dangnhap');
         }
     public function getEdit($user_id)

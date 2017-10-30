@@ -10,6 +10,7 @@ use Exception;
 use App\Users;
 use App\customers;
 use App\Http\Controllers\Auth\bcrypt;
+use Flashy;
 
 class LoginController extends Controller
 {
@@ -77,6 +78,7 @@ class LoginController extends Controller
 
 
     }   
+        Flashy::success('Đăng nhập thành công', 'http://your-awesome-link.com');
         return redirect('/');
     }
     public function redirectToProvider_github()

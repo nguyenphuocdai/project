@@ -159,23 +159,31 @@ class PaymentController extends Controller
 
 
                     \Session::put('success','Thanh toán thành công, Cám ơn bạn đã quan tâm Shop.');
-                     return redirect('payment');
+                     return redirect('success');
+                     
                 } else {
                     \Session::put('error','Số tiền trong tài khoản bạn không đủ.');
-                     return redirect('payment');
+                     return redirect('pages.404');
                 }
             } catch (Exception $e) {
                 \Session::put('error',$e->getMessage());
-                 return redirect('payment');
+                 return redirect('pages.404');
             } catch(\Cartalyst\Stripe\Exception\CardErrorException $e) {
                 \Session::put('error',$e->getMessage());
-                 return redirect('payment');
+                 return redirect('pages.404');
             } catch(\Cartalyst\Stripe\Exception\MissingParameterException $e) {
                 \Session::put('error',$e->getMessage());
-                 return redirect('payment');
+                 return redirect('pages.404');
             }
     	}
     	\Session::put('error','All fields are required!!');
-        return redirect('payment');
+        return redirect('pages.404');
+    }
+
+    public function _404(){
+        return view('pages.404');
+    }
+    public function success(){
+        return view('pages.success');
     }
 }
