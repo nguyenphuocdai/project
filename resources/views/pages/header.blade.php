@@ -99,8 +99,8 @@
 		<div id="cart">
 			<!-- Button -->
 			<div class="cart-btn">
-				<a href="#" class="button adc">{{Cart::subtotal(0,",",".") }}</a>
-			</div>
+				<a href="#" class="button adc">{{ Lang::locale() == "en" ? $totalEnglishSub : $subtotal }} {{ Lang::locale() == "en" ? '$':'VNĐ' }}</a>
+			</div>	
 			<div class="cart-list">
 				<div class="arrow"></div>
 				<div class="cart-amount">

@@ -24,8 +24,13 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {   
+        $subtotal = Cart::subtotal(0,",",".");
+        $totalEnglish = ($subtotal/23000)*1000;
+        $totalEnglishSub = substr($totalEnglish,0,5);
         // $this->middleware('auth');
+        View::share('totalEnglishSub', $totalEnglishSub);
+        View::share('subtotal', $subtotal);
     }
 
     /**
@@ -36,7 +41,7 @@ class HomeController extends Controller
     public function index()
     {   
         // dd(Cart::content()->groupBy('id')->count());
-
+        
         //lấy các mới nhất
         $pr_new = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image','created_at')->orderBy('created_at','DESC')->limit(4)->get();
         //đã xóa giao diện cũ
@@ -44,11 +49,11 @@ class HomeController extends Controller
         //lấy các sp xem nhiều
         $pr_view = DB::table('products')->select('product_id','name','price','alias','image')->orderBy('view','DESC')->limit(3)->get();
         $pr_quantity = DB::table('products')->select('product_id','name','price','alias','image','quantity')->orderBy('quantity','DESC')->limit(3)->get();
-        return view('pages.home',compact('pr','pr_view','pr_new','pr_quantity'));
+        return view('pages.home',compact('pr','pr_view','pr_new','pr_quantity','subtotal','totalEnglish','totalEnglishSub'));
     }
     public function getcategories()
     {   
-        $pr = DB::table('products')->paginate(6);
+        $pr = DB::table('products')->paginate(4);
         return view('pages.allshop',compact('pr'));
     }
      public function getsearch(Request $req){
@@ -94,8 +99,10 @@ class HomeController extends Controller
         $content = Cart::content();
         $sub = Cart::subtotal();
         $subtotal = Cart::subtotal(0,",",".");
+        $totalEnglish = ($subtotal/23000)*1000;
+        $totalEnglishSub = substr($totalEnglish,0,5);
 
-        return view('pages.shopping-cart',compact('content','subtotal'));
+        return view('pages.shopping-cart',compact('content','subtotal','totalEnglishSub'));
         
     }
     public function getXoaSanPham($id)
@@ -114,7 +121,7 @@ class HomeController extends Controller
    
     public function cate1()
     {
-        $cate1 = DB::table('products')->whereBetween('price', [100000,2000000 ])->orderBy('price','DESC')->paginate(6);
+        $cate1 = DB::table('products')->whereBetween('price', [0,2000000 ])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate1',compact('cate1','pr_cate'));
     }
      public function cate2()
@@ -142,16 +149,7 @@ class HomeController extends Controller
     {        //lấy các sản phẩm theo loại
         $pr_cate = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image')->where('category_id',$category_id)->paginate(6);
         return view('pages.categoriesYield',compact('pr_cate'));
-    }
-    public function sortPrice(){
-        $sortPrice = DB::table('products')->select('product_id','name','price','alias','image')->orderBy('price','DESC')->paginate(6);
-        return view('pages.sortPrice',compact('sortPrice'));
-    }
-    public function sortPriceSmall(){
-        $sortPriceSmall = DB::table('products')->select('product_id','name','price','alias','image')->orderBy('price','ASC')->paginate(6);
-        return view('pages.sortPriceSmall',compact('sortPriceSmall'));
-    }
-    
+    }  
     
    
 }

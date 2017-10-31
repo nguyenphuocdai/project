@@ -7,6 +7,7 @@ use App\Http\Requests\CustomerRequest;
 use App\Http\Requests\QuantityRequest;
 use App\Http\Requests\RegisterCustomerRequest;
 use Request;
+use View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\customers;
@@ -19,6 +20,10 @@ use Validator;
 
 class CheckOutController extends Controller
 {
+    public function __construct()
+    {   
+
+    }
 	public function getDangKyNguoiDung()
     {
         return view('pages.register');
@@ -56,10 +61,13 @@ class CheckOutController extends Controller
     {
         $content = Cart::content();
         $sub = Cart::subtotal();
-        $subtotal = Cart::subtotal(0,",",".");
-        
+        $subtotalCheckout = Cart::subtotal(0,",",".");
+        $totalEnglish = ($subtotalCheckout/23000)*1000;
+        $totalEnglishSub = substr($totalEnglish,0,5);
+        View::share('totalEnglishSub', $totalEnglishSub);
+        View::share('subtotal', $totalEnglishSub);
        
-        return view('pages.checkout',compact('content','subtotal'));
+        return view('pages.checkout',compact('content','subtotal','subtotalCheckout'));
     }
      public function postThanhToan(Request $r)
     {   

@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use Request;
+use Cart;
+use View;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ContactRequest;
 class ContactController extends Controller
 {
+    public function __construct()
+    {   
+        $subtotal = Cart::subtotal(0,",",".");
+        $totalEnglish = ($subtotal/23000)*1000;
+        $totalEnglishSub = substr($totalEnglish,0,5);
+        // $this->middleware('auth');
+        View::share('totalEnglishSub', $totalEnglishSub);
+        View::share('subtotal', $subtotal);
+    }
     public function getLienHe()
     {
          return view('pages.contact');

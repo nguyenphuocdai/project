@@ -15,6 +15,7 @@ class CategoriesController extends Controller
 		 
     	$data = categories::select('category_id','name')->orderBy('category_id','DESC')->get();
     	return view('admin.categories.list',compact('data','pr'));
+        
     }
     public function getAdd(){
 

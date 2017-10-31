@@ -1,6 +1,7 @@
 @extends('pages.master')
 @section('content')
 <div class="container" style="width: 100%;margin-bottom: 50px">
+
 	<div class="products">
 		@foreach($pr as $allpr)
 		<!-- Product #1 -->
@@ -10,7 +11,11 @@
 					<a href="{{url('chi-tiet-san-pham',[$allpr->product_id,$allpr->alias])}}">
 						<img alt="" src="{{ asset('resources/upload/'.$allpr->image)}}" style="width: 220px;height: 220px" />
 						<div class="cover">
-							<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$allpr->product_id)->first();?>
+							<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$allpr->product_id)->first();
+							if($coverImage == NULL){
+							$coverImage = $allpr;
+							}
+							?>
 							<img alt="" src="{{ asset('resources/upload/'.$coverImage->image)}}" style="width: 220px;height:220px"/>
 						</div>
 					</a>
@@ -26,6 +31,7 @@
 			</figure>
 		</div>
 		@endforeach
+
 		<div class="clearfix"></div>
 	<div style="
 	margin-top: 50px;

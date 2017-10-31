@@ -10,7 +10,7 @@
 					<div class="caption dark sfb fadeout" data-x="750" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
 						<h2>Urban Style</h2>
 						<h3>{{ Lang::locale() === "en" ? 'Interior design ':'Thiết kế nội thất' }}
-</h3>
+						</h3>
 						<a href="shop-with-sidebar.html" class="caption-btn">{{ Lang::locale() === "en" ? 'read more':'Xem thêm' }}</a>
 					</div>
 				</li>
@@ -56,8 +56,8 @@
 				<img src="{{url('public/pages/images/phongngu.jpg')}}" alt="" />
 				<figcaption>
 				<h3>{{ Lang::locale() === "en" ? 'Bedroom':'Phòng ngủ' }}</h3>
-				<span>{{ Lang::locale() === "en" ? 'Petalia and Modern Savings':'Phòng ngủ hiện đại và tân cổ điển' }} 
-</span>
+				<span>{{ Lang::locale() === "en" ? 'Petalia and Modern Savings':'Phòng ngủ hiện đại và tân cổ điển' }}
+				</span>
 				</figcaption>
 			</figure>
 		</a>
@@ -97,7 +97,11 @@
 								<a href="{{url('chi-tiet-san-pham',[$new->product_id,$new->alias])}}">
 									<img alt="" src="{{ asset('resources/upload/product_image/'.$new->image)}}" style="width: 220px;height: 220px" />
 									<div class="cover">
-										<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$new->product_id)->first();?>
+										<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$new->product_id)->first();
+										if($coverImage == NULL){
+											$coverImage = $new;
+										}
+										?>
 										<img alt="" src="{{ asset('resources/upload/product_image/'.$coverImage->image)}}" style="width: 220px;height: 220px"/>
 									</div>
 								</a>
@@ -126,8 +130,7 @@
 	<div class="parallax-overlay"></div>
 	<div class="parallax-title">{{ Lang::locale() === "en" ? 'DISCOUNT TO THE SUMMER':'Giảm giá đến hết mùa hè' }}<span>{{ Lang::locale() === "en" ? 'UP TO 35% FOR NEW CUSTOMERS':'Lên đến 35% cho khách hàng mới' }}</span></div>
 </div>
-<!-- Product Lists 
-
+<!-- Product Lists
 UP TO 35% FOR NEW CUSTOMERS
 ================================================== -->
 <div class="container margin-bottom-25">
@@ -150,8 +153,8 @@ UP TO 35% FOR NEW CUSTOMERS
 	<!-- Weekly Sales -->
 	<div class="one-third column">
 		<!-- Headline -->
-		<h3 class="headline">{{ Lang::locale() === "en" ? 'Most viewed products':'Sản phẩm xem nhiều nhất ' }} 
-</h3>
+		<h3 class="headline">{{ Lang::locale() === "en" ? 'Most viewed products':'Sản phẩm xem nhiều nhất ' }}
+		</h3>
 		<span class="line margin-bottom-0"></span>
 		<div class="clearfix"></div>
 		<ul class="product-list discount">

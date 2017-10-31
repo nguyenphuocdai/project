@@ -79,7 +79,6 @@
 				<tr>
 					<th class="hide-on-mobile">HÌNH ẢNH</th>
 					<th>TÊN SẢN PHẨM</th>
-					<th>GIÁ BÁN</th>
 					<th>SỐ LƯỢNG</th>
 					<th>THÀNH TIỀN</th>
 				</tr>
@@ -89,9 +88,8 @@
 				<tr>
 					<td class="hide-on-mobile"><img class="checkout-image" src="{{ asset('resources/upload/'.$item_content->options->img)}}" alt=""/></td>
 					<td class="cart-title"><a>{{ $item_content->name }}</a></td>
-					<td>{{number_format($item_content->price,0,",",".")}}</td>
 					<td class="qty-checkout">{{$item_content->qty}}</td>
-					<td class="cart-total">{{number_format($item_content->price*$item_content->qty,0,",",".")}}</td>
+					<td class="cart-total">{{ Lang::locale() == "en" ? $totalEnglishSub : $subtotal }} {{ Lang::locale() == "en" ? '$':'VNĐ' }}</td>
 				</tr>
 				@endforeach
 			</table>
@@ -100,7 +98,7 @@
 				<tr>
 					<th class="checkout-totals">
 						<div class="checkout-subtotal">
-							TỔNG TIỀN: <span>{{ $subtotal }}</span>
+							TỔNG TIỀN: <span>{{ Lang::locale() == "en" ? $totalEnglishSub : $subtotal }} {{ Lang::locale() == "en" ? '$':'VNĐ' }}</span>
 						</div>
 					</th>
 				</tr>

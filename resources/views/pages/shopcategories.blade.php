@@ -40,12 +40,6 @@
 			</div>
 			<!-- Content
 			================================================== -->
-			<div class="twelve columns" style="display: inline-flex;">
-				<div ><a class="caption-btn" style="    margin-left: 20px;
-				background-color: #eee;" href="{{ url('sortPrice') }}">Sắp xếp theo giá cao</a></div>
-				<div ><a class="caption-btn" style="    margin-left: 20px;
-				background-color: #eee;" href="{{ url('sortPriceSmall') }}">Sắp xếp theo giá thấp</a></div>
-			</div>
 			<!-- Products -->
 			<div class="twelve columns products">
 				

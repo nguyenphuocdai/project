@@ -51,7 +51,6 @@ class PaymentController extends Controller
 
     public function payment(Request $request){
       	$total = Cart::subtotal(0);
-        dd($total);
         $convertTotal = str_replace(',', '', $total);
      	$validator = Validator::make($request->all(),[
     		'card_no' => 'required',

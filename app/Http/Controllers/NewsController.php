@@ -6,9 +6,19 @@ use Illuminate\Http\Request;
 use App\news;
 use File;
 use DB;
+use View;use Cart;
 use Illuminate\Support\Facades\Auth;
 class NewsController extends Controller
 {
+    public function __construct()
+    {   
+        $subtotal = Cart::subtotal(0,",",".");
+        $totalEnglish = ($subtotal/23000)*1000;
+        $totalEnglishSub = substr($totalEnglish,0,5);
+        // $this->middleware('auth');
+        View::share('totalEnglishSub', $totalEnglishSub);
+        View::share('subtotal', $subtotal);
+    }
     public function getAdd()
     {
     	return view('admin.news.add');

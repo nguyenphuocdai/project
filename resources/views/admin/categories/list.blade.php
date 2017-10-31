@@ -1,13 +1,14 @@
 @extends('admin.master')
 @section('content')
 <div class="page-wrapper">
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Loại Sản Phẩm
                             <small>Danh Sách</small>
                         </h1>
-                        <a href="{{route('admin.categories.add')}}"><button class="btn btn-primary" type="button">Thêm Mới</button></a>
+                        <a href="{{route('admin.categories.add')}}"><button class="btn btn-primary has-spinner" type="button">Thêm Mới</button></a>
                         <hr>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -44,5 +45,5 @@
             </div>
             <!-- /.container-fluid -->
         </div>
-        
+
 @endsection

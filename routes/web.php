@@ -116,8 +116,6 @@ Route::get('theo-gia-cate2',['as'=>'cate2','uses'=>'HomeController@cate2']);
 Route::get('theo-gia-cate3',['as'=>'cate3','uses'=>'HomeController@cate3']);
 Route::get('theo-gia-cate4',['as'=>'cate4','uses'=>'HomeController@cate4']);
 Route::get('theo-gia-cate5',['as'=>'cate5','uses'=>'HomeController@cate5']);
-Route::get('sortPrice',['as'=>'sortPrice','uses'=>'HomeController@sortPrice']);
-Route::get('sortPriceSmall',['as'=>'sortPriceSmall','uses'=>'HomeController@sortPriceSmall']);
 
 
 Route::get('dang-nhap-khach-hang',['as'=>'show-login','uses'=>'Cus\AuthCusController@showLoginForm']);

@@ -88,6 +88,7 @@
 <script src="{{url('public/pages/scripts/custom.js')}}"></script>
 <script src="{{url('public/pages/scripts/switcher.js')}}"></script>
 <script src="{{url('public/pages/scripts/myscript.js')}}"></script>
+
 @include('flashy::message')
 @yield('script')
 </body>
