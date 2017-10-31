@@ -34,6 +34,6 @@ class OrdersDetail extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('orders_detail');
     }
 }

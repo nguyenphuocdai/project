@@ -40,7 +40,7 @@
 			<div class="clearfix"></div>
 			<p>{{ Lang::locale() === "en" ? 'Subscribe to receive email updates about new product announcements, gift ideas, special offers, sales and more.':'Đăng ký để nhận thông tin cập nhật qua email về thông báo sản phẩm mới, ý tưởng tặng quà, khuyến mại đặc biệt, bán hàng và nhiều hơn nữa.' }}</p>
 			<form action="#" method="get">
-				<button class="newsletter-btn" type="submit">Gửi</button>
+				<button class="newsletter-btn" type="submit">{{ Lang::locale() === "en" ? 'Send':'Gửi' }}</button>
 				<input class="newsletter" type="text" placeholder="mail@example.com" value=""/>
 			</form>
 		</div>
