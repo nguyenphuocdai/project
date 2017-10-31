@@ -27,6 +27,7 @@ class HomeController extends Controller
     {   
         $subtotal = Cart::subtotal(0,",",".");
         $totalEnglish = ($subtotal/23000)*1000;
+
         $totalEnglishSub = substr($totalEnglish,0,5);
         // $this->middleware('auth');
         View::share('totalEnglishSub', $totalEnglishSub);
@@ -41,7 +42,7 @@ class HomeController extends Controller
     public function index()
     {   
         // dd(Cart::content()->groupBy('id')->count());
-        
+        $subtotal = Cart::subtotal(0,",",".");
         //lấy các mới nhất
         $pr_new = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image','created_at')->orderBy('created_at','DESC')->limit(4)->get();
         //đã xóa giao diện cũ
@@ -99,9 +100,6 @@ class HomeController extends Controller
         $content = Cart::content();
         $sub = Cart::subtotal();
         $subtotal = Cart::subtotal(0,",",".");
-        $totalEnglish = ($subtotal/23000)*1000;
-        $totalEnglishSub = substr($totalEnglish,0,5);
-
         return view('pages.shopping-cart',compact('content','subtotal','totalEnglishSub'));
         
     }

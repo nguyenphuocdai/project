@@ -5,8 +5,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\LoginRequest;
 use Auth;
+use Cart;use View;
 class AuthCusController extends Controller
 {
+
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -50,7 +52,9 @@ class AuthCusController extends Controller
 
     public function showLoginForm()
     {
-        return view('pages.login-customer');
+        $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        return view('pages.login-customer',compact('content','subtotal'));
     }
 
     public function postLogin(LoginRequest $r)

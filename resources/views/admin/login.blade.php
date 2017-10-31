@@ -50,7 +50,7 @@
                                     <input class="form-control" placeholder="Mật khẩu" name="txtPassword" type="password" >
                                 </div>
                                 <div class="form-group">
-                                       <a href="{{url('re-set')}}" style="margin-left: 100px; font-weight:15px;">Quên mật khẩu ?</a>
+                                       <a href="{{url('reset-password')}}" style="margin-left: 100px; font-weight:15px;color: #337ab7 !important;">Quên mật khẩu ?</a>
                                 </div>
                                  
                                 <button type="submit" class="btn btn-lg btn-primary btn-block">Đăng nhập</button>
@@ -58,8 +58,6 @@
                                     
                                 </div>
                             </fieldset>
-                            <button class="btn btn-fb"><a href="{!! url('auth/facebook') !!}">F+</a></button>
-                            <button class="btn btn-fb"><a href="">G+</a></button>
                         </form>
                     </div>
                 </div>

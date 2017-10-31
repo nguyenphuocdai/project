@@ -5,7 +5,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20,7 +19,7 @@ const app = new Vue({
     data:{
     	message:'this'
     },
-    methods: {}
+    methods: {},
     send(){
     	console.log(this.message);
     }

@@ -79,7 +79,7 @@
 			<div class="form-group">
 				<label class="col-sm-4 control-label" for="amount_order"></label>
 				<div class="col-sm-4">
-					<p style="font-size: 12px;font-style: italic;">Lưu ý: 50 VNĐ = 0.04$</p>
+					<p style="font-size: 12px;font-style: italic;">Lưu ý: 23.000 VNĐ = 1$</p>
 				</div>
 			</div>
 			

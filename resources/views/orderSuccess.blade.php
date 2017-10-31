@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Trizzy-Shop</title>
-</head>
-<body>
-
-<h4>Thông báo đến bạn !</h4>
-<h3>Bạn đã đặt hàng tại Trizzy-Shop thành công !</h3>
-<h3>Cảm ơn bạn đã ủng hộ ! </h3>
-</body>
-</html>
+  <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
+  <link rel="stylesheet" href="{{url('public/pages/css/mystyless.css')}}">
+  <div class="container">
+	<div class="row">
+		        
+		        <div class="wrapper">
+		            <div class="logo_header">
+		                <a href="seedoconline.com"><img src="https://dev.seedoconline.com/img/log-font.svg"/></a>
+		            </div>
+		            <div class="email_banner">
+		                
+		            </div>
+		            <div class="email_body">
+		                <h1 class="text-center">CÁM ƠN KHÁCH HÀNG</h1>
+		                <p>
+		                    ĐƠN ĐẶT HÀNG THÀNH CÔNG. Đơn đặt hàng của Quý Khách đã được lưu lại và chúng tôi sẽ giao hàng như Quý Khách yêu cầu. Nếu đơn đặt hàng có vấn đề gì chúng tôi sẽ liên hệ lại Quý Khách. Mọi chi tiết xin liên hệ : 1900 1000
+		                </p>
+		               </div>
+		        </div>
+		        
+	</div>
+</div>

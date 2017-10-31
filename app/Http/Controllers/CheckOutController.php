@@ -26,9 +26,10 @@ class CheckOutController extends Controller
     }
 	public function getDangKyNguoiDung()
     {
-        return view('pages.register');
+        $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        return view('pages.register',compact(['content','subtotal']));
     }
-
     public function postDangKyNguoiDung(RegisterCustomerRequest $rcr)
     {
         $cus = new customers();
@@ -61,13 +62,9 @@ class CheckOutController extends Controller
     {
         $content = Cart::content();
         $sub = Cart::subtotal();
-        $subtotalCheckout = Cart::subtotal(0,",",".");
-        $totalEnglish = ($subtotalCheckout/23000)*1000;
-        $totalEnglishSub = substr($totalEnglish,0,5);
-        View::share('totalEnglishSub', $totalEnglishSub);
-        View::share('subtotal', $totalEnglishSub);
+        $subtotal = Cart::subtotal(0,",",".");
        
-        return view('pages.checkout',compact('content','subtotal','subtotalCheckout'));
+        return view('pages.checkout',compact('content','subtotal'));
     }
      public function postThanhToan(Request $r)
     {   
