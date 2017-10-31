@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+
+Use App\Emails;
+ 
+Route::get('emails', 'EmailController@index');
+Route::get('emails/{emails}', 'EmailController@show');
+Route::post('emails', 'EmailController@store');
+Route::put('emails/{emails}', 'EmailController@update');
+Route::delete('emails/{emails}', 'EmailController@delete');
