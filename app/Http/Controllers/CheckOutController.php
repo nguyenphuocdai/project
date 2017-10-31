@@ -158,7 +158,7 @@ class CheckOutController extends Controller
                         echo 
                         "<script>
                             alert('Cảm ơn bạn đã đặt hàng chúng tôi! Vui lòng kiểm tra Email của bạn để biết thêm chi tiết đơn hàng !');
-                            window.location='".url('/')."';
+                            window.location='".url('success')."';
                         </script>";
                 
             }
@@ -167,7 +167,7 @@ class CheckOutController extends Controller
         {
             echo "<script>
                     alert('Vui lòng đăng nhập trước khi đặt hàng!');
-                    window.location='".url('dat-hang')."';
+                    window.location='".url('dang-nhap-khach-hang')."';
                 </script>";
         }
         

@@ -181,9 +181,13 @@ class PaymentController extends Controller
     }
 
     public function _404(){
-        return view('pages.404');
+        $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        return view('pages.404',compact('content','subtotal'));
     }
     public function success(){
-        return view('pages.success');
+        $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        return view('pages.success',compact('content','subtotal'));
     }
 }
