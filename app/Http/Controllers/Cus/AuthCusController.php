@@ -72,6 +72,11 @@ class AuthCusController extends Controller
             return redirect()->back()->with(['flash_level'=>'warning','flash_message'=>'Đăng nhập thất bại, vui lòng kiểm tra lại ! ']);;
         }
     }
+     public function getDangXuat()
+    {
+        Auth::guard('customers')->logout();
+        return redirect('/');
+    }
     
 }
 

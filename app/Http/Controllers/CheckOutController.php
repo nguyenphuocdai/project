@@ -173,11 +173,7 @@ class CheckOutController extends Controller
         
     }
 
-    public function getDangXuat()
-    {
-        Auth::guard('customers')->logout();
-        return redirect('/');
-    }
+   
     public function profile(){
         $content = Cart::content();
         $subtotal = Cart::subtotal(0,",",".");
