@@ -12,15 +12,16 @@
         "barryvdh/laravel-dompdf": "^0.8.0",
         "laravel/socialite": "^3.0",
         "cartalyst/stripe-laravel": "7.0.*",
-        "mercuryseries/flashy": "^1.0",
-        "phpunit/phpunit": "~5.0"
+        "mercuryseries/flashy": "^1.0"
 	
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*"
+        "symfony/dom-crawler": "3.1.*",
+        "phpunit/phpunit": "6.4",
+        "barryvdh/laravel-debugbar": "^3.1"
     },
     "autoload": {
         "classmap": [

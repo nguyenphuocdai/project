@@ -46,7 +46,7 @@
 
     <div id="wrapper" style="background-color: #0088cc">
         @include('admin.header')
-        <div id="page-wrapper" style="height: 100% !important;min-height: 650px !important">
+        <div id="page-wrapper" style="height: 100% !important;min-height: 650px !important;background: url('public/pages/images/bg/light_toast.png');">
             <div class="container-fluid">
                 <div class="row">
                    @yield('content')

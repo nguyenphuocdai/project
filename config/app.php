@@ -167,6 +167,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -236,6 +237,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

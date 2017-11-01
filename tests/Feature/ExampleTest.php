@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Users;
 
 class ExampleTest extends TestCase
 {
@@ -17,5 +18,8 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+
+        $stock = new Users(['username'=>'Tesla']);
+        $this->assertEquals('Tesla', $stock->username);
     }
 }

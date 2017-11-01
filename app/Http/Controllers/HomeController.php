@@ -16,6 +16,7 @@ use Hash;
 use Auth;
 use View;
 use Validator;
+use Debugbar;
 class HomeController extends Controller
 {
     /**
@@ -50,8 +51,13 @@ class HomeController extends Controller
         //lấy các sp xem nhiều
         $pr_view = DB::table('products')->select('product_id','name','price','alias','image')->orderBy('view','DESC')->limit(3)->get();
         $pr_quantity = DB::table('products')->select('product_id','name','price','alias','image','quantity')->orderBy('quantity','DESC')->limit(3)->get();
+        Debugbar::info($pr_view);
+        Debugbar::error('Error!');
+        Debugbar::warning('Watch out…');
+        Debugbar::addMessage('Another message', 'mylabel');
         return view('pages.home',compact('pr','pr_view','pr_new','pr_quantity','subtotal','totalEnglish','totalEnglishSub'));
-    }
+
+            }
     public function getcategories()
     {   
         $pr = DB::table('products')->paginate(4);
