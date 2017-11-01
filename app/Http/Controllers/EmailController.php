@@ -18,8 +18,8 @@ class EmailController extends Controller
 
     public function store(Request $request)
     {
+        // return $request->all();
         $emails = Emails::create($request->all());
-        
         return response()->json($emails, 201);
     }
 

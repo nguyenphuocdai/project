@@ -75,7 +75,12 @@
                                 <input type="file" name="fImage">
                             </div>
                             <div class="form-group">
-                                <label>Mô tả</label>
+                                <label>Mô tả tổng quan</label>
+                                <textarea class="form-control" value="{{old('highlight',isset($product)?$product['highlight'] : null)}}" name="highlight" rows="3">{{$product['highlight']}}</textarea>
+                                <script type="text/javascript">ckeditor('highlight')</script>
+                            </div>
+                            <div class="form-group">
+                                <label>Mô tả chi tiết</label>
                                 <textarea class="form-control" value="{{old('txtDescribe',isset($product)?$product['txtDescribe'] : null)}}" name="txtDescribe" rows="3">{{$product['describe']}}</textarea>
                                 <script type="text/javascript">ckeditor('txtDescribe')</script>
                             </div>

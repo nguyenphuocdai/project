@@ -21,29 +21,35 @@
                     @endif
                     </div>
                 </div>
+                <form method="post" action="{{ route('delete') }}" id="frmDeleteAll">
+                    {{ csrf_field() }}
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr>
                                 
                                 <th>Tên</th>
                                 <th>Xóa</th>
+                                <th style="text-align: center"><a onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')"><input type="submit" class="btn btn-danger" value="Xóa nhiều"></a></th>
                                 <th>Cập Nhật</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $item)
+                            
                             <tr class="odd gradeX">
+                               
                                 <td>{{$item->name}}</td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')" href="{{ URL::route('admin.categories.delete',$item['category_id']) }}" style="color:red !important"> Xóa</a></td>
+                                 <td style="text-align: center"><input type="checkbox" class="checkboxes" value="{{ $item->category_id }}" name="checked[]"></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{  URL::route('admin.categories.getEdit',$item['category_id']) }} " style="color:blue !important">Cập Nhật</a></td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    </form>
                 </div>
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
         </div>
-
 @endsection

@@ -71,7 +71,7 @@
 					?>
 					
 				</a></li>
-				<li><a>
+				<li><a href="{{ url('profile') }}">
 					<?php
 					if(Auth::guard('customers')->check())
 					{

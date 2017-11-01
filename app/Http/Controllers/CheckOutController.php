@@ -172,4 +172,33 @@ class CheckOutController extends Controller
         }
         
     }
+
+    public function getDangXuat()
+    {
+        Auth::guard('customers')->logout();
+        return redirect('/');
+    }
+    public function profile(){
+        $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        return view('pages.profile',compact('content','subtotal'));
+    }
+    public function getprofileEdit($customer_id){
+        $customer = customers::find($customer_id);
+         $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        return view('pages.profile-edit',compact('content','subtotal','customer'));
+    }
+    public function postprofileEdit(Request $request,$customer_id){
+            $customer = customers::find($customer_id);
+
+            $customer->name = Request::input('name');
+            $customer->address = Request::input('address');
+            $customer->username = Request::input('username');
+            $customer->email = Request::input('email');
+            $customer->phone_number = Request::input('phone_number');
+            $customer->save();
+            
+            return redirect('profile')->with(['flash_level'=>'success','flash_message'=>'Cập nhật thành công!']);
+    }
 }

@@ -28,7 +28,8 @@ class CategoriesController extends Controller
     	$categories->alias=changeTitle($request->txtName);
     	$categories->describe=$request->txtDescribe;
     	$categories->keywords=$request->txtKeywords;
-    	$categories->save();
+        
+        $categories->save();
     	return redirect()->route('admin.categories.list')->with(['flash_level'=>'success','flash_message'=>'Thêm mới loại sản phẩm thành công !']);
     }
     public function getDelete($category_id){
@@ -37,6 +38,8 @@ class CategoriesController extends Controller
 
     	$del_cate = DB::table('products')->where('category_id',$category_id)->get();
 		$user_current = Auth::user()->level;
+        
+
     	if($user_current==1 && count($del_cate)<=0) {
             $cate->delete($category_id);
         }
@@ -47,6 +50,32 @@ class CategoriesController extends Controller
         return redirect('admin/categories/list')->with(['flash_level'=>'success','flash_message'=>'Đã xóa thành công !']);
 
     }
+    public function MultiDelete(Request $request){
+        $checked = $request->input('checked',[]);
+        $user_current = Auth::user()->level;
+        if($checked == null){
+            return back()->with(['flash_level'=>'danger','flash_message'=>'Chưa chọn ô nào để xóa']);    
+        }
+            if($user_current==1){
+            foreach ($checked as $id) {
+                $del_cate = DB::table('products')->where('category_id',$id)->get();
+                if(count($del_cate)<=0){
+                categories::where("category_id",$id)->delete();
+                // categories::whereIn("category_id",$checked)->delete();
+                return back()->with(['flash_level'=>'warning','flash_message'=>'Xóa thành công những loại sản phẩm không có chứa sản phẩm.']);   
+                }
+                else
+                {
+                    return back()->with(['flash_level'=>'danger','flash_message'=>'Loại sản phẩm có chứa sản phẩm']);   
+                }
+            }
+            }
+            else{
+                 return back()->with(['flash_level'=>'danger','flash_message'=>'Bạn không có quyền quản trị ']);  
+            }
+            // return back()->with(['flash_level'=>'danger','flash_message'=>'Bạn không có quyền quản trị']);
+    }
+
     public function getEdit($category_id){
     	$data = categories::find($category_id);
 		if(Auth::user()->level == 1)

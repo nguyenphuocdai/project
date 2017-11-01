@@ -72,8 +72,6 @@ class LoginController extends Controller
         $newUser->remember_token = $user->token;
         
         $newUser->save();
-
-        // Auth::login($newUser);
         Auth::guard('customers')->loginUsingId($newUser->customer_id, true);
 
 
@@ -89,7 +87,7 @@ class LoginController extends Controller
     {
         try {
             $user = Socialite::driver('github')->stateless()->user();
-            dd($user);
+
         } catch (Exception $e) {
             return redirect('/');
         }

@@ -8,6 +8,6 @@ class Emails extends Model
 {
     protected $table ='emails';
     protected $primaryKey = 'id';
-    protected $fillable=['name'];
+    protected $fillable=['email'];
     public $timestamps = true;
 }

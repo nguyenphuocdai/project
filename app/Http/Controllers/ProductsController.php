@@ -34,6 +34,7 @@ class ProductsController extends Controller
     	$product->name= $product_request->txtProductName;
     	$product->alias= changeTitle($product_request->txtProductName);
     	$product->price= $product_request->txtPrice;
+        $product->highlight= $product_request->highlight;
     	$product->quantity= $product_request->txtQuantity;
     	$product->origin= $product_request->txtOrigin;  
     	//lấy tên của hình
@@ -66,7 +67,7 @@ class ProductsController extends Controller
             }  
            
          } 
-    	return redirect()->route('admin.products.list')->with(['flash_level'=>'success','flash_message'=>'Thêm mới loại sản phẩm thành công !']);
+    	return redirect()->route('admin.products.list')->with(['flash_level'=>'success','flash_message'=>'Thêm sản phẩm mới thành công !']);
     } 
     public function getDelete($product_id)
     {   
@@ -142,6 +143,7 @@ class ProductsController extends Controller
         $product->discount= Request::input('txtDiscount');
         $product->origin=  Request::input('txtOrigin');
         $product->keywords=  Request::input('txtKeywords');
+        $product->highlight=  Request::input('highlight');
         $product->describe= Request::input('txtDescribe');
         $product->category_id= Request::input('selectFK');
         //upload hình ảnh cho sản phẩm và xóa hình ảnh trước

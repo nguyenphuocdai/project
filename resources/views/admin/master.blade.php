@@ -74,6 +74,7 @@
     </script>
      <script src="{{ url('public/admin/js/bootstrap-datetimepicker.min.js') }}">
     </script>
+    @yield('script')
     @include('flashy::message')
     
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->

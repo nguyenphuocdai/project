@@ -16,19 +16,8 @@ class LoginMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        // if(Auth::check())
-        // {
-        //     //lấy người dùng đang đăng nhập
-        //     $user = Auth::users();
-        //     dd($user);
-        //     if($user->level == 1)
-        //         return $next($request);   
-        // }
-        // else
-        //     return redirect ('dangnhap');
         if (Auth::guard($guard)->check()) 
         {
-            // $user = Auth::user();
             return $next($request);
         }
             else 
