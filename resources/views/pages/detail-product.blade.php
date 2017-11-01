@@ -139,10 +139,12 @@
 	<figure class="product">
 		<div class="mediaholder">
 			<a href="#">
-				<img alt="" src="{{ asset('resources/upload/product_image/'.$pr->image)}}"/>
+				<img alt="" src="{{ asset('resources/upload/product_image/'.$pr->image)}}" style="    width: 220px;
+					height: 300px;"/>
 				<div class="cover">
 					@foreach ($img as $detail)
-					<img class="" src="{{ asset('resources/upload/product_image/'.$pr->image)}}">
+					<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}" style="    width: 220px;
+					height: 300px;">
 					@endforeach
 				</div>
 			</a>
@@ -160,5 +162,4 @@
 </div>
 </div>
 <div class="margin-top-50"></div>
-
 @endsection

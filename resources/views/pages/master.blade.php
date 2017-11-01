@@ -27,7 +27,7 @@
 
 </head>
 
-<body class="boxed" style="background: url('public/pages/images/bg/retina_wood.png');">
+<body class="boxed">
 <div id="wrapper">
 
 
