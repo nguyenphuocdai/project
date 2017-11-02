@@ -11,6 +11,7 @@ use URL;
 use Session;
 use Redirect;
 use Input;
+use View;
 use App\customers;
 use App\orders;
 use App\orders_detail;
@@ -25,6 +26,8 @@ class PaymentController extends Controller
 {
     public function index(){
 
+        $subtotal = Cart::subtotal(0,",",".");
+        View::share('subtotal', $subtotal);
         $total = Cart::subtotal(0);
         $convertTotal = str_replace(',', '', $total);
         if(Auth::guard('customers')->check())

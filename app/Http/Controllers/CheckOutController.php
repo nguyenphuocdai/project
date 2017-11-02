@@ -126,7 +126,6 @@ class CheckOutController extends Controller
                             }
                             else
                                  {
-
                                     $order_detail = new orders_detail();
                                     $order_detail->order_id=$order->order_id;
 
@@ -158,7 +157,7 @@ class CheckOutController extends Controller
                         echo 
                         "<script>
                             alert('Cảm ơn bạn đã đặt hàng chúng tôi! Vui lòng kiểm tra Email của bạn để biết thêm chi tiết đơn hàng !');
-                            window.location='".url('success')."';
+                            window.location='".url('orderSuccess')."';
                         </script>";
                 
             }
@@ -177,11 +176,14 @@ class CheckOutController extends Controller
     public function profile(){
         $content = Cart::content();
         $subtotal = Cart::subtotal(0,",",".");
-        return view('pages.profile',compact('content','subtotal'));
+        $customer = Auth::guard("customers")->user()->first();
+        $orderStatus = DB::table('orders')->where('customer_id', $customer->customer_id)->first();
+
+        return view('pages.profile',compact('content','subtotal','orderStatus'));
     }
     public function getprofileEdit($customer_id){
         $customer = customers::find($customer_id);
-         $content = Cart::content();
+        $content = Cart::content();
         $subtotal = Cart::subtotal(0,",",".");
         return view('pages.profile-edit',compact('content','subtotal','customer'));
     }

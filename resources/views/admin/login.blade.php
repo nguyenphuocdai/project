@@ -50,7 +50,7 @@
                                     <input class="form-control" placeholder="Mật khẩu" name="txtPassword" type="password" >
                                 </div>
                                 <div class="form-group">
-                                       <a href="{{url('reset-password')}}" style="margin-left: 100px; font-weight:15px;color: #337ab7 !important;">Quên mật khẩu ?</a>
+                                       <a href="{{ url('/password/reset') }}" style="margin-left: 100px; font-weight:15px;color: #337ab7 !important;">Quên mật khẩu ?</a>
                                 </div>
                                  
                                 <button type="submit" class="btn btn-lg btn-primary btn-block">Đăng nhập</button>

@@ -89,7 +89,7 @@
 					<td class="hide-on-mobile"><img class="checkout-image" src="{{ asset('resources/upload/'.$item_content->options->img)}}" alt=""/></td>
 					<td class="cart-title"><a>{{ $item_content->name }}</a></td>
 					<td class="qty-checkout">{{$item_content->qty}}</td>
-					<td class="cart-total">{{ $item_content->price }}</td>
+					<td class="cart-total">{{ number_format($item_content->price*$item_content->qty,0,",",".") }} đ</td>
 				</tr>
 				@endforeach
 			</table>
@@ -98,7 +98,7 @@
 				<tr>
 					<th class="checkout-totals">
 						<div class="checkout-subtotal">
-							TỔNG TIỀN: <span>{{ $subtotal }}</span>
+							TỔNG TIỀN: <span>{{ $subtotal }} đ</span>
 						</div>
 					</th>
 				</tr>

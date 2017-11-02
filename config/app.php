@@ -238,6 +238,7 @@ return [
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
     ],
 
 ];

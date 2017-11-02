@@ -17,7 +17,7 @@
                         <i class="fa fa-cog"></i> Tài Khoản <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user" style="    background-color: black;">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Chào <?php echo Auth::user()->username;  ?> </a>
+                        <li><a href="javascript:void(0)"><i class="fa fa-user fa-fw"></i>Chào <?php echo Auth::user()->username;  ?> </a>
                         </li>
                         <li><a href="{{route('admin.users.edit',Auth::user()->user_id)}}"><i class="fa fa-gear fa-fw"></i> Cập Nhật Thông Tin</a>
                         </li>

@@ -4,6 +4,8 @@ Route::get('dangnhap','UsersController@getDangNhap');
 Route::post('dangnhap','UsersController@postDangNhap');
 Route::get('dangxuat','UsersController@getDangXuat');
 Route::post('test/delimage','ProductsController@deleteImageProduct')->name('deleteImageProduct');
+
+
 Auth::routes();
 // ,'middleware'=>'Login'
 Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
@@ -57,6 +59,7 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 		Route::get('edit/{news_id}',['as'=>'admin.news.edit','uses'=>'NewsController@getEdit']);
 		Route::post('edit/{news_id}',['as'=>'admin.news.edit','uses'=>'NewsController@postEdit']);
 	});
+
 });
 Route::get('/', 'HomeController@index');
 Route::get('shop',['as'=>'getcategories','uses'=>'HomeController@getcategories']);
@@ -82,11 +85,9 @@ Route::post('dang-nhap-khach-hang',['as'=>'post-login','uses'=>'Cus\AuthCusContr
 Route::get('dang-xuat-khach-hang',['as'=>'getdangxuat','uses'=>'Cus\AuthCusController@getDangXuat']);
 Route::get('dang-ky-khach-hang',['as'=>'dangky','uses'=>'CheckOutController@getDangKyNguoiDung']);
 Route::post('dang-ky-khach-hang',['as'=>'dangky','uses'=>'CheckOutController@postDangKyNguoiDung']);
-
 Route::get('profile','CheckOutController@profile');
 Route::get('profile-edit/{customer_id}','CheckOutController@getprofileEdit');
 Route::post('profile-edit/{customer_id}','CheckOutController@postprofileEdit');
-
 Route::get('dat-hang',['as'=>'dathang','uses'=>'CheckOutController@getThanhToan']);
 Route::post('dat-hang',['as'=>'dathang','uses'=>'CheckOutController@postThanhToan']);
 Route::get('re-set',['as'=>'reset','uses'=>'UsersController@getResetPassword']);

@@ -4,7 +4,7 @@
 @foreach($cate1 as $item_pr_cate)
 		<div class="four shop columns">
 			<figure class="product">
-				<div class="product-discount">Giảm giá</div>
+				<div class="product-discount">NEW</div>
 				<div class="mediaholder">
 					<a href="{{url('chi-tiet-san-pham',[$item_pr_cate->product_id,$item_pr_cate->alias])}}">
 						<img class="img" alt="" src="{{ asset('resources/upload/'.$item_pr_cate->image)}}"/>

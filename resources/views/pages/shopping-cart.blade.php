@@ -44,7 +44,7 @@
 					<td><img class="image-cart" src="{{ asset('resources/upload/'.$item_content->options->img)}}" width="50" height="50" alt=""/></td>
 					<td class="cart-title"><a href="#">{{ $item_content->name }}</a></td>
 																	
-					<td class="cart-price">{{ Lang::locale() === "en" ? substr(($item_content->price)/23000,0,5) : $subtotal }} {{ Lang::locale() === "en" ? '$':'VNĐ' }} </td>
+					<td class="cart-price">{{ Lang::locale() === "en" ? substr(($item_content->price)/23000,0,5) : number_format($item_content->price,0,",",".") }} {{ Lang::locale() === "en" ? '$':'VNĐ' }} </td>
 
 
 					<td class="quantity"><input style="width: 60px!important" id="so-luong-{{ $item_content->rowId }}" class="span1 qty" type="number" min="1" size="1" value="{{$item_content->qty}}" name="quantity"/></td>
@@ -55,7 +55,7 @@
 							<i class="fa fa-refresh" aria-hidden="true"></i>{{-- <img class="tooltip-test" data-original-title="Update" src="{{ url('public/pages/images/btnupdate.jpg') }}" alt=""> --}}
 						</button>
 					</td>
-					<td class="cart-total" ><span id="thanh-tien-{{ $item_content->rowId }}">{{ Lang::locale() === "en" ? $totalEnglishSub : $subtotal }} {{ Lang::locale() === "en" ? '$':'VNĐ' }}</span></td>
+					<td class="cart-total" ><span id="thanh-tien-{{ $item_content->rowId }}">{{ Lang::locale() === "en" ? $totalEnglishSub : number_format($item_content->price*$item_content->qty,0,",",".") }} {{ Lang::locale() === "en" ? '$':'VNĐ' }}</span></td>
 				</tr>
 				@endforeach
 			</form>
