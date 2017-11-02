@@ -20,21 +20,23 @@
           </tr>
         </thead>
         <tbody>
+          @foreach($orderStatus as $order)
           <tr>
-            <td style="text-align: center">{{ $customer->customer_id }}</td>
+            <td style="text-align: center">{{ $order->customer_id }}</td>
             <td><a>{{ $customer->name }}</a></td>
             <td>{{ $customer->phone_number }}</td>
             <td>{{ $customer->address }}</td>
-            <td>{{ $customer->created_at }}</td>
-            <td><a href="{{ url('history-detail') }}"><span class="label label-info">Xem</span></a></td>
+            <td>{{ $order->created_at }}</td>
+            <td><a href="{{ url('history-detail',$order->order_id) }}"><span class="label label-info">Xem</span></a></td>
             <td><span class="label label-success">
-            	<?php if($orderStatus->status == 0){
-            		echo "Đang chờ xác nhận";
+            	<?php if($order->status == 0){
+            		echo "Đang xử lý";
             		}else{
-            	echo "Đang vận chuyển";
+            	echo "Đã được gửi đi";
            		 }
             ?></span></td>
           </tr>
+          @endforeach
         </tbody>
       </table>
     </div>

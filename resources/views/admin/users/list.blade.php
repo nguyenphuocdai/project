@@ -39,9 +39,9 @@
                                 <td>{{$item->username}}</td>
                                 <td>
                                 @if($item->level == 1)
-                                {{"Admin"}}
+                                {{"Quản lý"}}
                                 @else
-                                {{"Thường"}}
+                                {{"Nhân viên"}}
                                 @endif
                                 </td>
                                 <td>{{$item->email}}</td>

@@ -95,7 +95,7 @@ body {
 }
 
 .sidebar ul li a.active {
-    background-color: #3e2b2b;
+    background-color: rgba(255, 0, 0, 0.37);
 }
 
 .sidebar .arrow {
@@ -350,7 +350,6 @@ table.dataTable thead .sorting:after {
 }
 a:hover, a:focus {
     color: #333 !important;
-    background-color: #f7f7f7 !important;
 }
 a {
     color: #ffffff !important;

@@ -199,3 +199,8 @@ body { margin-top:20px; }
 .toppad
 {margin-top:20px;
 }
+
+.total-history{
+    float: right;
+    font-weight: 600;
+}

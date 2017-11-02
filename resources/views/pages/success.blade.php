@@ -41,7 +41,7 @@
 		<section id="not-found">
 			<h2><i class="fa fa-check-square"></i></h2>
 			<p>Cám ơn bạn đã quan tâm.</p>
-
+			<p>Trizzy-Shop sẽ giao hàng đến bạn sớm nhất có thể.</p>
 		</section>
 	</div>
 

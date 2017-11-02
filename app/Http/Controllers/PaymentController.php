@@ -97,6 +97,7 @@ class PaymentController extends Controller
                 $order = new orders();
                 $order->customer_id= $cus->customer_id;
                 $order->address_receive = $cus->address;
+                $order->payment = 1;
                 $order->phone_social = $cus->phone_number;
                 $order->datesigned = $cus->created_at;
                 $order->save();
@@ -166,17 +167,17 @@ class PaymentController extends Controller
                      
                 } else {
                     \Session::put('error','Số tiền trong tài khoản bạn không đủ.');
-                     return redirect('pages.404');
+                     return redirect('payment');
                 }
             } catch (Exception $e) {
                 \Session::put('error',$e->getMessage());
-                 return redirect('pages.404');
+                 return redirect('payment');
             } catch(\Cartalyst\Stripe\Exception\CardErrorException $e) {
                 \Session::put('error',$e->getMessage());
-                 return redirect('pages.404');
+                 return redirect('payment');
             } catch(\Cartalyst\Stripe\Exception\MissingParameterException $e) {
                 \Session::put('error',$e->getMessage());
-                 return redirect('pages.404');
+                 return redirect('payment');
             }
     	}
     	\Session::put('error','All fields are required!!');
