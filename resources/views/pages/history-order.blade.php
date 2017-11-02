@@ -22,7 +22,7 @@
         <tbody>
           @foreach($orderStatus as $order)
           <tr>
-            <td style="text-align: center">{{ $order->customer_id }}</td>
+            <td style="text-align: center">{{ $order->order_id }}</td>
             <td><a>{{ $customer->name }}</a></td>
             <td>{{ $customer->phone_number }}</td>
             <td>{{ $customer->address }}</td>

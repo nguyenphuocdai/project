@@ -11,7 +11,7 @@
 						<h2>Urban Style</h2>
 						<h3>{{ Lang::locale() === "en" ? 'Interior design ':'Thiết kế nội thất' }}
 						</h3>
-						<a href="shop-with-sidebar.html" class="caption-btn">{{ Lang::locale() === "en" ? 'read more':'Xem thêm' }}</a>
+						<a href="{{ url('tin-tuc') }}" class="caption-btn">{{ Lang::locale() === "en" ? 'read more':'Xem thêm' }}</a>
 					</div>
 				</li>
 				<!-- Slide 2  -->
@@ -20,7 +20,7 @@
 					<div class="caption sfb fadeout" data-x="145" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
 						<h2>Dress Sharp</h2>
 						<h3>{{ Lang::locale() === "en" ? 'Interior design ':'Thiết kế nội thất' }}</h3>
-						<a href="shop-with-sidebar.html" class="caption-btn">Xem thêm</a>
+						<a href="{{ url('tin-tuc') }}" class="caption-btn">Xem thêm</a>
 					</div>
 				</li>
 				<!-- Slide 3  -->
@@ -29,7 +29,7 @@
 					<div class="caption dark sfb fadeout" data-x="850" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
 						<h2>New In</h2>
 						<h3>{{ Lang::locale() === "en" ? 'Interior Practice ':'Thiết kế nội thất' }}</h3>
-						<a href="shop-with-sidebar.html" class="caption-btn">Xem thêm</a>
+						<a href="{{ url('tin-tuc') }}" class="caption-btn">Xem thêm</a>
 					</div>
 				</li>
 			</ul>

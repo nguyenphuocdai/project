@@ -21,6 +21,8 @@ use DB;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Stripe\Error\Card;
 use Mail;
+use Debugbar;
+
 
 class PaymentController extends Controller
 {
