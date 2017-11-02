@@ -199,4 +199,20 @@ class CheckOutController extends Controller
             
             return redirect('profile')->with(['flash_level'=>'success','flash_message'=>'Cập nhật thành công!']);
     }
+    public function historyOrder(){
+        $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        $customer = Auth::guard("customers")->user()->first();
+        $orderStatus = DB::table('orders')->where('customer_id', $customer->customer_id)->first();
+        return view('pages.history-order',compact('content','subtotal','orderStatus','customer'));
+    }
+    public function historyOrderDetail(){
+        $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        $customer = Auth::guard("customers")->user()->first();
+        $orderStatus = DB::table('orders')->where('customer_id', $customer->customer_id)->first();
+        $orderDetail = DB::table('orders_detail')->where('order_id', $orderStatus->order_id)->get();
+        return view('pages.history-detail',compact('content','subtotal','orderStatus','customer','orderDetail'));
+    }
+
 }

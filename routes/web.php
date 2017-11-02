@@ -88,6 +88,9 @@ Route::post('dang-ky-khach-hang',['as'=>'dangky','uses'=>'CheckOutController@pos
 Route::get('profile','CheckOutController@profile');
 Route::get('profile-edit/{customer_id}','CheckOutController@getprofileEdit');
 Route::post('profile-edit/{customer_id}','CheckOutController@postprofileEdit');
+Route::get('history-order','CheckOutController@historyOrder');
+Route::get('history-detail','CheckOutController@historyOrderDetail');
+
 Route::get('dat-hang',['as'=>'dathang','uses'=>'CheckOutController@getThanhToan']);
 Route::post('dat-hang',['as'=>'dathang','uses'=>'CheckOutController@postThanhToan']);
 Route::get('re-set',['as'=>'reset','uses'=>'UsersController@getResetPassword']);
