@@ -7,7 +7,6 @@
                         <h1 class="page-header">Tin Tức
                             <small>bài đã đăng</small>
                         </h1>
-                        <a href="{{route('admin.news.add')}}"><button class="btn btn-primary" type="button">Đăng Bài</button></a>
                         <hr>
                     </div>
                     <!-- /.col-lg-12 -->

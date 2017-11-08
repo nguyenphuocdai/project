@@ -46,10 +46,13 @@
                                 <td>{{$item->name}}</td>
                                 <td>{{number_format($item->price,'0',',','.')}} VND</td>
                                 <td width="15px"><?php if($item->quantity==0)
-                                echo "Hết hàng";
+                                echo "Hết hàng"."<br>"."<a class='import' href='admin/products/nhap-hang/$item->product_id'>Cần nhập hàng</a>";
                                 else 
                                 echo $item->quantity;
-                                 ?></td>
+                                 ?>
+                                     {{-- <br><a href="{{ route('admin.import.product',$item->product_id) }}" style="color: red !important">Nhập hàng</a> --}}
+
+                                 </td>
                                 <td width="80px" >
                                 <img width="80px" height="80px" class="" alt="{{$item->name}}" src="resources/upload/{{$item->image}}"/>
                                 </td>

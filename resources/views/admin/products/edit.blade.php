@@ -47,7 +47,7 @@
                                 <label>Tên sản phẩm</label>
                                 <input class="form-control" name="txtProductName" placeholder="Nhập tên sản phẩm" value="{{old('txtProductName',isset($product)?$product['name'] : null)}}" />
                             </div>
-
+{{-- 
                             <div class="form-group">
                                 <label>Giá</label>
                                 <input class="form-control" name="txtPrice" placeholder="Nhập giá" value="{{old('txtPrice',isset($product)?$product['price'] : null)}}" />
@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label>Số lượng</label>
                                 <input class="form-control" name="txtQuantity" placeholder="Nhập số lượng" value="{{old('txtQuantity',isset($product)?$product['quantity'] : null)}}" />
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label>Xuất xứ</label>
                                 <input class="form-control" name="txtOrigin" placeholder="Nhập xuất xứ" value="{{old('txtOrigin',isset($product)?$product['origin'] : null)}}" />

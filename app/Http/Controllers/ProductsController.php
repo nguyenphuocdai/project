@@ -108,8 +108,6 @@ class ProductsController extends Controller
 
         // dd(Request::all()); // dùng sai  no ko phai định dạng img xem lại cái form
         $validator = Validator::make(Request::all(), [
-            'txtPrice'=>'required|integer|min:0',
-            'txtQuantity'=>'required|integer|min:0',
             'txtProductName' =>'required',
             'txtOrigin'=>'required',
             'fImage'=>'image',
@@ -119,13 +117,6 @@ class ProductsController extends Controller
             
             'fImage.image'=>'File bạn chọn không phải hình ảnh !',
             'txtProductName.required'=>'Bạn chưa nhập tên sản phẩm !',
-            
-            'txtPrice.integer'=>'Bạn nhập giá chưa đúng!',
-            'txtPrice.min'=>'Giá sản phẩm không âm!',
-            'txtPrice.required'=>'Bạn chưa nhập giá !',
-            'txtQuantity.integer'=>'Bạn số lượng chưa đúng!',
-            'txtQuantity.min'=>'Số lượng không âm !',
-            'txtQuantity.required'=>'Bạn chưa nhập số lượng !',
             'txtOrigin.required'=>'Bạn chưa nhập xuất xứ !',
                 ]);
                     
@@ -203,4 +194,35 @@ class ProductsController extends Controller
             return "Oke";
         }
     }
+
+    public function getImport($product_id){
+        $product = products::find($product_id);
+        $prod = products::select('name','product_id')->first();
+        return view('admin.import.product',compact('cate','product','product_image','$product_id','prod'));
+    }
+     public function postImport($product_id, Request $request)
+    {   
+        $validator = Validator::make(Request::all(), [
+            'txtPrice'=>'required|integer|min:0',
+            'txtQuantity'=>'required|integer|min:0',
+                ],[
+            'txtPrice.integer'=>'Bạn nhập giá chưa đúng!',
+            'txtPrice.min'=>'Giá sản phẩm không được âm!',
+            'txtPrice.required'=>'Bạn chưa nhập giá !',
+            'txtQuantity.integer'=>'Bạn số lượng chưa đúng!',
+            'txtQuantity.min'=>'Số lượng được không âm !',
+            'txtQuantity.required'=>'Bạn chưa nhập số lượng !',
+                ]);
+                if ($validator->fails()) {
+                    return redirect()->back()
+                                ->withErrors($validator)
+                                ->withInput();
+                }
+
+        $product = products::find($product_id);
+        $product->price=  Request::input('txtPrice');
+        $product->quantity= Request::input('txtQuantity');
+        $product->save();       
+        return redirect()->route('admin.products.list')->with(['flash_level'=>'success','flash_message'=>'Nhập hàng thành công']);
+    } 
 }

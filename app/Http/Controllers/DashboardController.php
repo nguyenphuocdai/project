@@ -23,4 +23,6 @@ class DashboardController extends Controller
 		Flashy::primaryDark('Chào mừng bạn đến với hệ thống', 'http://your-awesome-link.com');
     	return view('admin.tong-quan',compact('cates','products','orders','users'));
     }
+
+    
 }

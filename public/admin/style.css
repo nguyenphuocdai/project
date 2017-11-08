@@ -1,3 +1,9 @@
 .panel-footer {
 	color:  black !important;
 }
+.import {
+	color : red !important;
+}
+.text-error{
+	color: red !important;
+}

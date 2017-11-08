@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use App\customers;
 use App\orders;
 use App\orders_detail;
+use App\products;
 use Hash;
 use DateTime;
 use Flashy;
+use Cart;
 class OrdersController extends Controller
 {
     //lấy danh sách đơn hàng chưa duyệt
@@ -47,8 +49,34 @@ class OrdersController extends Controller
    public function getDelete($order_id)
    {
      $order = orders::find($order_id);
-     Flashy::error('Xóa đơn hàng thành công.', 'http://your-awesome-link.com');
+     $order_detail = DB::table('orders_detail')->where('order_id',$order_id)->get();
+     foreach($order_detail as $prod){
+      $t = DB::table('products')->where('product_id',$prod->product_id)->first()->quantity;
+      $product = products::find($prod->product_id);
+      $product->quantity = $product->quantity + $prod->quantity;
+      $product->save();
+     }
+     
      $order->delete();
      return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Xóa thành công !']);
    }
+   public function noteOrder($order_id){
+      $order = orders::find($order_id);
+      $order_detail = DB::table('orders_detail')->where('order_id',$order_id)->get();
+      
+      foreach($order_detail as $prod){
+
+        $t = DB::table('products')->where('product_id',$prod->product_id)->first()->quantity;
+        $product = products::find($prod->product_id);
+        if($product->quantity + $prod->note < 0){
+          return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Số lượng sản phẩm chưa đủ cần nhập thêm.']);
+        }else{
+        $product->quantity = $product->quantity + $prod->note;
+        DB::table('orders_detail')->where('order_id',$prod->order_id)->update(['note'=>0]);
+        $product->save();
+        return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Đã đủ sản phẩm để giao hàng. Có thể duyệt đơn hàng !!!']);
+        }
+      }
+      
+    }
 }

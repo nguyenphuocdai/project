@@ -196,4 +196,9 @@ class PaymentController extends Controller
         $subtotal = Cart::subtotal(0,",",".");
         return view('pages.success',compact('content','subtotal'));
     }
+    public function Ordersuccess(){
+        $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        return view('pages.Ordersuccess',compact('content','subtotal'));
+    }
 }

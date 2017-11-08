@@ -29,7 +29,7 @@
                                 
                                 <th>Tên</th>
                                 <th>Xóa</th>
-                                <th style="text-align: center"><a onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')"><input type="submit" class="btn btn-danger" value="Xóa nhiều"></a></th>
+                                {{-- <th style="text-align: center"><a onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')"><input type="submit" class="btn btn-danger" value="Xóa nhiều"></a></th> --}}
                                 <th>Cập Nhật</th>
                             </tr>
                         </thead>
@@ -40,7 +40,7 @@
                                
                                 <td>{{$item->name}}</td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')" href="{{ URL::route('admin.categories.delete',$item['category_id']) }}" style="color:red !important"> Xóa</a></td>
-                                 <td style="text-align: center"><input type="checkbox" class="checkboxes" value="{{ $item->category_id }}" name="checked[]"></td>
+                                 {{-- <td style="text-align: center"><input type="checkbox" class="checkboxes" value="{{ $item->category_id }}" name="checked[]"></td> --}}
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{  URL::route('admin.categories.getEdit',$item['category_id']) }} " style="color:blue !important">Cập Nhật</a></td>
                             </tr>
                             @endforeach

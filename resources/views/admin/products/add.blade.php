@@ -27,13 +27,13 @@
                                 <input class="form-control" name="txtProductName" value="{{old('txtProductName')}}" placeholder="Nhập tên sản phẩm" />
                             </div>
                             <div class="form-group">
-                                <i class="fa fa-times-circle" style="color: red"></i> <label>Giá</label>
+                                <i class="fa fa-times-circle" style="color: red"></i> <label>Giá bán</label>
                                 <input class="form-control" name="txtPrice" value="{{old('txtPrice')}}" placeholder="Nhập giá" />
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <i class="fa fa-times-circle" style="color: red"></i> <label>Số Lượng</label>
                                 <input class="form-control" name="txtQuantity" value="{{old('txtQuantity')}}" placeholder="Nhập số lượng" />
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <i class="fa fa-times-circle" style="color: red"></i> <label>Xuất Xứ</label>
                                 <input class="form-control" name="txtOrigin" value="{{old('txtOrigin')}}" placeholder="Nhập xuất xứ" />

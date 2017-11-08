@@ -55,8 +55,8 @@
                                     ?>
                                  </td>
                                 <td>
-                                Đã Duyệt
-                                </td>
+                                    Đã duyệt
+                                 </td>
                                 <td><?php 
                                 $tamp= DB::table('users')->where('user_id',$item->user_id)->first();
                                 echo $tamp->username;

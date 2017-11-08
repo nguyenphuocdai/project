@@ -103,7 +103,7 @@
 					</th>
 				</tr>
 			</table>
-			<button type="submit" class="continue button color">THANH TOÁN</button>
+			<button type="submit" class="continue button color">ĐẶT HÀNG</button>
 		</div>
 		<!-- Checkout Cart / End -->
 	</div>

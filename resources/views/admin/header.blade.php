@@ -50,30 +50,14 @@
                             <a href="admin/tong-quan"><i class="glyphicon glyphicon-calendar"></i>Tổng quan</a>
                         </li>
                         <li>
-                            <a href=""><i class="glyphicon glyphicon-star"></i> Loại Sản Phẩm<span class="fa arrow "></span></a>
-                            <ul class="nav nav-second-level">
-                                 <li>
-                                    <a href="{{URL::route('admin.categories.add')}}">Thêm Mới</a>
-                                </li>
-                                <li>
-                                    <a href="{{URL::route('admin.categories.list')}}">Danh Sách </a>
-                                </li>
-                            </ul>
+                            <a href="{{URL::route('admin.categories.list')}}"><i class="glyphicon glyphicon-star"></i> Loại Sản Phẩm</a>
                             <!-- /.nav-second-level -->
                         </li>
 
                  
                         <li>
-                            <a href=""><i class="fa fa-pagelines fa-fw"></i> Sản Phẩm<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{URL::route('admin.products.add')}}">Thêm Mới</a>
-                                </li>
-                                <li>
-                                    <a href="{{URL::route('admin.products.list')}}">Danh Sách</a>
-                                </li>
-                                
-                            </ul>
+                            <a href="{{URL::route('admin.products.list')}}"><i class="fa fa-pagelines fa-fw"></i> Sản Phẩm</a>
+
                             <!-- /.nav-second-level -->
                         </li>
                         <li>

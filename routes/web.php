@@ -11,6 +11,7 @@ Auth::routes();
 Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 	Route::get('tong-quan', 'DashboardController@index');
 	Route::get('chat','ChatController@index');
+	
 	Route::group(['prefix'=>'categories'],function(){
 		Route::get('list',['as'=>'admin.categories.list','uses'=>'CategoriesController@getList']);
 		Route::get('add',['as'=>'admin.categories.add','uses'=>'CategoriesController@getAdd']);
@@ -28,6 +29,9 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 		Route::get('edit/{product_id}',['as'=>'admin.products.edit','uses'=>'ProductsController@getEdit']);
 		Route::post('edit/{product_id}',['as'=>'admin.products.edit','uses'=>'ProductsController@postEdit']);
 		Route::post('delimage','ProductsController@getDelImage')->name('deleteImageProduct');
+
+		Route::get('nhap-hang/{product_id}',['as'=>'admin.import.product','uses'=>'ProductsController@getImport']);
+		Route::post('nhap-hang/{product_id}',['as'=>'admin.import.product','uses'=>'ProductsController@postImport']);
 	});
 	Route::group(['prefix'=>'users'],function(){
 		Route::get('list',['as'=>'admin.users.list','uses'=>'UsersController@getList']);
@@ -46,6 +50,8 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 		Route::get('getPDF/{order_id}',['as'=>'admin.orders.getPDF','uses'=>'PDFController@getPDF']);
 		
 		Route::get('delete/{order_id}',['as'=>'admin.orders.delete','uses'=>'OrdersController@getDelete']);
+
+		Route::post('noteOrder/{order_id}',['as'=>'noteOrder','uses'=>'OrdersController@noteOrder']);
 		});
 	Route::group(['prefix'=>'statistics'],function(){
 		Route::get('chooseday',['as'=>'admin.statistics.chooseday','uses'=>'StatisticsController@getChooseDay']);
@@ -106,6 +112,7 @@ Route::get('payment',['as'=>'payment','uses'=>'PaymentController@index']);
 Route::post('payment','PaymentController@payment');
 Route::get('404',['as'=>'404','uses'=>'PaymentController@_404']);
 Route::get('success',['as'=>'success','uses'=>'PaymentController@success']);
+Route::get('Ordersuccess',['as'=>'Ordersuccess','uses'=>'PaymentController@Ordersuccess']);
 Route::post('/language',array(
 	'before' =>'csrf',
 	'as' => 'language-chooser',
