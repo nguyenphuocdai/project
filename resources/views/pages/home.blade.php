@@ -95,19 +95,19 @@
 						<figure class="product">
 							<div class="mediaholder">
 								<a href="{{url('chi-tiet-san-pham',[$new->product_id,$new->alias])}}">
-									<img alt="" src="{{ asset('resources/upload/product_image/'.$new->image)}}" style="width: 220px;height: 220px" />
+									<img alt="" src="{{ asset('resources/upload/'.$new->image)}}" style="width: 220px;height: 220px" />
 									<div class="cover">
 										<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$new->product_id)->first();
 										if($coverImage == NULL){
 											$coverImage = $new;
 										}
 										?>
-										<img alt="" src="{{ asset('resources/upload/product_image/'.$coverImage->image)}}" style="width: 220px;height: 220px"/>
+										<img alt="" src="{{ asset('resources/upload/'.$coverImage->image)}}" style="width: 220px;height: 220px"/>
 									</div>
 								</a>
 								<a href="{{url('mua-hang',[$new->product_id,$new->alias])}}" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 							</div>
-							<a href="variable-product-page.html">
+							<a href="{{url('chi-tiet-san-pham',[$new->product_id,$new->alias])}}">
 								<section>
 									<span class="product-category">{{ $new->name }}</span>
 									<span class="product-price">{{number_format($new->price,0,",",".")}}</span>
@@ -143,7 +143,7 @@ UP TO 35% FOR NEW CUSTOMERS
 		<ul class="product-list">
 			@foreach($pr_quantity as $pr)
 			<li><a href="{{url('chi-tiet-san-pham',[$pr->product_id,$pr->alias])}}">
-				<img src="{{ asset('resources/upload/product_image/'.$pr->image)}}" alt="" style="width: 95px;height: 80px" />
+				<img src="{{ asset('resources/upload/'.$pr->image)}}" alt="" style="width: 95px;height: 80px" />
 				<div class="product-list-desc">{{ $pr->name }}<i>{{number_format($pr->price,0,",",".") }}</i></div>
 			</a></li>
 			<li><div class="clearfix"></div></li>

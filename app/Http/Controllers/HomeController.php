@@ -60,11 +60,11 @@ class HomeController extends Controller
             }
     public function getcategories()
     {   
-        $pr = DB::table('products')->paginate(4);
+        $pr = DB::table('products')->paginate(12);
         return view('pages.allshop',compact('pr'));
     }
      public function getsearch(Request $req){
-        $products = Products::where('name','like','%'.$req->key.'%')->orWhere('keywords',$req->key)->orWhere('price',$req->key)->paginate(10);
+        $products = Products::where('name','like','%'.$req->key.'%')->orWhere('keywords',$req->key)->orWhere('price',$req->key)->paginate(30);
         return view('pages.searchProduct',['msg'=>'Kết quả tìm kiếm: '. $req->key],compact('products'));
     }
 
@@ -88,7 +88,8 @@ class HomeController extends Controller
         $pr_detail = DB::table('products')->where('product_id',$product_id)->first();
         // lấy ra sản phẩm tượng tự
         $pr_relate = DB::table('products')->where('category_id',$pr_detail->category_id)->where('product_id','<>',$product_id)->inRandomOrder()->limit(4)->get();
-        return view('pages.detail-product',compact('pr_detail','img','pr_relate','display_view'));
+        $randomProd = products::inRandomOrder()->limit(4)->get();
+        return view('pages.detail-product',compact('pr_detail','img','pr_relate','display_view','randomProd'));
     }
 
     public function getMuaHang($product_id)
@@ -146,7 +147,7 @@ class HomeController extends Controller
     }
      public function cate5()
     {
-        $cate5 = DB::table('products')->where('price','>','15000000')->orderBy('price','DESC')->paginate(6);
+        $cate5 = DB::table('products')->whereBetween('price',[15000000,1500000000])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate5',compact('cate5'));
     }
     public function categoriesYield($category_id)

@@ -26,5 +26,5 @@
 			</figure>
 		</div>
 		@endforeach
-		<div style="position: absolute;bottom: 0;left: 48%;">{{ $cate2->links() }}</div>
+		<div style="float: right;">{{ $cate2->links() }}</div>
 @endsection

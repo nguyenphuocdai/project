@@ -29,9 +29,9 @@
 				@endforeach
 				{{-- <img class="rsImg" src="{{ asset('resources/upload/'.$pr_detail->image)}}"/> --}}
 			</div>
-			<div style="display: inline-flex;">
+			<div style="display: inline-flex;margin-top: 20px;" >
 				@foreach ($img as $detail)
-				<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}" style="width: 100px;height: 100px">
+				<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}" style="width: 100px;height: 100px;margin-right: 5px">
 				@endforeach
 			</div>
 			
@@ -45,26 +45,17 @@
 			
 			<!-- Headline -->
 			<section class="title">
-				<h2>{{$pr_detail->name}}</h2>
-				<span class="product-price-discount"><i>{{number_format($pr_detail->price,0,",",".") }}</i></span>
 				<div class="reviews-counter">
 					<span style="margin-top: 12px;">Lượt xem</span>
 					<span style="text-align: center;color: olivedrab;margin-top: 20px;">{{ $display_view->view }}</span>
 				</div>
+				<h2>{{$pr_detail->name}}</h2>
+				<span class="product-price-discount"><i>{{number_format($pr_detail->price,0,",",".") }}</i></span>
+				
 			</section>
 			<!-- Text Parapgraph -->
 			<section>
 				<p class="margin-reset"><?php echo $pr_detail->describe;   ?></p>
-				<!-- Share Buttons -->
-				<div class="share-buttons">
-					<ul>
-						<li><a href="#">Share</a></li>
-						<li class="share-facebook"><a href="#">Facebook</a></li>
-						<li class="share-twitter"><a href="#">Twitter</a></li>
-						<li class="share-gplus"><a href="#">Google Plus</a></li>
-						<li class="share-pinit"><a href="#">Pin It</a></li>
-					</ul>
-				</div>
 				<div class="clearfix"></div>
 			</section>
 			<section class="linking">
@@ -79,7 +70,7 @@
 		<ul class="tabs-nav">
 			<li class="active"><a href="#tab1">Mô tả sản phẩm</a></li>
 			{{-- <li><a href="#tab2">Thông tin bổ sung</a></li> --}}
-			<li><a href="#tab3">Đánh giá <span class="tab-reviews">(3)</span></a></li>
+			<li><a href="#tab3">Đánh giá <span class="tab-reviews"></span></a></li>
 		</ul>
 		<!-- Tabs Content -->
 		<div class="tabs-container">
@@ -139,7 +130,7 @@
 	<figure class="product">
 		<div class="mediaholder">
 			<a href="#">
-				<img alt="" src="{{ asset('resources/upload/product_image/'.$pr->image)}}" style="    width: 220px;
+				<img alt="" src="{{ asset('resources/upload/'.$pr->image)}}" style="    width: 220px;
 					height: 300px;"/>
 				<div class="cover">
 					@foreach ($img as $detail)
@@ -159,6 +150,47 @@
 	</figure>
 </div>
 @endforeach
+
+
+</div>
+</div>
+
+<div class="container margin-top-5">
+<!-- Headline -->
+<div class="sixteen columns">
+<h3 class="headline">Sản phẩm bạn quan tâm?</h3>
+<span class="line margin-bottom-0"></span>
+</div>
+<!-- Products -->
+<div class="products">
+<!-- Product #1 -->
+@foreach($randomProd as $pr)
+<div class="four columns">
+	<figure class="product">
+		<div class="mediaholder">
+			<a href="#">
+				<img alt="" src="{{ asset('resources/upload/'.$pr->image)}}" style="    width: 220px;
+					height: 300px;"/>
+				<div class="cover">
+					@foreach ($img as $detail)
+					<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}" style="    width: 220px;
+					height: 300px;">
+					@endforeach
+				</div>
+			</a>
+			<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+		</div>
+		<a href="#">
+			<section>
+				<span class="product-category">{{ $pr->name }}</span>
+				<span class="product-price">{{ number_format($pr->price,0,",",".") }}</span>
+			</section>
+		</a>
+	</figure>
+</div>
+@endforeach
+
+
 </div>
 </div>
 <div class="margin-top-50"></div>

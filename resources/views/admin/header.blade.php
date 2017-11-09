@@ -67,7 +67,7 @@
                                     <a href="{{url::route('admin.orders.list')}}">Đơn Hàng Chờ Duyệt <?php echo " (".count(DB::table('orders')->where('status',0)->get()).")";?> </a>
                                 </li>
                                 <li>
-                                    <a href="{{url::route('admin.orders.listsigned')}}">Đơn Hàng Đã Duyệt</a>
+                                    <a href="{{url::route('admin.orders.listsigned')}}">Đơn Hàng Đã Duyệt <?php echo " (".count(DB::table('orders')->where('status',1)->get()).")";?></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -78,9 +78,12 @@
                                 <li>
                                     <a href="{{route('admin.statistics.chooseday')}}">Doanh Số</a>
                                 </li>
-                               <!--  <li>
-                                    <a href="{{url::route('admin.orders.listsigned')}}">Đơn Hàng Đã Duyệt</a>
-                                </li> -->
+                               <li>
+                                    <a href="{{url::route('admin.statistics.customer')}}">Khách hàng</a>
+                                </li>
+                                <li>
+                                    <a href="{{url::route('admin.statistics.product')}}">Sản phẩm gần hết</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

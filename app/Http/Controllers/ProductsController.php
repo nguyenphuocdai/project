@@ -225,4 +225,5 @@ class ProductsController extends Controller
         $product->save();       
         return redirect()->route('admin.products.list')->with(['flash_level'=>'success','flash_message'=>'Nhập hàng thành công']);
     } 
+    
 }

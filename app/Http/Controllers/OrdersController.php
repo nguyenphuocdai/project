@@ -20,13 +20,14 @@ class OrdersController extends Controller
    public function getList()
    {
       $order = orders::select('*')->where('status',0)->orderBy('created_at','DESC')->get();
+     
       return view('admin.orders.list',compact('order'));
    }
    //lấy danh sách đơn hàng đã duyệt
    public function getListSigned()
    {
        $order = orders::select('*')->where('status',1)->orderBy('datesigned','DESC')->get();
-
+       
        return view('admin.orders.listsigned',compact('order'));
    }
    public function getOrders_Detail($order_id)

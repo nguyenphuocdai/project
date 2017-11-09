@@ -65,7 +65,7 @@
 			<div class="checkout-section cart check-cart">
 				THANH TOÁN ONLINE
 			</div>
-			<div><a href="{{ url('payment') }}" ><img src="{{ url('public/pages/images/paybutton.png') }}" style="width: 120px;"></a></div>
+			<div style="margin-top: 30px"><a href="{{ url('payment') }}" ><img src="{{ url('public/pages/images/paybutton.png') }}" style="width: 120px;"></a></div>
 			<div></div>
 			<div class="clearfix"></div>
 			
@@ -75,7 +75,7 @@
 		<div class="sixteen columns">
 			<div class="checkout-section cart check-cart">KIỂM TRA GIỎ HÀNG</div>
 			<!-- Cart -->
-			<table class="checkout cart-table responsive-table">
+			<table class="checkout cart-table responsive-table" style="margin-top: 50px">
 				<tr>
 					<th class="hide-on-mobile">HÌNH ẢNH</th>
 					<th>TÊN SẢN PHẨM</th>
@@ -103,7 +103,9 @@
 					</th>
 				</tr>
 			</table>
-			<button type="submit" class="continue button color">ĐẶT HÀNG</button>
+			<button type="submit" class="continue button color" style="margin-top: 50px;
+    width: 200px;
+    float: right;">ĐẶT HÀNG</button>
 		</div>
 		<!-- Checkout Cart / End -->
 	</div>

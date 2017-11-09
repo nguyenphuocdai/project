@@ -123,6 +123,7 @@ class PaymentController extends Controller
                                     $order_detail->total =$item->qty*$item->price;
                                     $tamp = $item->rowId;
                                     DB::table('products')->where('product_id',$item->id)->decrement('quantity',$item->qty);
+                                    Cart::remove($tamp);
                                     $order_detail->save();
                                      $data=[];
                                      Mail::send('orderSuccess', $data, function ($message) 
@@ -149,7 +150,7 @@ class PaymentController extends Controller
                                     $tamp = $item->rowId;
                                     DB::table('products')->where('product_id',$item->id)->update(['quantity' => 0]);;
 
-
+                                    Cart::remove($tamp);
                                     $order_detail->save();
                                     //số lượng nhỏ hơn db phải gởi mail !
                                     $data=['note'=> $order_detail->note,'product_id'=>$order_detail->product_id];
@@ -164,7 +165,6 @@ class PaymentController extends Controller
 
 
                     \Session::put('success','Thanh toán thành công, Cám ơn bạn đã quan tâm Shop.');
-                     Cart::remove($tamp);
                      return redirect('success');
                      
                 } else {

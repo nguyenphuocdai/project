@@ -46,11 +46,7 @@
 					</p>
 					<p class="form-row">
 						<input type="submit" class="button" value="Đăng nhập" />
-						</p>
-						<p class="lost_password">
-							<a href="#" >Quên mật khẩu</a>
-						</p>
-						
+						</p>						
 					</form>
 				</div>
 			</div>

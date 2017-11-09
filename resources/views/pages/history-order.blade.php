@@ -4,6 +4,10 @@
 		<div style="margin-left: 10px;margin-bottom: 40px">
 		<h3>LỊCH SỬ ĐẶT HÀNG</h3>
 		</div>
+    <p style="text-align: center;"><?php if($count <= 0){
+      echo "Bạn không có lịch sử đơn hàng nào.";
+    }
+    ?></p>
 	<div class="row" style="padding-left: 25px;
     padding-right: 55px;">
 		<div class="table-responsive" style="margin-bottom: 20px">

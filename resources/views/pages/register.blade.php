@@ -64,7 +64,7 @@
 						</p>
 						<p class="form-row form-row-wide">
 							<label for="txtphone">Số điện thoại:<span class="required">*</span></label>
-							<input type="text" class="input-text" name="txtPhone" id="txtPhone" value="" />
+							<input type="text" class="input-text" name="txtPhone" id="txtPhone" value="" maxlength="12" />
 						</p>
 						{{-- <p class="form-row">
 							<label for="rememberme" class="rememberme">

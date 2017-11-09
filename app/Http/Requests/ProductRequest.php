@@ -25,6 +25,7 @@ class ProductRequest extends FormRequest
     {   
         // validator kiểm tra các trường
         return [
+            'txtPrice'=>'required|integer|min:0',
             'txtOrigin'=>'required',
             'selectFK'=>'required',
             'txtProductName' =>'required|unique:products,name',
@@ -42,6 +43,9 @@ class ProductRequest extends FormRequest
             'txtProductName.unique'=>'Tên sản phẩm đã tồn tại !',
             'txtOrigin.required'=>'Bạn chưa nhập xuất xứ !',
             'fProductDetail.unique'=>'Hình ảnh bạn upload đã tồn tại!',
+            'txtPrice.integer'=>'Bạn nhập giá chưa đúng!',
+            'txtPrice.min'=>'Giá sản phẩm không được âm!',
+            'txtPrice.required'=>'Bạn chưa nhập giá !',
         ];
     }
 }

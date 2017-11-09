@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\customers;
 use DateTime;
+use App\products;
 use Illuminate\Support\Facades\Auth;
 class StatisticsController extends Controller
 {
@@ -25,5 +27,13 @@ class StatisticsController extends Controller
         $ed = $r->txtEndDate;
     	
     	return view('admin.statistics.chooseday',compact('tamp','sd','ed'));
+    }
+    public function getCustomer(){
+        $data = DB::table('customers')->get();
+        return view('admin.statistics.customer',compact('data'));
+    }
+    public function getProductLimit(){
+         $data = products::select('product_id','name','price','quantity','created_at','image','category_id','user_id')->whereBetween('quantity', [0,10])->get();
+        return view('admin.statistics.product',compact('data'));
     }
 }

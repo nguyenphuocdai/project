@@ -202,9 +202,10 @@ class CheckOutController extends Controller
     public function historyOrder(){
         $content = Cart::content();
         $subtotal = Cart::subtotal(0,",",".");
-        $customer = Auth::guard("customers")->user()->first();
+        $customer = Auth::guard("customers")->user();
         $orderStatus = DB::table('orders')->where('customer_id', $customer->customer_id)->get();
-        return view('pages.history-order',compact('content','subtotal','orderStatus','customer'));
+        $count = $orderStatus->count();
+        return view('pages.history-order',compact('content','subtotal','orderStatus','customer','count'));
     }
     public function historyOrderDetail($order_id){
         $content = Cart::content();

@@ -204,3 +204,9 @@ body { margin-top:20px; }
     float: right;
     font-weight: 600;
 }
+.reviews-counter{
+    position: static !important;
+}
+a:hover {
+    color: #ffffff !important;
+}

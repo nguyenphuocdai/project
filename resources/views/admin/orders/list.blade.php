@@ -31,7 +31,7 @@
                         <th>Chi Tiết Đơn Hàng</th>
                         <th>Ghi Chú</th>
                         <th>Thanh toán</th>
-                        <th>Xóa</th>
+                        <th>Hủy đơn hàng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,13 +89,21 @@
                                 ";}
                                 ?>
                             </form>
+
                             <?php
-                            $check=DB::table('orders_detail')->where('order_id',$item->order_id)->first();
-                            $tamp = DB::table('products')->where('product_id',$check->product_id)->first();
-                            if($check->note==0)
-                            echo "Đủ sản phẩm để giao.";
-                            else
-                            echo "Chưa đủ sản phẩm </br>".substr($check->note,1,2)." ".$tamp->name;
+                            $check=DB::table('orders_detail')->where('order_id',$item->order_id)->get();
+                            // dd($check);
+                            // $tamp = DB::table('products')->where('product_id',$check->product_id)->get();
+                            // dd($tamp);
+                            foreach($check as $chec){
+                                $tamp = DB::table('products')->where('product_id',$chec->product_id)->first();
+                                if($chec->note == 0){
+                                    echo "- Đã đủ số lượng <br>";
+                                }
+                                else{
+                                    echo "- Thiếu " .substr($chec->note,1,2)." ".$tamp->name."</br>";
+                                }
+                            }
                             ?>
                         </td>
                         <td><?php if($item->payment == 1){
@@ -105,7 +113,7 @@
                             echo "Thanh toán khi nhận hàng";
                             }
                         ?></td>
-                        <td class="center"><a href="{{route('admin.orders.delete',$item->order_id)}}" onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')"><i class="btn btn-warning fa fa-trash"> Xóa</i> </a></td>
+                        <td class="center"><a href="{{route('admin.orders.delete',$item->order_id)}}" onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')"><i class="btn btn-warning fa fa-trash"> Hủy</i> </a></td>
                     </tr>
                     @endforeach
                     
