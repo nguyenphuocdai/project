@@ -66,18 +66,28 @@ class OrdersController extends Controller
       $order_detail = DB::table('orders_detail')->where('order_id',$order_id)->get();
       
       foreach($order_detail as $prod){
-
         $t = DB::table('products')->where('product_id',$prod->product_id)->first()->quantity;
         $product = products::find($prod->product_id);
         if($product->quantity + $prod->note < 0){
-          return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Số lượng sản phẩm chưa đủ cần nhập thêm.']);
+          $prod->note = $product->quantity + $prod->note;
+          $product->quantity = 0;
+          DB::table('orders_detail')->where('product_id',$prod->product_id)->update(['note'=>$prod->note]);
+          $product->save();
+        }
+          elseif($product->quantity + $prod->note > 0){
+            // dd($product->quantity,$prod->note);
+            $product->quantity = $product->quantity + $prod->note;
+            DB::table('orders_detail')->where('product_id',$prod->product_id)->update(['note'=>0]);
+            $product->save();
         }else{
         $product->quantity = $product->quantity + $prod->note;
         DB::table('orders_detail')->where('order_id',$prod->order_id)->update(['note'=>0]);
         $product->save();
-        return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Đã đủ sản phẩm để giao hàng. Có thể duyệt đơn hàng !!!']);
         }
+
       }
+    return redirect()->back();    
+      // return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Đã đủ sản phẩm để giao hàng. Có thể duyệt đơn hàng !!!']);
       
     }
 }

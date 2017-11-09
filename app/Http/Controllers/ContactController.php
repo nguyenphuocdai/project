@@ -19,7 +19,9 @@ class ContactController extends Controller
         View::share('subtotal', $subtotal);
     }
     public function getLienHe()
-    {
+    {   
+         $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
          return view('pages.contact');
 
     }

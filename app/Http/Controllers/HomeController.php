@@ -60,7 +60,9 @@ class HomeController extends Controller
             }
     public function getcategories()
     {   
-        $pr = DB::table('products')->paginate(12);
+        $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
+        $pr = products::inRandomOrder()->paginate(16);
         return view('pages.allshop',compact('pr'));
     }
      public function getsearch(Request $req){
@@ -125,33 +127,41 @@ class HomeController extends Controller
     }
    
     public function cate1()
-    {
+    {   
+         $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
         $cate1 = DB::table('products')->whereBetween('price', [0,2000000 ])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate1',compact('cate1','pr_cate'));
     }
      public function cate2()
-    {
+    {    $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
         //sản phẩm giá 100-300
         $cate2 = DB::table('products')->whereBetween('price', [2000000,5000000 ])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate2',compact('cate2'));
     }
     public function cate3()
-    {
+    { $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
         $cate3 = DB::table('products')->whereBetween('price', [5000000,10000000 ])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate3',compact('cate3'));
     }
     public function cate4()
-    {
+    { $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
         $cate4 = DB::table('products')->whereBetween('price', [10000000,15000000 ])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate4',compact('cate4'));
     }
      public function cate5()
-    {
+    { $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
         $cate5 = DB::table('products')->whereBetween('price',[15000000,1500000000])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate5',compact('cate5'));
     }
     public function categoriesYield($category_id)
     {        //lấy các sản phẩm theo loại
+         $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
         $pr_cate = DB::table('products')->select('product_id','name','price','alias','category_id','quantity','discount','image')->where('category_id',$category_id)->paginate(6);
         return view('pages.categoriesYield',compact('pr_cate'));
     }  

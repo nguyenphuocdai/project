@@ -109,7 +109,7 @@
 				<ul>
 					@foreach(Cart::Content() as $cart)
 					<li>
-						<a href="{{ url('gio-hang') }}"><img src="{{ asset('resources/upload/product_image/'.$cart->options->img)}}" alt="" /></a>
+						<a href="{{ url('gio-hang') }}"><img src="{{ asset('resources/upload/'.$cart->options->img)}}" alt="" /></a>
 						<a href="{{ url('gio-hang') }}">{{ $cart->name }}</a>
 						<span>{{ $cart->qty  }} x {{ number_format($cart->price,0,",",".") }} đ</span>
 						<div class="clearfix"></div>

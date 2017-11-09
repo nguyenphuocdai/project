@@ -65,6 +65,7 @@ class AuthCusController extends Controller
         );
         if(Auth::guard("customers")->attempt($login))
         {
+
             return redirect('/');
         }
         else
@@ -75,6 +76,7 @@ class AuthCusController extends Controller
      public function getDangXuat()
     {
         Auth::guard('customers')->logout();
+        Cart::destroy();
         return redirect('/');
     }
     

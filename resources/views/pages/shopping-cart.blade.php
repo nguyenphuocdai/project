@@ -45,7 +45,7 @@
 					<td class="cart-title"><a href="#">{{ $item_content->name }}</a></td>
 					
 					<td class="cart-price">{{ Lang::locale() === "en" ? substr(($item_content->price)/23000,0,5) : number_format($item_content->price,0,",",".") }} {{ Lang::locale() === "en" ? '$':'VNĐ' }} </td>
-					<td class="quantity"><input style="width: 60px!important;border: 1px solid !important;" id="so-luong-{{ $item_content->rowId }}" class="span1 qty" type="number" min="1" size="1" value="{{$item_content->qty}}" name="quantity"/></td>
+					<td class="quantity"><input style="width: 80px!important;border: 1px solid !important;" id="so-luong-{{ $item_content->rowId }}" class="span1 qty" type="number" min="1" size="1" value="{{$item_content->qty}}" name="quantity"/></td>
 					<td>
 						<button onclick="capnhat('{{ $item_content->rowId }}')" type="button" class="cart-update update-button" id="{{$item_content->rowId}}">
 						<i class="fa fa-refresh" aria-hidden="true"></i>
@@ -98,8 +98,8 @@
 			success: function (response) {
 				if (response != 'Không đủ') {
 					gh = JSON.parse(response);
-					$("#thanh-tien-" + rowid).html(gh.thanhtien + ' <u>đ</u>');
-						$("#tongtien").html(gh.tongtien + ' <u>đ</u>');
+					$("#thanh-tien-" + rowid).html(gh.thanhtien + ' VNĐ');
+						$("#tongtien").html(gh.tongtien + ' VNĐ');
 				}
 			}
 		});

@@ -25,14 +25,14 @@
 			@foreach($news as $n)
 			<article class="post">
 				<figure class="post-img">
-					<a href="blog-single-post.html"><img src="{{ asset('resources/news/'.$n->image)}}" alt="" style="  width: 100%;
+					<a href="{{url('tin-tuc/chi-tiet/'.$n->news_id)}}"><img src="{{ asset('resources/news/'.$n->image)}}" alt="" style="  width: 100%;
 						height: 250px;"/>
 						<div class="hover-icon"></div>
 					</a>
 				</figure>
 				<section class="post-content">
 					<header class="meta">
-						<h2><a href="blog-single-post.html">{{$n->tittle}}</a></h2>
+						<h2><a href="{{url('tin-tuc/chi-tiet/'.$n->news_id)}}">{{$n->tittle}}</a></h2>
 						<span><i class="fa fa-user"></i><a href="#">Đăng bởi: <?php echo DB::table('users')->where('user_id',$n->user_id)->first()->username; ?></a></span>
 						<span><i class="fa fa-comment"></i>Thời gian:  <a href="#">{{ $n->created_at }}</a></span>
 					</header>

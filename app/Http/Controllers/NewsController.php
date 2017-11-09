@@ -20,7 +20,7 @@ class NewsController extends Controller
         View::share('subtotal', $subtotal);
     }
     public function getAdd()
-    {
+    {   
     	return view('admin.news.add');
     }
     public function postAdd(Request $r)
@@ -119,14 +119,19 @@ class NewsController extends Controller
         return redirect()->route('admin.news.list')->with(['flash_level'=>'success','flash_message'=>'Cập nhật bài viết thành công']);
     }
     public function getTinTuc()
-    {
+    {   
+         $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
         $news = DB::table('news')->orderBy('created_at','DESC')->paginate(3);
         return view('pages.news',compact('news'));
 
     }
     public function getTinTucChiTiet($news_id)
-    {
-        $news = DB::table('news')->paginate(4);
+    {   
+         $subtotal = Cart::subtotal(0,",",".");
+         View::share('subtotal', $subtotal);
+        $news = news::inRandomOrder()->limit(8)->get();
+        // $news = DB::table('news')->paginate(8);
         $detail = DB::table('news')->where('news_id',$news_id)->first();
         return view('pages.detailNews',compact('detail','news'));
     }

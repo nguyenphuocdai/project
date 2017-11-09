@@ -28,10 +28,9 @@
                         <th>Địa chỉ giao hàng</th>
                         <th>Trạng Thái</th>
                         <th>Ngày Đặt Hàng</th>
-                        <th>Chi Tiết Đơn Hàng</th>
                         <th>Ghi Chú</th>
                         <th>Thanh toán</th>
-                        <th>Hủy đơn hàng</th>
+                        <th>Công cụ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,48 +60,33 @@
                             <form method= "post" action="{{url('admin/orders/updateStatus/'.$item->order_id)}}">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <input type="checkbox" hidden="true" name="ckb"  class="qty" value="{{$item->order_id}}" />
-                                <?php 
+                                <?php
                                 $check=DB::table('orders_detail')->where('order_id',$item->order_id)->first();
                                 $tamp = DB::table('products')->where('product_id',$check->product_id)->first();
                                 if($check->note==0){
                                 echo "<button type='submit' class='btn btn-primary'>Duyệt</button>";
-                            }else{
+                                }else{
                                 echo "<p class='text-error'>Cần nhập hàng để giao cho khách</p>";
-                            }?>
+                                }?>
                             </form>
                         </td>
                         <td>
                             
                             {{$item->created_at->format('H:i d-m-Y ')}}
                         </td>
-                        <td class="center btn btn-success" style="margin-top: 10px;"><a href="{{route('detail',$item->order_id)}}" style="color: #ffffff !important;">Ấn để xem</a></td>
+                       {{--  <td class="center btn btn-success" style="margin-top: 10px;"></td> --}}
                         <td>
-                            <form method="post" action="{{ url('admin/orders/noteOrder/'.$item->order_id)}}">
-                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                <input type="checkbox" hidden="true" name="ckb"  class="qty" value="{{$item->order_id}}" />
-                                <?php 
-                                $check=DB::table('orders_detail')->where('order_id',$item->order_id)->first();
-                                $tamp = DB::table('products')->where('product_id',$check->product_id)->first();
-                                if($check->note!=0){
-                                    echo "
-                                <button type='submit' class='btn btn-primary'>Giao hàng còn nợ</button>
-                                ";}
-                                ?>
-                            </form>
-
+                            
                             <?php
                             $check=DB::table('orders_detail')->where('order_id',$item->order_id)->get();
-                            // dd($check);
-                            // $tamp = DB::table('products')->where('product_id',$check->product_id)->get();
-                            // dd($tamp);
                             foreach($check as $chec){
-                                $tamp = DB::table('products')->where('product_id',$chec->product_id)->first();
-                                if($chec->note == 0){
-                                    echo "- Đã đủ số lượng <br>";
-                                }
-                                else{
-                                    echo "- Thiếu " .substr($chec->note,1,2)." ".$tamp->name."</br>";
-                                }
+                            $tamp = DB::table('products')->where('product_id',$chec->product_id)->first();
+                            if($chec->note == 0){
+                            echo "- Đã đủ số lượng <br>";
+                            }
+                            else{
+                            echo "- Thiếu " .substr($chec->note,1,4)." ".$tamp->name."</br>";
+                            }
                             }
                             ?>
                         </td>
@@ -113,7 +97,15 @@
                             echo "Thanh toán khi nhận hàng";
                             }
                         ?></td>
-                        <td class="center"><a href="{{route('admin.orders.delete',$item->order_id)}}" onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')"><i class="btn btn-warning fa fa-trash"> Hủy</i> </a></td>
+                        <td class="center"><a href="{{route('admin.orders.delete',$item->order_id)}}" onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')"><i class="btn btn-warning fa fa-trash"> Hủy</i> </a><br>
+                            <a class="center btn btn-success" href="{{route('detail',$item->order_id)}}" style="color: #ffffff !important;margin-top: 5px">Ấn để xem</a>
+                            <br>
+                            <form method="post" action="{{ url('admin/orders/noteOrder/'.$item->order_id)}}" style="margin-top: 5px">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                <input type="checkbox" hidden="true" name="ckb"  class="qty" value="{{$item->order_id}}" />
+                                <button type="submit" class="btn btn-primary">Thêm sản phẩm còn thiếu</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     

@@ -156,8 +156,7 @@ class CheckOutController extends Controller
 
                         echo 
                         "<script>
-                            alert('Cảm ơn bạn đã đặt hàng chúng tôi! Vui lòng kiểm tra Email của bạn để biết thêm chi tiết đơn hàng !');
-                            window.location='".url('Ordersuccess')."';
+                            window.location='".url('Ordersuccess')."';                            
                         </script>";
                 
             }

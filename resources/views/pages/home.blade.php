@@ -40,7 +40,7 @@
 ================================================== -->
 <div class="container" >
 	<div class="one-third column">
-		<a href="{{ url('shop') }}" class="img-caption" >
+		<a href="javascript:void(0)" class="img-caption" >
 			<figure>
 				<img src="{{url('public/pages/images/nhabep1.jpg')}}" alt="" />
 				<figcaption>
@@ -51,7 +51,7 @@
 		</a>
 	</div>
 	<div class="one-third column">
-		<a href="{{ url('shop') }}" class="img-caption" >
+		<a href="javascript:void(0)" class="img-caption" >
 			<figure>
 				<img src="{{url('public/pages/images/phongngu.jpg')}}" alt="" />
 				<figcaption>
@@ -63,7 +63,7 @@
 		</a>
 	</div>
 	<div class="one-third column">
-		<a href="{{ url('shop') }}" class="img-caption" >
+		<a href="javascript:void(0)" class="img-caption" >
 			<figure>
 				<img src="{{url('public/pages/images/phongkhach.jpg')}}" alt="" />
 				<figcaption>
@@ -93,6 +93,7 @@
 					@foreach($pr_new as $new)
 					<li>
 						<figure class="product">
+							<div class="product-discount">Mới</div>
 							<div class="mediaholder">
 								<a href="{{url('chi-tiet-san-pham',[$new->product_id,$new->alias])}}">
 									<img alt="" src="{{ asset('resources/upload/'.$new->image)}}" style="width: 220px;height: 220px" />

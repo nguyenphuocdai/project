@@ -41,7 +41,7 @@
 		<section id="not-found">
 			<h2><i class="fa fa-check-square"></i></h2>
 			<p>Cám ơn bạn đã quan tâm.</p>
-
+<p>Vui lòng kiểm tra lại Email để biết thông tin chi tiết đơn hàng.</p>
 		</section>
 	</div>
 
