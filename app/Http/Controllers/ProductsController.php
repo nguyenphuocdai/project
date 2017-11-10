@@ -221,7 +221,7 @@ class ProductsController extends Controller
 
         $product = products::find($product_id);
         $product->price=  Request::input('txtPrice');
-        $product->quantity= Request::input('txtQuantity');
+        $product->quantity=$product->quantity + Request::input('txtQuantity');
         $product->save();       
         return redirect()->route('admin.products.list')->with(['flash_level'=>'success','flash_message'=>'Nhập hàng thành công']);
     } 

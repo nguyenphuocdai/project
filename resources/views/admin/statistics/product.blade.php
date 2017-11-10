@@ -55,8 +55,6 @@
                                 else 
                                 echo $item->quantity;
                                  ?>
-                                     {{-- <br><a href="{{ route('admin.import.product',$item->product_id) }}" style="color: red !important">Nhập hàng</a> --}}
-
                                  </td>
                                 <td width="80px" >
                                 <img width="80px" height="80px" class="" alt="{{$item->name}}" src="resources/upload/{{$item->image}}"/>

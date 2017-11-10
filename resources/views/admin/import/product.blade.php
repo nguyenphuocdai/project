@@ -45,8 +45,12 @@
                                 <input class="form-control" name="txtPrice" placeholder="Nhập giá" value="{{old('txtPrice',isset($product)?$product['price'] : null)}}" />
                             </div>
                             <div class="form-group">
-                                <label>Số lượng</label>
-                                <input class="form-control" name="txtQuantity" placeholder="Nhập số lượng" value="{{old('txtQuantity',isset($product)?$product['quantity'] : null)}}" />
+                                <label>Số lượng hiện tại</label>
+                                <input class="form-control" name="" placeholder="Nhập số lượng" value="{{old('txtQuantity',isset($product)?$product['quantity'] : null)}}"  disabled="disabled" />
+                            </div>
+                            <div class="form-group">
+                                <label>Số lượng nhập thêm</label>
+                                <input class="form-control" name="txtQuantity" placeholder="Nhập số lượng" value="" />
                             </div>
                             
                             <button type="submit" class="btn btn-primary">Cập Nhật</button>

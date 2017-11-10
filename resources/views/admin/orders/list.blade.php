@@ -74,7 +74,7 @@
                             
                             {{$item->created_at->format('H:i d-m-Y ')}}
                         </td>
-                       {{--  <td class="center btn btn-success" style="margin-top: 10px;"></td> --}}
+                        {{--  <td class="center btn btn-success" style="margin-top: 10px;"></td> --}}
                         <td>
                             
                             <?php
@@ -97,13 +97,14 @@
                             echo "Thanh toán khi nhận hàng";
                             }
                         ?></td>
-                        <td class="center"><a href="{{route('admin.orders.delete',$item->order_id)}}" onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')"><i class="btn btn-warning fa fa-trash"> Hủy</i> </a><br>
-                            <a class="center btn btn-success" href="{{route('detail',$item->order_id)}}" style="color: #ffffff !important;margin-top: 5px">Ấn để xem</a>
+                        <td class="center ">
+                            <a class="btn btn-warning" href="{{route('admin.orders.delete',$item->order_id)}}" onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')"><span class="glyphicon glyphicon-trash"></span> Hủy đơn hàng </a><br>
+                            <a class="btn btn-info" href="{{route('detail',$item->order_id)}}" style="color: #ffffff !important;margin-top: 5px;width: 131px;"><span class="glyphicon glyphicon-hand-right"></span> Xem chi tiết</a>
                             <br>
-                            <form method="post" action="{{ url('admin/orders/noteOrder/'.$item->order_id)}}" style="margin-top: 5px">
+                            <form method="post" action="{{ url('admin/orders/noteOrder/'.$item->order_id)}}" style="margin-top: 5px;">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <input type="checkbox" hidden="true" name="ckb"  class="qty" value="{{$item->order_id}}" />
-                                <button type="submit" class="btn btn-primary">Thêm sản phẩm còn thiếu</button>
+                                <button type="submit" class="btn btn-primary" style="width: 131px;"> <span class="glyphicon glyphicon-shopping-cart"></span> Nhập hàng</button>
                             </form>
                         </td>
                     </tr>

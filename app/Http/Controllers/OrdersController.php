@@ -38,8 +38,8 @@ class OrdersController extends Controller
    //cập nhật trạng thái đơn hàng
    public function postUpdateStatus($order)
    {    
-       
         DB::table('orders')->where('order_id',$order)->update(['status'=>1]);
+
         DB::table('orders')->where('order_id',$order)->update(['user_id'=>Auth::user()->user_id]);
         $now=  new DateTime(date('Y/m/d H:i:s'));
               DB::table('orders')->where('order_id',$order)->update(['datesigned'=>$now]);
@@ -68,26 +68,21 @@ class OrdersController extends Controller
       foreach($order_detail as $prod){
         $t = DB::table('products')->where('product_id',$prod->product_id)->first()->quantity;
         $product = products::find($prod->product_id);
-        if($product->quantity + $prod->note < 0){
-          $prod->note = $product->quantity + $prod->note;
+        if($t + $prod->note <= 0){
+          $prod->note = $t + $prod->note;
           $product->quantity = 0;
-          DB::table('orders_detail')->where('product_id',$prod->product_id)->update(['note'=>$prod->note]);
+          DB::table('orders_detail')->where([['product_id',$prod->product_id],['order_id',$prod->order_id]])->update(['note'=>$prod->note]);
           $product->save();
         }
-          elseif($product->quantity + $prod->note > 0){
-            // dd($product->quantity,$prod->note);
-            $product->quantity = $product->quantity + $prod->note;
-            DB::table('orders_detail')->where('product_id',$prod->product_id)->update(['note'=>0]);
+          else{
+            $product = products::find($prod->product_id);
+            // dd("else");
+            $result = $product->quantity + $prod->note;
+            $product->quantity = $result;
+            DB::table('orders_detail')->where([['product_id',$prod->product_id],['order_id',$prod->order_id]])->update(['note'=>$prod->note]);
             $product->save();
-        }else{
-        $product->quantity = $product->quantity + $prod->note;
-        DB::table('orders_detail')->where('order_id',$prod->order_id)->update(['note'=>0]);
-        $product->save();
         }
-
       }
     return redirect()->back();    
-      // return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Đã đủ sản phẩm để giao hàng. Có thể duyệt đơn hàng !!!']);
-      
     }
 }
