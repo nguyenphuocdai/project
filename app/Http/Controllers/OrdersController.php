@@ -60,10 +60,10 @@ class OrdersController extends Controller
      foreach($order_detail as $prod){
       $t = DB::table('products')->where('product_id',$prod->product_id)->first()->quantity;
       $product = products::find($prod->product_id);
-      if($product->quantity == 0){
-
-      }else{
-      $product->quantity = $product->quantity + $prod->quantity;
+      if($product->quantity == 0 && $prod->quantity == $prod->note*(-1)){
+      }
+      else{
+      $product->quantity = $prod->quantity + $prod->note;
       }
       $product->save();
      }
@@ -86,7 +86,6 @@ class OrdersController extends Controller
         }
           else{
             $product = products::find($prod->product_id);
-            // dd("else");
             $result = $product->quantity + $prod->note;
             $product->quantity = $result;
             DB::table('orders_detail')->where([['product_id',$prod->product_id],['order_id',$prod->order_id]])->update(['note'=>$prod->note]);
