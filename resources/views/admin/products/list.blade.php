@@ -48,7 +48,7 @@
                             @endif
                         </td>
                         <td>{{$item->name}}</td>
-                        <td>{{number_format($item->price,'0',',','.')}} VND</td>
+                        <td>{{number_format($item->price,'0',',','.')}} đ</td>
                         <td width="15px"><?php if($item->quantity==0)
                             echo "Hết hàng"."<br>"."<a class='import' href='admin/products/nhap-hang/$item->product_id'>Cần nhập hàng</a>";
                             else

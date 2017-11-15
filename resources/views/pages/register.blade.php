@@ -38,19 +38,19 @@
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 						<p class="form-row form-row-wide">
 							<label for="txtName">Họ tên:<span class="required">*</span></label>
-							<input type="text" class="input-text" name="txtName" id="txtName" value="{{old('txtName')}}" />
+							<input type="text" class="input-text" name="txtName" id="txtName" value="{{old('txtName')}}" required/>
 						</p>
 						<p class="form-row form-row-wide">
 							<label>Email: <span class="required">*</span></label>
-							<input name="txtEmail" type="email" id="email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" value="{{old('txtEmail')}}"/>
+							<input name="txtEmail" type="email" id="email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" value="{{old('txtEmail')}}" required/>
 						</p>
 						<p class="form-row form-row-wide">
 							<label for="txtUsername">Tài khoản: <span class="required">*</span></label>
-							<input type="text" class="input-text" name="txtUsername" id="txtUsername" value="{{old('txtUsername')}}" />
+							<input type="text" class="input-text" name="txtUsername" id="txtUsername" value="{{old('txtUsername')}}" required/>
 						</p>
 						<p class="form-row form-row-wide">
 							<label for="txtPassword">Mật khẩu: <span class="required">*</span></label>
-							<input type="password" class="input-text" name="txtPassword" id="reg_password" />
+							<input type="password" class="input-text" name="txtPassword" id="reg_password" required/>
 						</p>
 						<p class="form-row form-row-wide">
 							<label >Nhập lại mật khẩu: <span class="required">*</span></label>
@@ -60,11 +60,11 @@
 						
 						<p class="form-row form-row-wide">
 							<label for="txtAddress">Địa chỉ:<span class="required">*</span></label>
-							<input type="text" class="input-text" name="txtAddress" id="txtAddress" value="" />
+							<input type="text" class="input-text" name="txtAddress" id="txtAddress" value="" required/>
 						</p>
 						<p class="form-row form-row-wide">
 							<label for="txtphone">Số điện thoại:<span class="required">*</span></label>
-							<input type="text" class="input-text" name="txtPhone" id="txtPhone" value="" maxlength="12" />
+							<input type="text" class="input-text" name="txtPhone" id="txtPhone" value="" maxlength="12" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" required/>
 						</p>
 						{{-- <p class="form-row">
 							<label for="rememberme" class="rememberme">

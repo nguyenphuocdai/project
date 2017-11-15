@@ -70,7 +70,7 @@ class AuthCusController extends Controller
         }
         else
         {
-            return redirect()->back()->with(['flash_level'=>'warning','flash_message'=>'Đăng nhập thất bại, vui lòng kiểm tra lại ! ']);;
+            return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Mật khẩu hoặc tài khoản không đúng, vui lòng kiểm tra lại!']);;
         }
     }
      public function getDangXuat()

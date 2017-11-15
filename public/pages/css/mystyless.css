@@ -9,9 +9,9 @@
 	word-break:  break-all;
 }
 .success-custom{
-	background-color: #dff0d8 !important;
-    border-color: #d0e9c6 !important;
-    color: #3c763d !important;
+	background-color: #f2dede !important;
+    border-color: #ebccd1 !important;
+    color: #a94442 !important;
     text-align: center !important;
     margin-bottom: 20px !important;
 }

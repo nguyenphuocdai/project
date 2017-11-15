@@ -56,20 +56,24 @@ class OrdersController extends Controller
    public function getDelete($order_id)
    {
      $order = orders::find($order_id);
-     $order_detail = DB::table('orders_detail')->where('order_id',$order_id)->get();
-     foreach($order_detail as $prod){
-      $t = DB::table('products')->where('product_id',$prod->product_id)->first()->quantity;
-      $product = products::find($prod->product_id);
-      if($product->quantity == 0 && $prod->quantity == $prod->note*(-1)){
-      }
-      else{
-      $product->quantity = $prod->quantity + $prod->note;
-      }
-      $product->save();
+     if($order->payment == 1){
+      return redirect()->route('admin.orders.list')->with(['flash_level'=>'danger','flash_message'=>'Đơn hàng đã thanh toán không được hủy.']);
      }
-     
-     $order->delete();
+     else {
+     $order_detail = DB::table('orders_detail')->where('order_id',$order_id)->get();
+       foreach($order_detail as $prod){
+        $t = DB::table('products')->where('product_id',$prod->product_id)->first()->quantity;
+        $product = products::find($prod->product_id);
+        if($product->quantity == 0 && $prod->quantity == $prod->note*(-1)){
+        }
+        else{
+        $product->quantity = $prod->quantity + $prod->note;
+        }
+        $product->save();
+       }
+       $order->delete();
      return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Hủy đơn hàng thành công.']);
+     }
    }
    public function noteOrder($order_id){
       $order = orders::find($order_id);

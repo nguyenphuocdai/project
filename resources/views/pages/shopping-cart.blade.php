@@ -24,7 +24,7 @@
 		@endif
 	</div>
 </div>
-<div class="container cart">
+<div class="container cart" style="width: 100%;">
 	
 	<div class="sixteen columns">
 		<!-- Cart -->
@@ -35,12 +35,12 @@
 		</p>
 		<table class="table table-responsive">
 			<tr>
-				<th>{{ Lang::locale() === "en" ? 'Image' : 'HÌNH ẢNH' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'Item Name' : 'TÊN SẢN PHẨM' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'Price' : 'GIÁ BÁN' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'Quantity' : 'SỐ LƯỢNG' }}</th>
-				<th style="text-align: center">{{ Lang::locale() === "en" ? 'Tool' : 'CÔNG CỤ' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'Total' : 'TỔNG TIỀN' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'IMAGE' : 'HÌNH ẢNH' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'ITEM NAME' : 'TÊN SẢN PHẨM' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'PRICE' : 'GIÁ BÁN' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'QUANTITY' : 'SỐ LƯỢNG' }}</th>
+				<th style="text-align: center">{{ Lang::locale() === "en" ? 'TOOL' : 'CÔNG CỤ' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'TOTAL' : 'TỔNG TIỀN' }}</th>
 			</tr>
 			<form method="post" action="" style="margin-top: 20px;">
 				<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -79,7 +79,7 @@
 		<h3 class="headline">Giỏ hàng thanh toán</h3><span class="line"></span><div class="clearfix"></div>
 		<table class="cart-table margin-top-5">
 			<tr>
-				<th>Tổng cộng đơn hàng</th>
+				<th>TỔNG TIỀN ĐƠN HÀNG</th>
 				<td><strong id="tongtien">{{ Lang::locale() === "en" ? $totalEnglishSub : $subtotal }} {{ Lang::locale() === "en" ? '$':'VNĐ' }}</strong></td>
 			</tr>
 		</table>

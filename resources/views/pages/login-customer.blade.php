@@ -20,8 +20,11 @@
 	@include('admin.danger.danger')
 	<div class="six columns centered">
 		<div class="col-lg-12 six columns centered">
-			@if(Session::has('flash_message'))
-			<div class="success-custom">
+			{{-- <div class="alert alert-{{Session::get('flash_level')}}" >
+                            {{Session::get('flash_message')}}
+            </div> --}}
+			@if(Session::has('flash_level'))
+			<div class="alert alert-{{Session::get('flash_level')}} success-custom">
 				{{Session::get('flash_message')}}
 			</div>
 			@endif
@@ -38,11 +41,11 @@
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					<p class="form-row form-row-wide">
 						<label for="username">Tài khoản<span class="required">*</span></label>
-						<input type="text" class="input-text" name="txtUsername" id="username" value="{{old('txtUsername')}}" />
+						<input type="text" class="input-text" name="txtUsername" id="username" value="{{old('txtUsername')}}" required />
 					</p>
 					<p class="form-row form-row-wide">
 						<label for="password">Mật khẩu: <span class="required">*</span></label>
-						<input class="input-text" type="password" name="txtPassword" id="password" />
+						<input class="input-text" type="password" name="txtPassword" id="password" required/>
 					</p>
 					<p class="form-row">
 						<input type="submit" class="button" value="Đăng nhập" />
