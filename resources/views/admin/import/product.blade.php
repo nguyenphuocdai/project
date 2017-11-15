@@ -41,20 +41,25 @@
                                  <input class="form-control" value="{{ $prod->name }}" disabled="disabled" />
                             </div>
                             <div class="form-group">
-                                <label>Giá bán ra</label>
-                                <input class="form-control" name="txtPrice" placeholder="Nhập giá" value="{{old('txtPrice',isset($product)?$product['price'] : null)}}" />
+                                <label>Giá hiện tại</label>
+                                <input class="form-control" placeholder="" value="{{old('txtPrice',isset($product)?$product['price'] : null)}}" disabled="disabled" />
+                            </div>
+                            <div class="form-group">
+                                <label>Giá bán</label>
+                                <input class="form-control" name="txtPrice" placeholder="<?php if($prod->price == null){echo "Hàng mới về chưa nhập giá";}?>" value="{{old('txtPrice',isset($product)?$product['price'] : null)}}" />
                             </div>
                             <div class="form-group">
                                 <label>Số lượng hiện tại</label>
-                                <input class="form-control" name="" placeholder="Nhập số lượng" value="{{old('txtQuantity',isset($product)?$product['quantity'] : null)}}"  disabled="disabled" />
+                                <input class="form-control" name="" placeholder="<?php if($prod->quantity == null){echo "Hàng mới về chưa nhập số lượng";}?>" value="{{old('txtQuantity',isset($product)?$product['quantity'] : null)}}"  disabled="disabled" />
                             </div>
                             <div class="form-group">
                                 <label>Số lượng nhập thêm</label>
                                 <input class="form-control" name="txtQuantity" placeholder="Nhập số lượng" value="" />
                             </div>
                             
-                            <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                            <button type="submit" class="btn btn-primary">Nhập hàng</button>
                             <button type="reset" class="btn btn-warning">Làm Lại</button>
+                            <a href="{{URL::route('admin.products.list')}}" class="btn btn-danger" style="float: right">Quay lại</a>
                              </div>
                             </div>
                      

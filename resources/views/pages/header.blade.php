@@ -7,14 +7,6 @@
 				<li><i class="fa fa-envelope"></i>hoanghoang360@gmail.com</li>
 				<li>
 					<div class="top-bar-dropdown" >
-						{{-- <span>Tiếng Việt</span>
-						<ul class="options">
-							<li><div class="arrow"></div></li>
-							<li><a href="" id="languageSwitcher" value="en">English</a></li>
-							<li><a href="#">Polish</a></li>
-							<li><a href="#">Deutsch</a></li>
-						</ul> --}}
-						
 					</div>
 				</li>
 			</ul>

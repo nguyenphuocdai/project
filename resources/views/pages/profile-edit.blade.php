@@ -10,9 +10,9 @@
           <div class="panel-body">
             <label>Họ & Tên: </label><input type='text' class='form-control'  value="{{ $customer->name }}" name="name" >
             <label>Tài khoản :</label><input type='text' class='form-control'  value="{{ $customer->username }}" name="username">
-            <label>Địa chỉ </label><input type='text' class='form-control' name="address"  value="{{ $customer->address }}" >
+            <label>Địa chỉ </label><input type='text' class='form-control' name="address"  value="{{ $customer->address }}" required>
             <label>Email :</label><input type='text' class='form-control' name="email"  value="{{ $customer->email }}" >
-            <label>Số điện thoại:</label><input type='text' class='form-control' name="phone_number"  value="{{ $customer->phone_number }}">
+            <label>Số điện thoại:</label><input type='text' class='form-control' name="phone_number"  value="{{ $customer->phone_number }}" required>
             <div align="right" style="margin-top: 25px">
               <button type="submit" class="btn btn-warning"><span class='glyphicon glyphicon-tasks'></span>&nbsp;&nbsp;HOÀN TẤT</button>
             </div>

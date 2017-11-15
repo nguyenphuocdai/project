@@ -25,20 +25,27 @@
 	</div>
 </div>
 <div class="container cart">
+	
 	<div class="sixteen columns">
 		<!-- Cart -->
+		<p style="text-align: center;color: red;width: 100%">
+			<?php if($content->count() == 0 ){
+							echo "Giỏ hàng của bạn đang trống, Tiếp tục mua sắm?!";
+			};?>
+		</p>
 		<table class="table table-responsive">
 			<tr>
-				<th>{{ Lang::locale() === "en" ? 'Image' : 'Hình ảnh' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'Item Name' : 'Tên sản phẩm' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'Price' : 'Giá bán' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'Quantity' : 'Số lượng' }}</th>
-				<th style="text-align: center">{{ Lang::locale() === "en" ? 'Tool' : 'Công cụ' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'Total' : 'Tổng tiền' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'Image' : 'HÌNH ẢNH' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'Item Name' : 'TÊN SẢN PHẨM' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'Price' : 'GIÁ BÁN' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'Quantity' : 'SỐ LƯỢNG' }}</th>
+				<th style="text-align: center">{{ Lang::locale() === "en" ? 'Tool' : 'CÔNG CỤ' }}</th>
+				<th>{{ Lang::locale() === "en" ? 'Total' : 'TỔNG TIỀN' }}</th>
 			</tr>
-			<form method="post" action="">
+			<form method="post" action="" style="margin-top: 20px;">
 				<input type="hidden" name="_token" value="{{csrf_token()}}">
 				<!-- Item #1 -->
+				
 				@foreach($content as $item_content)
 				<tr>
 					<td><img class="image-cart" src="{{ asset('resources/upload/'.$item_content->options->img)}}" width="50" height="50" alt=""/></td>

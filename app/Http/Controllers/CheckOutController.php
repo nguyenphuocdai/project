@@ -63,19 +63,28 @@ class CheckOutController extends Controller
         $content = Cart::content();
         $sub = Cart::subtotal();
         $subtotal = Cart::subtotal(0,",",".");
-       
+        if($content->count() == 0){
+            echo 
+                    "<script>
+                        alert('Giỏ hàng đang trống, không thể thanh toán !!!');
+                        window.location='".url('gio-hang')."';
+                    </script>";
+        }
+        else{
         return view('pages.checkout',compact('content','subtotal'));
+        }
     }
      public function postThanhToan(Request $r)
     {   
         $content= Cart::content();
+        $checkUser = Auth::guard('customers')->user();
         if(Auth::guard('customers')->check())
         {
             if(count(Cart::content())<1)
             {
                  echo 
                         "<script>
-                            alert('Giỏ hàng rỗng !');
+                            alert('Kiểm tra lại giỏ hàng, Giỏ hàng rỗng!');
                             window.location='".url('dat-hang')."';
                         </script>";
             }
@@ -83,11 +92,16 @@ class CheckOutController extends Controller
             {
 
                 $cus = Auth::guard('customers')->user();
+
                 $order = new orders();
                 $order->customer_id= $cus->customer_id;
                 $order->address_receive=Request::input('txtAddresreceive');
                 $order->phone_social=Request::input('phone_social');
                 $order->save();
+                $customerSave = customers::find($cus->customer_id);
+                $customerSave->address=Request::input('txtAddresreceive');
+                $customerSave->phone_number=Request::input('phone_social');
+                $customerSave->save();
                 $content= Cart::content();
                 $total = Cart::total(0,",",".");
                 

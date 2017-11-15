@@ -29,6 +29,7 @@
                             
                             <button type="submit" class="btn btn-primary">Cập Nhật</button>
                             <button type="reset" class="btn btn-warning">Làm Lại</button>
+                            <a href="{{URL::route('admin.categories.list')}}" class="btn btn-danger" style="float: right">Quay lại</a>
                         <form>
                     </div>
                 </div>

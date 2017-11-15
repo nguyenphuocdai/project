@@ -19,7 +19,7 @@
 							<img alt="" src="{{ asset('resources/upload/product_image/'.$coverImage->image)}}" style="width: 220px;height:220px"/>
 						</div>
 					</a>
-					<a href="{{url('mua-hang',[$allpr->product_id,$allpr->alias])}}" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+					<a href="{{url('mua-hang',[$allpr->product_id,$allpr->alias])}}" class="product-button"><i class="fa fa-shopping-cart" style="color: #ffffff !important"></i>Thêm vào giỏ hàng</a>
 				</div>
 
 				<a href="{{url('chi-tiet-san-pham',[$allpr->product_id,$allpr->alias])}}">

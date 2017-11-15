@@ -36,8 +36,20 @@
                             <tr class="odd gradeX">
                                <td><?php echo $i++;?></td>
                                 <td>{{$item->name}}</td>
-                                 <td>{{$item->address}}</td>
-                                  <td>{{$item->phone_number}}</td>
+                                 <td><?php 
+                                 if($item->address == null){
+                                    echo "Khách hàng chưa cập nhật địa chỉ.";}
+                                 else{
+                                    echo $item->address;
+                                 }?>
+                                     
+                                 </td>
+                                  <td><?php 
+                                 if($item->phone_number == null){
+                                    echo "Khách hàng chưa cập nhật số điện thoại.";}
+                                 else{
+                                    echo $item->phone_number;
+                                 }?></td>
                             </tr>
                             @endforeach
                         </tbody>

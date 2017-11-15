@@ -54,7 +54,6 @@
                             else
                             echo $item->quantity;
                             ?>
-                            {{-- <br><a href="{{ route('admin.import.product',$item->product_id) }}" style="color: red !important">Nhập hàng</a> --}}
                         </td>
                         <td width="80px" >
                             <img width="80px" height="80px" class="" alt="{{$item->name}}" src="resources/upload/{{$item->image}}"/>
@@ -62,24 +61,31 @@
                         <td>
                             <?php
                             $user_up = DB::table('users')->where('user_id',$item->user_id)->first();
+                            if($user_up->level == "1"){
+                            echo "Quản lý";
+                            }
+                            else{
+                            echo "Nhân viên";
+                            }
                             ?>
-                            @if(!empty($user_up->username))
-                            {{$user_up->username}}
-                            @endif
+                            
                         </td>
                     </td>
-                    <td><i class="fa fa-trash-o  fa-fw"></i><a href="{{ URL::route('admin.products.delete',$item['product_id']) }} " onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')" style="color:red !important"> Xóa</a><br>
-                    <i class="fa fa-pencil fa-fw"></i> <a href="{{ URL::route('admin.products.edit',$item->product_id)}}" style="color:blue !important">Cập nhật</a>
-                    <br>
-                    <i class="fa fa-database" aria-hidden="true"></i> <a class="" href="{{ URL::route('admin.import.product',$item->product_id)}}" style="color:orange !important">Nhập hàng</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    
-</div>
-<!-- /.row -->
+                    <td>
+                        <i class="fa fa-database" aria-hidden="true"></i> <a class="" href="{{ URL::route('admin.import.product',$item->product_id)}}" style="color:orange !important">Nhập hàng</a>
+                        <br>
+                        <i class="fa fa-pencil fa-fw"></i> <a href="{{ URL::route('admin.products.edit',$item->product_id)}}" style="color:blue !important">Cập nhật</a>
+                        <br>
+                        <i class="fa fa-trash-o  fa-fw"></i><a href="{{ URL::route('admin.products.delete',$item['product_id']) }} " onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')" style="color:red !important"> Xóa</a>
+                        
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        
+    </div>
+    <!-- /.row -->
 </div>
 </div>
 @endsection

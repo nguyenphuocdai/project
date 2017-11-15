@@ -41,7 +41,8 @@
 		<section id="not-found">
 			<h2><i class="fa fa-check-square"></i></h2>
 			<p>Cám ơn bạn đã quan tâm.</p>
-<p>Vui lòng kiểm tra lại Email để biết thông tin chi tiết đơn hàng.</p>
+			<p>Vui lòng kiểm tra lại Email để biết thông tin chi tiết đơn hàng.</p>
+			<a href="{{ url('shop') }}" class="button color cart-btns proceed" style="float: right; margin-top: 40px;">tiếp tục mua sắm</a>
 		</section>
 	</div>
 

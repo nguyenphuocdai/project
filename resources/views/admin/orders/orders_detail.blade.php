@@ -24,7 +24,6 @@
                             <tr align="center">
                                 
                                 <th>STT</th>
-                                
                                 <th>Tên sản phẩm</th>
                                 <th>Số Lượng</th>
                                 <th>Đơn Giá</th>
@@ -70,7 +69,9 @@
                     @endforeach
                     <?php  echo number_format($tong,0,",",".")." Đồng";?>
                     </h3>
+                    <a href="{{URL::route('admin.orders.list')}}" class="btn btn-danger" style="float: right">Quay lại</a>
                   </div>
+
                     
                 </div>
                 <!-- /.row -->

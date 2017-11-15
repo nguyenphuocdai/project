@@ -30,18 +30,10 @@
                                 <i class="fa fa-times-circle" style="color: red"></i> <label>Giá bán</label>
                                 <input class="form-control" name="txtPrice" value="{{old('txtPrice')}}" placeholder="Nhập giá" />
                             </div>
-                            {{-- <div class="form-group">
-                                <i class="fa fa-times-circle" style="color: red"></i> <label>Số Lượng</label>
-                                <input class="form-control" name="txtQuantity" value="{{old('txtQuantity')}}" placeholder="Nhập số lượng" />
-                            </div> --}}
                             <div class="form-group">
                                 <i class="fa fa-times-circle" style="color: red"></i> <label>Xuất Xứ</label>
                                 <input class="form-control" name="txtOrigin" value="{{old('txtOrigin')}}" placeholder="Nhập xuất xứ" />
                             </div>
-                            <!--<div class="form-group">
-                                <label>Giảm Giá (%)</label>
-                                <input class="form-control" name="txtDiscount" value="{{old('txtDiscount')}}" placeholder="Nhập giảm giá"/>
-                            </div>-->
                             <div class="form-group">
                                 <i class="fa fa-times-circle" style="color: red"></i> <label>Hình Ảnh</label>
                                 <input  type="file" name="txtImage" value="{{old('txtImage')}}" />
@@ -67,6 +59,7 @@
                             
                             <button type="submit" class="btn btn-primary">Thêm Mới</button>
                             <button type="reset" class="btn btn-warning">Làm Lại</button>
+                            <a href="{{URL::route('admin.products.list')}}" class="btn btn-danger" style="float: right">Quay lại</a>
                         
                     </div>
 

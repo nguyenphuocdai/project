@@ -42,6 +42,7 @@
 			<h2><i class="fa fa-check-square"></i></h2>
 			<p>Cám ơn bạn đã quan tâm.</p>
 			<p>Trizzy-Shop sẽ giao hàng đến bạn sớm nhất có thể.</p>
+			<a href="{{ url('shop') }}" class="button color cart-btns proceed" style="float: right; margin-top: 40px;">tiếp tục mua sắm</a>
 		</section>
 	</div>
 

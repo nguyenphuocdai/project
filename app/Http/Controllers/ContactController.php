@@ -49,7 +49,9 @@ class ContactController extends Controller
     }
     public function getGioiThieu()
     {
-        return view('pages.about');
+        $content = Cart::content();
+        $subtotal = Cart::subtotal(0,",",".");
+        return view('pages.about',compact(['content','subtotal']));
     }
     public function getLienheSucess(){
         return view('pages.contact-sucess');

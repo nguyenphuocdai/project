@@ -32,13 +32,22 @@ class PaymentController extends Controller
         View::share('subtotal', $subtotal);
         $total = Cart::subtotal(0);
         $convertTotal = str_replace(',', '', $total);
+
+        $checkUser = Auth::guard('customers')->user();
         if(Auth::guard('customers')->check())
         {
+            if($checkUser->address == null || $checkUser->phone_number == null){
+                 echo 
+                        "<script>
+                            alert('Tài khoản này được đăng nhập bằng mạng xã hội, vui lòng cập nhật địa chỉ và số điện thoại. Quay lại thanh toán sau khi cập nhật hoàn tất.');
+                            window.location='".url('profile')."';
+                        </script>";
+            }
             if(count(Cart::content())<1)
             {
                  echo 
                         "<script>
-                            alert('Giỏ hàng rỗng !');
+                            alert('Kiểm tra lại giỏ hàng, Giỏ hàng rỗng!.');
                             window.location='".url('dat-hang')."';
                         </script>";
             }else{
@@ -64,6 +73,7 @@ class PaymentController extends Controller
     		'cvv_no' => 'required',
     	]);
     	$input = $request->all();
+
     	if($validator->passes()){
     		
     		$input = array_except($input,array('_token')); 

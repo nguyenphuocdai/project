@@ -19,7 +19,7 @@ class ProductsController extends Controller
 {
     public function getList()
     {   
-        $data = products::select('product_id','name','price','quantity','created_at','image','category_id','user_id')->orderBy('product_id','DESC')->get();
+        $data = products::select('product_id','name','price','quantity','created_at','image','category_id','user_id')->orderBy('quantity','ASC')->get();
         return view('admin.products.list',compact('data'));
     }
     public function getAdd(){

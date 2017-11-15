@@ -24,14 +24,12 @@
                             <tr align="center">
                                 
                                 <th>STT</th>
-                                
-                                <th>Tên sản phẩm</th>
                                 <th>Loại sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Hình ảnh</th>
                                 <th>Giá</th>
                                 <th>Số lượng</th>
-                                <th>Hình ảnh</th>
                                 
-                                <th>Cập nhật</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,25 +40,26 @@
                                 <td width="10px"><?php echo $i++ ?>
                                 </td>
 
-                                <td>{{$item->name}}</td>
+                                
                                 <td>
                         <?php $cate = DB::table('categories')->where('category_id',$item["category_id"])->first(); ?>
                                     @if(!empty($cate->name))
                                         {!!$cate->name!!}
                                     @endif
                                 </td>
-                                <td>{{number_format($item->price,'0',',','.')}} VND</td>
+                                <td>{{$item->name}}</td>
+                                <td width="80px" >
+                                <img width="80px" height="80px" class="" alt="{{$item->name}}" src="resources/upload/{{$item->image}}"/>
+                                </td>
+                                <td>{{number_format($item->price,'0',',','.')}} VNĐ</td>
+                                
+                                
                                 <td width="15px"><?php if($item->quantity==0)
                                 echo "Hết hàng"."<br>"."<a class='import' href='admin/products/nhap-hang/$item->product_id'>Cần nhập hàng</a>";
                                 else 
                                 echo $item->quantity;
                                  ?>
                                  </td>
-                                <td width="80px" >
-                                <img width="80px" height="80px" class="" alt="{{$item->name}}" src="resources/upload/{{$item->image}}"/>
-                                </td>
-                                
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{ url('admin/products/nhap-hang',$item->product_id)}}" style="color:blue !important">Nhập hàng</a></td>
                             </tr>
                             @endforeach
                         </tbody>
