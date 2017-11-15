@@ -50,12 +50,25 @@
 					<span style="text-align: center;color: olivedrab;margin-top: 20px;">{{ $display_view->view }}</span>
 				</div>
 				<h2>{{$pr_detail->name}}</h2>
-				<span class="product-price-discount"><i>{{number_format($pr_detail->price,0,",",".") }}</i></span>
-				
+				<span class="product-price-discount" ><i style="margin-top: 5px;font-size: 12px">
+					<?php if($pr_detail->quantity == 0){
+						echo "Trạng thái: Sản phẩm hết hàng.";
+					}
+					elseif ($pr_detail->price == 0){
+						echo "Trạng thái: Sản phẩm vừa nhập về chưa định giá.";
+					}
+					else{
+					echo  "<h4>Giá bán: ".number_format($pr_detail->price,0,",",".")." đ</h4>" ;
+					}
+					?>
+					<br>
+					Nơi sản xuất: {{$pr_detail->origin}} <br>
+					Số lượng : {{ $pr_detail->quantity }}
+				</i></span>				
 			</section>
 			<!-- Text Parapgraph -->
 			<section>
-				<p class="margin-reset"><?php echo $pr_detail->describe;   ?></p>
+				<p class="margin-reset"><?php echo $pr_detail->highlight;   ?></p>
 				<div class="clearfix"></div>
 			</section>
 			<section class="linking">
@@ -131,12 +144,14 @@
 		<div class="mediaholder">
 			<a href="#">
 				<img alt="" src="{{ asset('resources/upload/'.$pr->image)}}" style="    width: 220px;
-					height: 300px;"/>
+				height: 300px;"/>
 				<div class="cover">
-					@foreach ($img as $detail)
-					<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}" style="    width: 220px;
-					height: 300px;">
-					@endforeach
+					<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$pr->product_id)->first();
+										if($coverImage == NULL){
+											$coverImage = $pr;
+										}
+					?>
+					<img alt="" src="{{ asset('resources/upload/product_image/'.$coverImage->image)}}" style="width: 220px;height: 220px"/>
 				</div>
 			</a>
 			<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
@@ -150,11 +165,8 @@
 	</figure>
 </div>
 @endforeach
-
-
 </div>
 </div>
-
 <div class="container margin-top-5">
 <!-- Headline -->
 <div class="sixteen columns">
@@ -170,12 +182,14 @@
 		<div class="mediaholder">
 			<a href="#">
 				<img alt="" src="{{ asset('resources/upload/'.$pr->image)}}" style="    width: 220px;
-					height: 300px;"/>
+				height: 300px;"/>
 				<div class="cover">
-					@foreach ($img as $detail)
-					<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}" style="    width: 220px;
-					height: 300px;">
-					@endforeach
+					<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$pr->product_id)->first();
+										if($coverImage == NULL){
+											$coverImage = $pr;
+										}
+					?>
+					<img alt="" src="{{ asset('resources/upload/product_image/'.$coverImage->image)}}" style="width: 220px;height: 220px"/>
 				</div>
 			</a>
 			<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
@@ -189,8 +203,6 @@
 	</figure>
 </div>
 @endforeach
-
-
 </div>
 </div>
 <div class="margin-top-50"></div>

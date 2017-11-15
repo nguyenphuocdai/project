@@ -129,8 +129,8 @@ class ProductsController extends Controller
         $product = products::find($product_id);
         $product->name = Request::input('txtProductName');
         $product->alias=  changeTitle( Request::input('txtProductName'));
-        $product->price=  Request::input('txtPrice');
-        $product->quantity= Request::input('txtQuantity');
+        // $product->price=  Request::input('txtPrice');
+        // $product->quantity= Request::input('txtQuantity');
         $product->discount= Request::input('txtDiscount');
         $product->origin=  Request::input('txtOrigin');
         $product->keywords=  Request::input('txtKeywords');

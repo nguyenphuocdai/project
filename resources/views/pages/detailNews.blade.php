@@ -23,11 +23,11 @@
 		<div class="extra-padding">
 			<!-- Post -->
 			<article class="post single">
-				<figure class="post-img">
+				{{-- <figure class="post-img">
 					<a href="images/blog-01-big.jpg" class="mfp-image" title="First Image Title"><img src="{{ asset('resources/news/'.$detail->image)}}" alt=""/>
 						<div class="hover-icon"></div>
 					</a>
-				</figure>
+				</figure> --}}
 				<section class="post-content">
 					<header class="meta">
 						<h2><a href="#">{{$detail->tittle}}</a></h2>
@@ -37,22 +37,14 @@
 					</header>
 					<p><?php echo $detail->content; ?></p>
 					<!-- Share Buttons -->
-					<div class="share-buttons">
-						<ul>
-							<li><a href="#">Share</a></li>
-							<li class="share-facebook"><a href="#">Facebook</a></li>
-							<li class="share-twitter"><a href="#">Twitter</a></li>
-							<li class="share-gplus"><a href="#">Google Plus</a></li>
-							<li class="share-pinit"><a href="#">Pin It</a></li>
-						</ul>
-					</div>
+					{{-- b --}}
 					<div class="clearfix"></div>
 				</section>
 			</article>
 			<!-- Post / End -->
 			<!-- Comments
 			================================================== -->
-			<h3 class="headline">BÀI VIẾT KHÁC<span class="comments-amount"> (4)</span></h3><span class="line"></span><div class="clearfix"></div>
+			<h3 class="headline">BÀI VIẾT KHÁC<span class="comments-amount"></span></h3><span class="line"></span><div class="clearfix"></div>
 			
 			<!-- Reviews -->
 			<section class="comments">

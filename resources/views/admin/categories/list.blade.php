@@ -28,9 +28,9 @@
                             <tr>
                                 
                                 <th>Tên</th>
+                                <th>Số lượng sản phẩm đang chứa</th>
                                 <th>Xóa</th>
-                                {{-- <th style="text-align: center"><a onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')"><input type="submit" class="btn btn-danger" value="Xóa nhiều"></a></th> --}}
-                                <th>Cập Nhật</th>
+                                <th>Cập nhật</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,9 +39,14 @@
                             <tr class="odd gradeX">
                                
                                 <td>{{$item->name}}</td>
+                                <td>
+                                    <?php $countProd = DB::table('products')->where('category_id',$item->category_id)->get()->count();
+                                    ?>
+                                    {{ $countProd }}
+                                </td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')" href="{{ URL::route('admin.categories.delete',$item['category_id']) }}" style="color:red !important"> Xóa</a></td>
-                                 {{-- <td style="text-align: center"><input type="checkbox" class="checkboxes" value="{{ $item->category_id }}" name="checked[]"></td> --}}
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{  URL::route('admin.categories.getEdit',$item['category_id']) }} " style="color:blue !important">Cập Nhật</a></td>
+
                             </tr>
                             @endforeach
                         </tbody>

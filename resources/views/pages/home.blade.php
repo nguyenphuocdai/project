@@ -103,7 +103,7 @@
 											$coverImage = $new;
 										}
 										?>
-										<img alt="" src="{{ asset('resources/upload/'.$coverImage->image)}}" style="width: 220px;height: 220px"/>
+										<img alt="" src="{{ asset('resources/upload/product_image/'.$coverImage->image)}}" style="width: 220px;height: 220px"/>
 									</div>
 								</a>
 								<a href="{{url('mua-hang',[$new->product_id,$new->alias])}}" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
