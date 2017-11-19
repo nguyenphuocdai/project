@@ -29,11 +29,11 @@ class CouponControlller extends Controller
 		$so_sp = count($request->id_sp);
 		if($so_sp !=0 ){
 			for ($i=0; $i < $so_sp; $i++) {
-				if($request->id_sp[$i] == $i)
-				{
-					return redirect()->route('admin.coupon.add')->with(['flash_level'=>'danger','flash_message'=>'Sản phẩm trong phiếu nhập đã trùng nhau']);
-				}
-				else{
+				// if($request->id_sp[$i] == $i)
+				// {
+				// 	return redirect()->route('admin.coupon.add')->with(['flash_level'=>'danger','flash_message'=>'Sản phẩm trong phiếu nhập đã trùng nhau']);
+				// }
+				// else{
 					$cp = new coupondetails();
 					$cp->product_id = $request->id_sp[$i];
 					$cp->quantity = $request->sl_sp[$i];
@@ -46,7 +46,7 @@ class CouponControlller extends Controller
 					$sp->quantity = $sp->quantity + $cp->quantity;
 					$sp->price = $cp->price;
 					$sp->save();					
-				}
+				// }
 			
 		}
 	}

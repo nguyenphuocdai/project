@@ -50,7 +50,7 @@
                             <a href="admin/tong-quan"><i class="glyphicon glyphicon-calendar"></i>Tổng quan</a>
                         </li>
                         <li>
-                            <a href="{{URL::route('admin.supplier.list')}}"><i class="glyphicon glyphicon-star"></i> Nhà cung cấp</a>
+                            <a href="{{URL::route('admin.supplier.list')}}"><i class="fa fa-life-ring"></i> Nhà cung cấp</a>
              
                         </li>
                         <li>
@@ -58,7 +58,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{url('admin/coupon/list')}}"><i class="fa fa-pagelines fa-fw"></i> Nhập hàng</a>
+                            <a href="{{url('admin/coupon/list')}}"><i class="glyphicon glyphicon-tree-deciduous"></i> Nhập hàng</a>
                             
                             <!-- /.nav-second-level -->
                         </li>

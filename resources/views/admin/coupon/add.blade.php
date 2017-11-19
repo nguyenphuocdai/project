@@ -46,14 +46,16 @@
 				</div>
 				<div class="col-md-12">
 					<?php $product = DB::table('products')->get();?>
+					<i class="fa fa-times-circle" style="color: red"></i> <label>Chọn sản phẩm</label>
 					<select class="form-control" name="selectFK" id="tsp">
-						<option value="" disabled="disabled">Chọn sản phẩm</option>
+
+						<option value="" selected="selected" disabled>Chọn sản phẩm</option>
 						@foreach($product as $pro)
-						<option value="{{ $pro->product_id }}">{{ $pro->name }}</option>
+						<option value="{{ $pro->product_id }}" name="{{ $pro->product_id }}" id="{{ $pro->product_id }}">{{ $pro->name }}</option>
 						@endforeach
 					</select>
 					<br>
-					<p class="btn btn-primary" id="add">Thêm sản phẩm vào phiếu nhập</button>
+					<p class="btn btn-primary" id="add" name="add">Thêm sản phẩm vào phiếu nhập</button>
 						<table class="table table-hover" >
 							<thead>
 								<tr>
@@ -76,7 +78,6 @@
 		</div>
 		<div style="margin-left: 15px;margin-top: 50px;">
 			<button type="submit" class="btn btn-primary">Lưu</button>
-			<button type="reset" class="btn btn-warning">Hủy</button>
 			<a href="{{URL::route('admin.coupon.list')}}" class="btn btn-danger" style="float: right">Quay lại</a>
 			<div>
 			</form>
@@ -85,24 +86,39 @@
 			<script type="text/javascript">
 				$(document).ready(function(){
 					var count = 0;
+					// var tsp = $('#tsp').find('option:selected').text();
+					// var idsp = $('#tsp').val();
 					$('#add').click(function(){
 						var tsp = $('#tsp').find('option:selected').text();
 						var idsp = $('#tsp').val();
-						count = count + 1;
-						var html_code = "<tr id= 'row" + count +"'>";
-									html_code += "<td>"+count+"</td>";
-									html_code += "<td>"+tsp+"<input type='hidden' name='id_sp[]' value='"+idsp+"'></td>";
-									html_code += "<td><input type='number' name='sl_sp[]' required min='1'></td>";
-									html_code += "<td><input type='number' name='gia_sp[]' required min='1'></td>";
-									html_code += "<td></td>";
-									html_code += "<td><button type='button' name='remove' data-row='row"+ count +"' class='btn btn-danger btn-xs remove'>-</button></td>";
+						if(idsp != null){
+							$('select').on('change', function() {
+								 $('#add').removeAttr('disabled','disabled');
+								})
+							count = count + 1;
+							var html_code = "<tr id= 'row" + idsp +"'>";
+								html_code += "<td>"+idsp+"</td>";
+								html_code += "<td>"+tsp+"<input type='hidden' name='id_sp[]' id='id_sp[]' value='"+idsp+"'></td>";
+								html_code += "<td><input type='number' name='sl_sp[]' required min='1'></td>";
+								html_code += "<td><input type='number' name='gia_sp[]' required min='1'></td>";
+								html_code += "<td></td>";
+								html_code += "<td><button type='button' value='"+idsp+"' name='remove' data-row='row"+ idsp +"' class='btn btn-danger btn-xs remove'>-</button></td>";
 						html_code += "</tr>";
 						$('#curd_table').append(html_code);
+						$('#'+idsp).hide();
+						$('#add').attr('disabled','disabled');
+						}
+						else{
+							alert("Giá trị măc định không được chọn");
+						}
 					});
 					$(document).on('click','.remove',function(){
+						var idsp = $('#tsp').val();
+						// var tsp = $('#tsp').find('option:value').text();
 						var delete_row = $(this).data("row");
 						console.log(delete_row);
 						$('#' + delete_row).remove();
+						$('#' + $(this).val()).show();
 					});
 				});
 			</script>

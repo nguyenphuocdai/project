@@ -10,7 +10,7 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                                 @include('admin.danger.danger')
+                    @include('admin.danger.danger')
                         <form action="" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
@@ -29,7 +29,8 @@
                             
                             <button type="submit" class="btn btn-primary">Cập Nhật</button>
                             <button type="reset" class="btn btn-warning">Làm Lại</button>
-                            <a href="{{URL::route('admin.supplier.list')}}" class="btn btn-danger" style="float: right">Quay lại</a>
+                            <a href="{{URL::route('admin.supplier.list')}}" class="btn btn-danger" style="float: right">
+                            Quay lại</a>
                         <form>
                     </div>
                 </div>

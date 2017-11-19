@@ -25,7 +25,7 @@ class CouponRequest extends FormRequest
     {
         $now = date("Y/m/d");
         return [
-            'name'=>'required',
+            'name'=>'required|unique:coupons,name',
             'date'=>'required|after:=today',
         ];
 
@@ -33,6 +33,7 @@ class CouponRequest extends FormRequest
     public function messages(){
         return [
             'name.required'=>'Bạn chưa nhập tên phiếu nhập.',
+            'name.unique'=>'Tên phiếu nhập đã tồn tại !',
             'date.required'=>'Bạn chưa chọn ngày nhập',
             'date.after'=>'Ngày nhập phải bắt đầu từ hôm nay.'
 
