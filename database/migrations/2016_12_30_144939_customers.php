@@ -15,12 +15,12 @@ class Customers extends Migration
     {
         Schema::create('customers', function(Blueprint $table){
             $table->increments('customer_id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password',60);
-            $table->string('address');
-            $table->integer('phone_number');
+            $table->string('address')->nullable();
+            $table->integer('phone_number')->nullable();
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->string('github_id')->nullable();

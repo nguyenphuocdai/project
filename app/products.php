@@ -33,6 +33,9 @@ class products extends Model
 
 	    	return $this->belongsTo('App\orders_detail');
 	    }
+	    public function coupondetails(){
+	    	return $this->belongsTo('App\coupondetails');
+	    }
 
     
 

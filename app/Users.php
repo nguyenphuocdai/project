@@ -34,13 +34,17 @@ class users extends Authenticatable
 
         return $this->hasMany('App\products');
     }
-     public function news(){
+    public function news(){
 
         return $this->hasMany('App\news');
     }
     public function order(){
 
         return $this->hasMany('App\orders');
+    }
+    public function coupon(){
+
+        return $this->hasMany('App\coupons');
     }
    
 }

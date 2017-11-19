@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Comments extends Migration
+class Coupondetail extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class Comments extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function(Blueprint $table){
-            $table->increments('comment_id');
-            $table->string('comment')->nullable();
-            $table->integer('customer_id')->unsigned();
-            $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('cascade');
+        Schema::create('coupondetails', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('quantity');
+            $table->string('price');
+            $table->string('total');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
+            $table->integer('coupon_id')->unsigned();
+            $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class Comments extends Migration
      */
     public function down()
     {
-        Schema::drop('comments');
+        Schema::drop('coupondetails');
     }
 }

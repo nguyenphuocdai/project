@@ -32,8 +32,4 @@ class StatisticsController extends Controller
         $data = DB::table('customers')->get();
         return view('admin.statistics.customer',compact('data'));
     }
-    public function getProductLimit(){
-         $data = products::select('product_id','name','price','quantity','created_at','image','category_id','user_id')->whereBetween('quantity', [0,10])->get();
-        return view('admin.statistics.product',compact('data'));
-    }
 }

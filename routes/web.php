@@ -12,6 +12,13 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 	Route::get('tong-quan', 'DashboardController@index');
 	Route::get('chat','ChatController@index');
 	
+
+	Route::group(['prefix'=>'coupon'],function(){
+		Route::get('list',['as'=>'admin.coupon.list','uses'=>'CouponControlller@index']);
+		Route::get('add',['as'=>'admin.coupon.add','uses'=>'CouponControlller@getAdd']);
+		Route::post('add','CouponControlller@postAdd')->name('postnhaphang');
+		Route::get('coupondetail/{coupon_id}',['as'=>'admin.coupon.coupondetail','uses'=>'CouponControlller@getCouponDetail']);
+		});	
 	Route::group(['prefix'=>'categories'],function(){
 		Route::get('list',['as'=>'admin.categories.list','uses'=>'CategoriesController@getList']);
 		Route::get('add',['as'=>'admin.categories.add','uses'=>'CategoriesController@getAdd']);
@@ -21,6 +28,15 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 		Route::get('edit/{category_id}',['as'=>'admin.categories.getEdit','uses'=>'CategoriesController@getEdit']);
 		Route::post('edit/{category_id}',['as'=>'admin.categories.getEdit','uses'=>'CategoriesController@postEdit']);
 		});
+	// Route::group(['prefix'=>'supplier'],function(){
+	// 	Route::get('list',['as'=>'admin.supplier.list','uses'=>'CategoriesController@getList']);
+	// 	Route::get('add',['as'=>'admin.supplier.add','uses'=>'CategoriesController@getAdd']);
+	// 	Route::post('add',['as'=>'admin.supplier.add','uses'=>'CategoriesController@postAdd']);
+	// 	Route::get('delete/{category_id}',['as'=>'admin.supplier.delete','uses'=>'CategoriesController@getDelete']);
+	// 	Route::post('delete',['as'=>'delete','uses'=>'CategoriesController@MultiDelete']);
+	// 	Route::get('edit/{supplier_id}',['as'=>'admin.supplier.getEdit','uses'=>'CategoriesController@getEdit']);
+	// 	Route::post('edit/{supplier_id}',['as'=>'admin.supplier.getEdit','uses'=>'CategoriesController@postEdit']);
+	// 	});
 	Route::group(['prefix'=>'products'],function(){
 		Route::get('add',['as'=>'admin.products.add','uses'=>'ProductsController@getAdd']);
 		Route::post('add',['as'=>'admin.products.add','uses'=>'ProductsController@postAdd']);

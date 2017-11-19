@@ -72,8 +72,6 @@
                         </td>
                     </td>
                     <td>
-                        <i class="fa fa-database" aria-hidden="true"></i> <a class="" href="{{ URL::route('admin.import.product',$item->product_id)}}" style="color:orange !important">Nhập hàng</a>
-                        <br>
                         <i class="fa fa-pencil fa-fw"></i> <a href="{{ URL::route('admin.products.edit',$item->product_id)}}" style="color:blue !important">Cập nhật</a>
                         <br>
                         <i class="fa fa-trash-o  fa-fw"></i><a href="{{ URL::route('admin.products.delete',$item['product_id']) }} " onclick="return xacnhanxoa('Bạn có muốn xóa sản phẩm ?')" style="color:red !important"> Xóa</a>

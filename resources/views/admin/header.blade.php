@@ -49,11 +49,19 @@
                         <li>
                             <a href="admin/tong-quan"><i class="glyphicon glyphicon-calendar"></i>Tổng quan</a>
                         </li>
+                       {{--  <li>
+                            <a href="{{URL::route('admin.supplier.list')}}"><i class="glyphicon glyphicon-star"></i> Nhà cung cấp</a>
+             
+                        </li> --}}
                         <li>
                             <a href="{{URL::route('admin.categories.list')}}"><i class="glyphicon glyphicon-star"></i> Loại Sản Phẩm</a>
                             <!-- /.nav-second-level -->
                         </li>
-
+                        <li>
+                            <a href="{{url('admin/coupon/list')}}"><i class="fa fa-pagelines fa-fw"></i> Nhập hàng</a>
+                            
+                            <!-- /.nav-second-level -->
+                        </li>
                  
                         <li>
                             <a href="{{URL::route('admin.products.list')}}"><i class="fa fa-pagelines fa-fw"></i> Sản Phẩm</a>
@@ -61,13 +69,13 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href=""><i class="fa fa-pencil-square-o"></i> Đơn Hàng<?php echo " (".count(DB::table('orders')->where('status',0)->get()).")";?><span class="fa arrow "></span></a>
+                            <a href=""><i class="fa fa-pencil-square-o"></i> Đơn đặt hàng<?php echo " (".count(DB::table('orders')->where('status',0)->get()).")";?><span class="fa arrow "></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{url::route('admin.orders.list')}}">Đơn Hàng Chờ Duyệt <?php echo " (".count(DB::table('orders')->where('status',0)->get()).")";?> </a>
+                                    <a href="{{url::route('admin.orders.list')}}">Đơn đặt hàng chờ duyệt <?php echo " (".count(DB::table('orders')->where('status',0)->get()).")";?> </a>
                                 </li>
                                 <li>
-                                    <a href="{{url::route('admin.orders.listsigned')}}">Đơn Hàng Đã Duyệt <?php echo " (".count(DB::table('orders')->where('status',1)->get()).")";?></a>
+                                    <a href="{{url::route('admin.orders.listsigned')}}">Đơn đặt hàng đã duyệt <?php echo " (".count(DB::table('orders')->where('status',1)->get()).")";?></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -80,9 +88,6 @@
                                 </li>
                                <li>
                                     <a href="{{url::route('admin.statistics.customer')}}">Khách hàng</a>
-                                </li>
-                                <li>
-                                    <a href="{{url::route('admin.statistics.product')}}">Sản phẩm gần hết</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
