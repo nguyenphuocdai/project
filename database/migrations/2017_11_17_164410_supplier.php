@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Coupon extends Migration
+class Supplier extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class Coupon extends Migration
      */
     public function up()
     {
-        Schema::create('coupons', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('date');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
-            $table->integer('supplier_id')->unsigned();
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->string('phone');
+            $table->string('address');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class Coupon extends Migration
      */
     public function down()
     {
-        Schema::drop('coupons');
+         Schema::drop('suppliers');
     }
 }

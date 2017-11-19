@@ -22,7 +22,9 @@ class CouponControlller extends Controller
 		$c = new coupons();
 		$c->name = $request->name;
 		$c->date = $request->date;
+		$c->supplier_id = $request->supplier_id;
 		$c->user_id = Auth::user()->user_id;
+		// dd($c);
 		$c->save();
 		$so_sp = count($request->id_sp);
 		if($so_sp !=0 ){
@@ -38,11 +40,12 @@ class CouponControlller extends Controller
 					$cp->price = $request->gia_sp[$i];
 					$cp->total = $request->sl_sp[$i]*$request->gia_sp[$i];
 					$cp->coupon_id = $c->id;
+
 					$cp->save();
 					$sp = products::where('product_id',$cp->product_id)->first();
 					$sp->quantity = $sp->quantity + $cp->quantity;
 					$sp->price = $cp->price;
-					$sp->save();
+					$sp->save();					
 				}
 			
 		}
@@ -59,4 +62,20 @@ class CouponControlller extends Controller
 		$cp = DB::table('coupondetails')->where('coupon_id',$coupon_id)->get();
 		return view('admin.coupon.coupondetail')->with('cp',$cp);;
 	}
+	public function getDelete($id){
+   
+    	$cate = coupons::find($id);
+		$user_current = Auth::user()->level;
+        
+
+    	if($user_current==1) {
+            $cate->delete($id);
+        }
+        else
+        {
+            return redirect('admin/coupon/list')->with(['flash_level'=>'warning','flash_message'=>'Bạn không có quyền xóa']);
+        }
+        return redirect('admin/coupon/list')->with(['flash_level'=>'success','flash_message'=>'Đã xóa thành công !']);
+
+    }
 }

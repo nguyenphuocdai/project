@@ -14,4 +14,8 @@ class coupons extends Model
 
         return $this->belongsTo('App\Users');
     }
+    public function supplier(){
+
+    	return $this->hasOne('App\suppliers');
+    }
 }

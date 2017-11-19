@@ -22,6 +22,7 @@ class Coupondetail extends Migration
             $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
             $table->integer('coupon_id')->unsigned();
             $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

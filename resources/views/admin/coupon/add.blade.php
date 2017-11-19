@@ -9,13 +9,13 @@
 					<small>Thêm mới phiếu nhập</small>
 					</h1>
 				</div>
-				 <div class="col-lg-12">
-                    @if(Session::has('flash_message'))
-                        <div class="alert alert-{{Session::get('flash_level')}}">
-                            {{Session::get('flash_message')}}
-                        </div>
-                    @endif
-                    </div>
+				<div class="col-lg-12">
+					@if(Session::has('flash_message'))
+					<div class="alert alert-{{Session::get('flash_level')}}">
+						{{Session::get('flash_message')}}
+					</div>
+					@endif
+				</div>
 				<!-- /.col-lg-12 -->
 				<div class="col-lg-6">
 					@include('admin.danger.danger')
@@ -26,9 +26,18 @@
 						<input class="form-control" name="name" value="{{old('name')}}" placeholder="Nhập tên phiếu" required/>
 					</div>
 					<div class="form-group">
-						
 						<i class="fa fa-times-circle" style="color: red"></i> <label>Nhân viên nhập</label>
 						<input class="form-control" name="name" disabled="disabled" value="<?php echo Auth::user()->username;  ?>"/>
+					</div>
+					<div class="form-group">
+						<i class="fa fa-times-circle" style="color: red"></i> <label>Nhà cung cấp</label>
+						<?php $sup = DB::table('suppliers')->get();?>
+						<select class="form-control" name="supplier_id">
+							<option value="" disabled="disabled">Chọn nhà cung cấp</option>
+							@foreach($sup as $pro)
+							<option value="{{ $pro->id }}">{{ $pro->name }}</option>
+							@endforeach
+						</select>
 					</div>
 					<div class="form-group">
 						<i class="fa fa-times-circle" style="color: red"></i> <label>Chọn ngày nhập</label>
@@ -81,12 +90,12 @@
 						var idsp = $('#tsp').val();
 						count = count + 1;
 						var html_code = "<tr id= 'row" + count +"'>";
-							html_code += "<td>"+count+"</td>";
-							html_code += "<td>"+tsp+"<input type='hidden' name='id_sp[]' value='"+idsp+"'></td>";
-							html_code += "<td><input type='number' name='sl_sp[]' required min='1'></td>";
-							html_code += "<td><input type='number' name='gia_sp[]' required min='1'></td>";
-							html_code += "<td></td>";
-							html_code += "<td><button type='button' name='remove' data-row='row"+ count +"' class='btn btn-danger btn-xs remove'>-</button></td>";
+									html_code += "<td>"+count+"</td>";
+									html_code += "<td>"+tsp+"<input type='hidden' name='id_sp[]' value='"+idsp+"'></td>";
+									html_code += "<td><input type='number' name='sl_sp[]' required min='1'></td>";
+									html_code += "<td><input type='number' name='gia_sp[]' required min='1'></td>";
+									html_code += "<td></td>";
+									html_code += "<td><button type='button' name='remove' data-row='row"+ count +"' class='btn btn-danger btn-xs remove'>-</button></td>";
 						html_code += "</tr>";
 						$('#curd_table').append(html_code);
 					});

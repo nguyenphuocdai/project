@@ -49,10 +49,10 @@
                         <li>
                             <a href="admin/tong-quan"><i class="glyphicon glyphicon-calendar"></i>Tổng quan</a>
                         </li>
-                       {{--  <li>
+                        <li>
                             <a href="{{URL::route('admin.supplier.list')}}"><i class="glyphicon glyphicon-star"></i> Nhà cung cấp</a>
              
-                        </li> --}}
+                        </li>
                         <li>
                             <a href="{{URL::route('admin.categories.list')}}"><i class="glyphicon glyphicon-star"></i> Loại Sản Phẩm</a>
                             <!-- /.nav-second-level -->

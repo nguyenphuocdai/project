@@ -26,6 +26,7 @@
 							<th>ID</th>
 							<th>Tên phiếu</th>
 							<th>Ngày nhập</th>
+							
 							<th>Nhân viên lập phiếu</th>
 							<th>Công cụ</th>
 						</tr>
@@ -40,7 +41,9 @@
 							</td>
 							<td>{{ $cou->date }}</td>
 							<td><?php echo Auth::user()->username;?></td>
-							<td><a class="btn btn-info" href="{{ url('admin/coupon/coupondetail',$cou->id) }}">Xem chi tiết</a></td>
+							<td><a class="btn btn-info" href="{{ url('admin/coupon/coupondetail',$cou->id) }}">Xem chi tiết</a>
+							<a class="btn btn-danger" onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')" href="{{  URL::route('admin.coupon.delete',$cou->id) }} ">Xóa</a>
+						</td>
 						</tr>
 						@endforeach
 						
