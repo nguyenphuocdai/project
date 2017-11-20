@@ -101,8 +101,10 @@ class CheckOutController extends Controller
                 $order->save();
                 $customerSave = customers::find($cus->customer_id);
                 //vấn đề ngay đây
+                if(!isset($customerSave->address) || !isset($customerSave->phone_number) ){
                 $customerSave->address=Request::input('txtAddresreceive');
                 $customerSave->phone_number=Request::input('phone_social');
+                }
                 $customerSave->save();
                 $content= Cart::content();
                 $total = Cart::total(0,",",".");
