@@ -24,18 +24,20 @@ class CouponRequest extends FormRequest
     public function rules()
     {
         $now = date("Y/m/d");
+
+        // dd($now);
         return [
             'name'=>'required|unique:coupons,name',
-            'date'=>'required|after:=today',
+            'date'=>'required|after_or_equal :today',
         ];
 
     }
     public function messages(){
         return [
-            'name.required'=>'Bạn chưa nhập tên phiếu nhập.',
-            'name.unique'=>'Tên phiếu nhập đã tồn tại !',
-            'date.required'=>'Bạn chưa chọn ngày nhập',
-            'date.after'=>'Ngày nhập phải bắt đầu từ hôm nay.'
+            'name.required'=>'- Bạn chưa nhập tên phiếu nhập.',
+            'name.unique'=>'- Tên phiếu nhập đã tồn tại !',
+            'date.required'=>'- Bạn chưa chọn ngày nhập',
+            'date.after_or_equal'=>'- Ngày vừa chọn không hợp lệ.'
 
         ];
     }

@@ -40,7 +40,7 @@
 								
 									echo "<div>Họ và tên: ".$tamp->name."</div>";
 									if($tamp->phone_number == ""){
-										echo "<div class='address-italic'>Số điện thoại (*)(Trường hợp đăng nhập với tài khoản google hoặc github vui lòng ghi rõ địa chỉ vào ô sau):</div> "."<input class='address-italic-input' placeholder='+84xxxx' type='text' name='phone_social' required/>";
+										echo "<div class='address-italic'>Số điện thoại (*)(Trường hợp đăng nhập với tài khoản google hoặc github vui lòng ghi rõ địa chỉ vào ô sau):</div> "."<input class='address-italic-input' pattern='^\+?\d{0,13}' placeholder='Nhập số điện thoại' type='text' name='phone_social' required/>";
 									}
 									else{
 										echo "<div>Số điện thoại: ".$tamp->phone_number."</div>";

@@ -19,21 +19,26 @@ class CouponControlller extends Controller
 	return view('admin.coupon.add');
 	}
 	public function postAdd(CouponRequest $request){
-		$c = new coupons();
-		$c->name = $request->name;
-		$c->date = $request->date;
-		$c->supplier_id = $request->supplier_id;
-		$c->user_id = Auth::user()->user_id;
-		// dd($c);
-		$c->save();
+		
 		$so_sp = count($request->id_sp);
 		if($so_sp !=0 ){
+			
+			$c = new coupons();
+					$c->name = $request->name;
+					$c->date = $request->date;
+					$c->supplier_id = $request->supplier_id;
+					$c->user_id = Auth::user()->user_id;
+					// dd($c);
+					$c->save();
+
 			for ($i=0; $i < $so_sp; $i++) {
 				// if($request->id_sp[$i] == $i)
 				// {
 				// 	return redirect()->route('admin.coupon.add')->with(['flash_level'=>'danger','flash_message'=>'Sản phẩm trong phiếu nhập đã trùng nhau']);
 				// }
 				// else{
+					
+
 					$cp = new coupondetails();
 					$cp->product_id = $request->id_sp[$i];
 					$cp->quantity = $request->sl_sp[$i];

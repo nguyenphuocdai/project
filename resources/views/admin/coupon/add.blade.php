@@ -17,7 +17,7 @@
 					@endif
 				</div>
 				<!-- /.col-lg-12 -->
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					@include('admin.danger.danger')
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					<h6>(Có dấu <i class="fa fa-times-circle" style="color: red"></i> là bắt buộc nhập)</h6><br>
@@ -25,33 +25,32 @@
 						<i class="fa fa-times-circle" style="color: red"></i> <label>Tên phiếu nhập</label>
 						<input class="form-control" name="name" value="{{old('name')}}" placeholder="Nhập tên phiếu" required/>
 					</div>
-					<div class="form-group">
+					<div class="form-group col-lg-3" style="padding-left:0">
 						<i class="fa fa-times-circle" style="color: red"></i> <label>Nhân viên nhập</label>
 						<input class="form-control" name="name" disabled="disabled" value="<?php echo Auth::user()->username;  ?>"/>
 					</div>
-					<div class="form-group">
-						<i class="fa fa-times-circle" style="color: red"></i> <label>Nhà cung cấp</label>
+					<div class="form-group col-lg-3" style="padding-left: 0;">
+						<i class="fa fa-times-circle" style="color: red"> </i><label for="date"> Chọn ngày nhập</label>
+						<input type="date" class="form-control" name="date" id="date" value="{{old('date')}}" required />
+					</div>
+					<div class="form-group col-lg-12" style="display: inline-block; padding-left: 0;padding-right: 0">
+						<i class="fa fa-times-circle" style="color: red"></i> <label for="supplier">Nhà cung cấp</label>
 						<?php $sup = DB::table('suppliers')->get();?>
-						<select class="form-control" name="supplier_id">
-							<option value="" disabled="disabled">Chọn nhà cung cấp</option>
+						<select class="form-control" name="supplier_id" id="supplier" required>
+							<option value="" selected="true" disabled="disabled">Chọn nhà cung cấp</option>
 							@foreach($sup as $pro)
-							<option value="{{ $pro->id }}">{{ $pro->name }}</option>
+							<option value="{{ $pro->id }}">{{ $pro->name }} ({{ $pro->address }})</option>
 							@endforeach
 						</select>
-					</div>
-					<div class="form-group">
-						<i class="fa fa-times-circle" style="color: red"></i> <label>Chọn ngày nhập</label>
-						<input type="date" class="form-control" name="date" value="{{old('date')}}" required />
 					</div>
 				</div>
 				<div class="col-md-12">
 					<?php $product = DB::table('products')->get();?>
 					<i class="fa fa-times-circle" style="color: red"></i> <label>Chọn sản phẩm</label>
 					<select class="form-control" name="selectFK" id="tsp">
-
 						<option value="" selected="selected" disabled>Chọn sản phẩm</option>
 						@foreach($product as $pro)
-						<option value="{{ $pro->product_id }}" name="{{ $pro->product_id }}" id="{{ $pro->product_id }}">{{ $pro->name }}</option>
+						<option value="{{ $pro->product_id }}" name="{{ $pro->product_id }}" id="{{ $pro->product_id }}">{{ $pro->name }} (Giá hiện tại : {{ $pro->price }}, Số lượng hiện tại: {{ $pro->quantity }})</option>
 						@endforeach
 					</select>
 					<br>
@@ -59,8 +58,8 @@
 						<table class="table table-hover" >
 							<thead>
 								<tr>
-									<th>Số thứ tự</th>
-									<th>Sản phẩm</th>
+									<th>ID</th>
+									<th>Tên sản phẩm</th>
 									<th>Số lượng</th>
 									<th>Đơn giá</th>
 									<th>Tổng tiền</th>
@@ -109,7 +108,7 @@
 						$('#add').attr('disabled','disabled');
 						}
 						else{
-							alert("Giá trị măc định không được chọn");
+							alert("Chọn sản phẩm thêm vào phiếu nhập để tiếp tục");
 						}
 					});
 					$(document).on('click','.remove',function(){

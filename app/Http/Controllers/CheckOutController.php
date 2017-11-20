@@ -95,10 +95,12 @@ class CheckOutController extends Controller
 
                 $order = new orders();
                 $order->customer_id= $cus->customer_id;
+                $order->status = 0;
                 $order->address_receive=Request::input('txtAddresreceive');
                 $order->phone_social=Request::input('phone_social');
                 $order->save();
                 $customerSave = customers::find($cus->customer_id);
+                //vấn đề ngay đây
                 $customerSave->address=Request::input('txtAddresreceive');
                 $customerSave->phone_number=Request::input('phone_social');
                 $customerSave->save();

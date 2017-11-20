@@ -6,7 +6,7 @@
 			<div class="col-lg-12">
 				<h2 class="page-header">Danh sách
 				</h2>
-				 <a href="{{route('admin.coupon.add')}}"><button class="btn btn-primary has-spinner" type="button">Thêm Mới</button></a>
+				 <a href="{{route('admin.coupon.add')}}"><button class="btn btn-primary has-spinner" type="button">Thêm phiếu nhập</button></a>
 				 <hr>
 			</div>
 			<div class="row">
@@ -26,8 +26,8 @@
 						<tr>
 							<th>ID</th>
 							<th>Tên phiếu</th>
+							<th>Nhà cung cấp</th>
 							<th>Ngày nhập</th>
-							
 							<th>Nhân viên lập phiếu</th>
 							<th>Công cụ</th>
 						</tr>
@@ -40,7 +40,11 @@
 							<td>
 								{{ $cou->name }}
 							</td>
-							<td>{{ $cou->date }}</td>
+							<td>
+								<?php $supp = DB::table('suppliers')->where('id',$cou->supplier_id )->first();?>
+								{{ $supp->name }}
+							</td>
+							<td><?php echo date('d-m-Y', strtotime($cou->date)); ?></td>
 							<td><?php echo Auth::user()->username;?></td>
 							<td><a class="btn btn-info" href="{{ url('admin/coupon/coupondetail',$cou->id) }}">Xem chi tiết</a>
 							<a class="btn btn-danger" onclick="return xacnhanxoa('Bạn chắc chắn muốn xóa ?')" href="{{  URL::route('admin.coupon.delete',$cou->id) }} ">Xóa</a>

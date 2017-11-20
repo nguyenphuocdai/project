@@ -28,7 +28,7 @@
                             <div class="form-group">
                              <label>(Có dấu <i class="fa fa-times-circle" style="color: red"></i> là bắt buộc nhập)</label><br>
                                <i class="fa fa-times-circle" style="color: red"></i>  <label>Tên Loại Sản Phẩm</label>
-                                <input class="form-control" name="txtName" placeholder="Nhập Tên Loại Sản Phẩm" />
+                                <input class="form-control" name="txtName" placeholder="Nhập Tên Loại Sản Phẩm"/>
                             </div>
                             <div class="form-group">
                                <i class="fa fa-times-circle" style="color: red"></i>  <label>Từ Khóa</label>

@@ -23,8 +23,9 @@ class DashboardController extends Controller
 		$products = DB::table('products')->get()->count();
 		$orders = orders::select('*')->where('status',0)->orderBy('created_at','DESC')->get()->count();
 		$users = DB::table('users')->get()->count();
+        $coupon = DB::table('coupons')->get()->count();
 		Flashy::primaryDark('Chào mừng bạn đến với hệ thống', 'http://your-awesome-link.com');
-    	return view('admin.tong-quan',compact('cates','products','orders','users','customer','news'));
+    	return view('admin.tong-quan',compact('cates','products','orders','users','customer','news','coupon'));
     }
 
     

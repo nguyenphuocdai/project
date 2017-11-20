@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Chi tiết đơn nhập hàng
+                <h1 class="page-header">Chi tiết đơn nhập hàng <br>
                 <small>Các sản phẩm trong đơn nhập hàng</small>
                 </h1>
             </div>
@@ -19,12 +19,10 @@
                 </div>
             </div>
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                <hr>
                 <thead>
                     <tr align="center">
                         
                         <th>STT</th>
-                        <th>Tên phiếu nhập</th>
                         <th>Tên sản phẩm</th>
                         <th>Số Lượng</th>
                         <th>Đơn Giá</th>
@@ -40,16 +38,16 @@
                         $namesp = DB::table('products')->where('product_id',$c->product_id)->first();
                         ?>
                         <td width="10px"><?php echo $i++ ?></td>
-                        <td>
+                        {{-- <td>
                             {{ $namecp->name }}
-                        </td>
+                        </td> --}}
                         <td>{{ $namesp->name }}</td>
                         <td>
                             {{ $c->quantity }}
                         </td>
-                        <td>{{ number_format($c->price,0,",",".") }}</td>
+                        <td>{{ number_format($c->price,0,",",".") }} đ</td>
                         
-                        <td class="center">{{ number_format($c->total,0,",",".") }}</td>
+                        <td class="center">{{ number_format($c->total,0,",",".") }} đ</td>
                     </tr>
                     @endforeach
                 </tbody>
