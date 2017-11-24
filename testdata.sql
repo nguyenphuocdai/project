@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2017 lúc 09:11 AM
+-- Thời gian đã tạo: Th10 24, 2017 lúc 06:40 AM
 -- Phiên bản máy phục vụ: 10.1.22-MariaDB
 -- Phiên bản PHP: 7.1.4
 
@@ -43,7 +43,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`category_id`, `name`, `alias`, `describe`, `keywords`, `created_at`, `updated_at`) VALUES
-(1, 'THIẾT BỊ VỆ SINH', 'Thiet-Bi-Ve-Sinh', '2w12', 'trangtri,vattrangtri', '2017-11-19 03:37:48', '2017-11-19 03:37:48');
+(1, 'THIẾT BỊ VỆ SINH', 'Thiet-Bi-Ve-Sinh', 'Thiết bị vệ sinh gia dụng', 'thietbivesinh', '2017-11-19 10:37:43', '2017-11-19 14:02:06'),
+(2, 'Thiết bị văn phòng', 'Thiet-Bi-Van-Phong', 'Thiết bị văn phòng', 'thietbivanphong', '2017-11-20 03:42:37', '2017-11-20 03:42:37');
 
 -- --------------------------------------------------------
 
@@ -82,9 +83,15 @@ CREATE TABLE `coupondetails` (
 --
 
 INSERT INTO `coupondetails` (`id`, `quantity`, `price`, `total`, `product_id`, `coupon_id`, `created_at`, `updated_at`) VALUES
-(13, '10', '500000', '5000000', 1, 23, '2017-11-19 07:40:47', '2017-11-19 07:40:47'),
-(14, '50', '500000', '25000000', 1, 24, '2017-11-19 07:56:35', '2017-11-19 07:56:35'),
-(15, '50', '500000', '25000000', 2, 24, '2017-11-19 07:56:35', '2017-11-19 07:56:35');
+(3, '5', '50000', '250000', 1, 5, '2017-11-20 03:19:39', '2017-11-20 03:19:39'),
+(4, '5', '60000', '300000', 2, 5, '2017-11-20 03:19:39', '2017-11-20 03:19:39'),
+(5, '5', '70000', '350000', 3, 5, '2017-11-20 03:19:39', '2017-11-20 03:19:39'),
+(6, '5', '80000', '400000', 4, 5, '2017-11-20 03:19:39', '2017-11-20 03:19:39'),
+(7, '4', '500000', '2000000', 3, 6, '2017-11-20 03:41:44', '2017-11-20 03:41:44'),
+(8, '5', '200000', '1000000', 1, 6, '2017-11-20 03:41:44', '2017-11-20 03:41:44'),
+(9, '10', '200000', '2000000', 1, 7, '2017-11-20 04:41:46', '2017-11-20 04:41:46'),
+(10, '20', '50000', '1000000', 3, 8, '2017-11-21 08:53:23', '2017-11-21 08:53:23'),
+(11, '20', '500000', '10000000', 1, 8, '2017-11-21 08:53:23', '2017-11-21 08:53:23');
 
 -- --------------------------------------------------------
 
@@ -97,6 +104,7 @@ CREATE TABLE `coupons` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
+  `supplier_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -105,9 +113,11 @@ CREATE TABLE `coupons` (
 -- Đang đổ dữ liệu cho bảng `coupons`
 --
 
-INSERT INTO `coupons` (`id`, `name`, `date`, `user_id`, `created_at`, `updated_at`) VALUES
-(23, 'Phiếu KAT', '2017-11-19', 6, '2017-11-19 07:40:47', '2017-11-19 07:40:47'),
-(24, 'Phiếu test', '2017-11-20', 6, '2017-11-19 07:56:35', '2017-11-19 07:56:35');
+INSERT INTO `coupons` (`id`, `name`, `date`, `user_id`, `supplier_id`, `created_at`, `updated_at`) VALUES
+(5, 'PN001', '2017-11-20', 6, 1, '2017-11-20 03:19:39', '2017-11-20 03:19:39'),
+(6, 'Phiếu nội thất', '2017-11-20', 6, 2, '2017-11-20 03:41:44', '2017-11-20 03:41:44'),
+(7, 'PN002', '2017-11-20', 6, 4, '2017-11-20 04:41:46', '2017-11-20 04:41:46'),
+(8, 'P009', '2017-11-22', 6, 4, '2017-11-21 08:53:23', '2017-11-21 08:53:23');
 
 -- --------------------------------------------------------
 
@@ -122,16 +132,24 @@ CREATE TABLE `customers` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone_number` int(11) DEFAULT NULL,
+  `phone_number` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `google_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `facebook_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `github_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone_social` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `thumbnail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `customers`
+--
+
+INSERT INTO `customers` (`customer_id`, `name`, `username`, `email`, `password`, `address`, `phone_number`, `google_id`, `facebook_id`, `github_id`, `phone_social`, `thumbnail`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Hoang Hoang', 'Hoang Hoang', 'hoanghoang360@gmail.com', '$2y$10$2OL0GRBXg9Iqvvo92V3D0eNJ9R06ZuH/HJajjc/XS176HgRSLp3ne', 'Nguyễn Thị minh khai', '09333588295', '113298330569852106717', NULL, NULL, NULL, NULL, '2JPEqqKfgowmuOlz9MNXFAg5oNfErDnU9OnL4DEBO3IOiXIN5Qwj9wbvHqYX', '2017-11-20 03:48:01', '2017-11-20 04:35:16'),
+(2, 'Nguyễn Phước Đại', 'vicente001', 'tidodev2609@gmail.com', '$2y$10$qDmPReTpHU3NFOfuOTRnvufj2jEA1QtqPewxe9hRk6KUZngnIZkCG', 'Nguyễn Thị Minh Khai 271A', '0936965874', NULL, NULL, NULL, NULL, NULL, 'pCXQfwLnTlzlhSetuAizhjXEtH8Q3nyTrLJWhkch', '2017-11-20 04:43:40', '2017-11-20 04:43:40');
 
 -- --------------------------------------------------------
 
@@ -160,6 +178,13 @@ CREATE TABLE `images` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `images`
+--
+
+INSERT INTO `images` (`image_id`, `image`, `product_id`, `created_at`, `updated_at`) VALUES
+(1, '1465887460419_4911053.jpg', 1, '2017-11-19 10:39:30', '2017-11-19 10:39:30');
+
 -- --------------------------------------------------------
 
 --
@@ -177,20 +202,21 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(68, '2014_10_12_000000_create_users_table', 1),
-(69, '2014_10_12_100000_create_password_resets_table', 1),
-(70, '2016_12_08_131259_categories', 1),
-(71, '2016_12_30_144939_customers', 1),
-(72, '2016_12_30_150109_products', 1),
-(73, '2016_12_30_153646_news', 1),
-(74, '2016_12_30_153656_images', 1),
-(75, '2016_12_30_155233_comments', 1),
-(76, '2016_12_30_160208_orders', 1),
-(77, '2016_12_30_160215_orders_detail', 1),
-(78, '2017_10_31_084248_create_notifications_table', 1),
-(79, '2017_10_31_084612_emails', 1),
-(80, '2017_11_18_104740_coupon', 1),
-(81, '2017_11_18_105104_coupondetail', 1);
+(16, '2014_10_12_000000_create_users_table', 1),
+(17, '2014_10_12_100000_create_password_resets_table', 1),
+(18, '2016_12_08_131259_categories', 1),
+(19, '2016_12_30_144939_customers', 1),
+(20, '2016_12_30_150109_products', 1),
+(21, '2016_12_30_153646_news', 1),
+(22, '2016_12_30_153656_images', 1),
+(23, '2016_12_30_155233_comments', 1),
+(24, '2016_12_30_160208_orders', 1),
+(25, '2016_12_30_160215_orders_detail', 1),
+(26, '2017_10_31_084248_create_notifications_table', 1),
+(27, '2017_10_31_084612_emails', 1),
+(28, '2017_11_17_164410_supplier', 1),
+(29, '2017_11_18_104740_coupon', 1),
+(30, '2017_11_18_105104_coupondetail', 1);
 
 -- --------------------------------------------------------
 
@@ -235,12 +261,25 @@ CREATE TABLE `notifications` (
 CREATE TABLE `orders` (
   `order_id` int(10) UNSIGNED NOT NULL,
   `status` int(11) DEFAULT NULL,
+  `datesigned` date DEFAULT NULL,
+  `address_receive` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `payment` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone_social` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
   `customer_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `status`, `datesigned`, `address_receive`, `payment`, `phone_social`, `user_id`, `customer_id`, `created_at`, `updated_at`) VALUES
+(16, 1, '2017-11-20', '', NULL, NULL, 6, 1, '2017-11-20 04:36:23', '2017-11-20 04:36:23'),
+(19, NULL, '2017-11-20', 'Nguyễn Thị Minh Khai 271A', '1', '0936965874', NULL, 2, '2017-11-20 04:44:53', '2017-11-20 04:44:53'),
+(21, 1, '2017-11-20', '', NULL, NULL, 6, 2, '2017-11-20 04:47:56', '2017-11-20 04:47:56'),
+(22, 0, NULL, '', NULL, NULL, NULL, 2, '2017-11-20 04:48:32', '2017-11-20 04:48:32');
 
 -- --------------------------------------------------------
 
@@ -253,12 +292,22 @@ CREATE TABLE `orders_detail` (
   `order_id` int(10) UNSIGNED NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `note` int(11) NOT NULL,
-  `date_signed` datetime NOT NULL,
-  `total` double(8,2) NOT NULL,
+  `note` int(11) DEFAULT NULL,
+  `date_signed` datetime DEFAULT NULL,
+  `total` int(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `orders_detail`
+--
+
+INSERT INTO `orders_detail` (`product_id`, `order_id`, `quantity`, `price`, `note`, `date_signed`, `total`, `created_at`, `updated_at`) VALUES
+(1, 16, 10, 200000, 0, '2017-11-20 11:41:57', 2000000, '2017-11-20 04:36:23', '2017-11-20 04:36:23'),
+(3, 19, 1, 500000, -1, NULL, 500000, '2017-11-20 04:44:53', '2017-11-20 04:44:53'),
+(2, 21, 4, 60000, 0, '2017-11-20 11:48:08', 240000, '2017-11-20 04:47:56', '2017-11-20 04:47:56'),
+(3, 22, 3, 500000, -3, NULL, 1500000, '2017-11-20 04:48:32', '2017-11-20 04:48:32');
 
 -- --------------------------------------------------------
 
@@ -281,19 +330,19 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `products` (
   `product_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `alias` text COLLATE utf8_unicode_ci NOT NULL,
+  `alias` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `price` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `discount` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
+  `quantity` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `origin` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `view` int(11) DEFAULT NULL,
   `rate` int(11) DEFAULT NULL,
-  `highlight` longtext COLLATE utf8_unicode_ci,
+  `highlight` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `keywords` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `size` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `describe` longtext COLLATE utf8_unicode_ci,
-  `user_id` int(10) UNSIGNED DEFAULT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -304,8 +353,34 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `name`, `alias`, `price`, `discount`, `quantity`, `origin`, `view`, `rate`, `highlight`, `image`, `keywords`, `size`, `describe`, `user_id`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'Tranh thư pháp vẽ tay Ơn Thầy', 'Tranh-Thu-Phap-Ve-Tay-On-Thay', '500000', NULL, 87, 'Việt Nam', NULL, NULL, '<p>12312</p>\r\n', 'tranh.jpg', 'trangtri,vattrangtri', NULL, '<p>12312</p>\r\n', 6, 1, '2017-11-19 03:38:37', '2017-11-19 07:56:35'),
-(2, 'Tranh trang trí tường', 'Tranh-Trang-Tri-Tuong', '500000', NULL, 306, 'Việt Nam', NULL, NULL, '<p>123123</p>\r\n', '1477630282691_4544185.jpg', '12312', NULL, '<p>12321</p>\r\n', 6, 1, '2017-11-19 05:26:40', '2017-11-19 07:56:35');
+(1, 'Máy nước nóng', 'May-Nuoc-Nong', '500000', NULL, '20', 'Việt Nam', NULL, NULL, '<p>hihihi</p>\r\n', '1465887460419_4911053.jpg', 'maynuocnong', NULL, '<p>hihihi</p>\r\n', 6, 1, '2017-11-19 10:39:30', '2017-11-21 08:53:23'),
+(2, 'Sofa giường N Juno Sofa', 'Sofa-Giuong-N-Juno-Sofa', '60000', NULL, '1', 'Việt Nam', NULL, NULL, '', '76448_fhm008_2.jpg', '', NULL, '', 6, 1, '2017-11-19 15:19:10', '2017-11-20 04:49:44'),
+(3, 'Sofa giường N Juno Sofa 200cm', 'Sofa-Giuong-N-Juno-Sofa-200Cm', '50000', NULL, '20', 'Việt Nam', NULL, NULL, '', '74445_hkacc0210_4_chon.jpg', '', NULL, '', 6, 1, '2017-11-19 16:55:59', '2017-11-21 08:53:23'),
+(4, 'Bộ 3 tranh Phúc Lộc Thọ', 'Bo-3-Tranh-Phuc-Loc-Tho', '80000', NULL, '0', 'Việt Nam', NULL, NULL, '', '38369_fpdlctn_2.jpg', '', NULL, '', 6, 1, '2017-11-19 16:56:12', '2017-11-20 03:19:39');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `suppliers`
+--
+
+CREATE TABLE `suppliers` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `name`, `phone`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Đà Lạt Tam Quan', '0933588295', 'Số 271 Nguyễn Thị Minh Khai, Quận 7', '2017-11-19 10:32:47', '2017-11-19 13:57:50'),
+(2, 'Thành Phố HCM', '0126365478', 'Quận 7', '2017-11-19 10:36:12', '2017-11-19 10:36:12'),
+(4, 'Kim Thành', '0935698745', 'Công Ty TNHH Minh Khai S.G (Nhà sách Minh Khai) 249 Nguyễn Thị Minh Khai, F. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh.', '2017-11-19 14:00:01', '2017-11-19 14:00:01');
 
 -- --------------------------------------------------------
 
@@ -394,7 +469,8 @@ ALTER TABLE `coupondetails`
 --
 ALTER TABLE `coupons`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `coupons_user_id_foreign` (`user_id`);
+  ADD KEY `coupons_user_id_foreign` (`user_id`),
+  ADD KEY `coupons_supplier_id_foreign` (`supplier_id`);
 
 --
 -- Chỉ mục cho bảng `customers`
@@ -468,6 +544,12 @@ ALTER TABLE `products`
   ADD KEY `products_category_id_foreign` (`category_id`);
 
 --
+-- Chỉ mục cho bảng `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
@@ -482,7 +564,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT cho bảng `comments`
 --
@@ -492,17 +574,17 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT cho bảng `coupondetails`
 --
 ALTER TABLE `coupondetails`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT cho bảng `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT cho bảng `emails`
 --
@@ -512,12 +594,12 @@ ALTER TABLE `emails`
 -- AUTO_INCREMENT cho bảng `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `image_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT cho bảng `news`
 --
@@ -527,12 +609,17 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT cho bảng `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
@@ -560,6 +647,7 @@ ALTER TABLE `coupondetails`
 -- Các ràng buộc cho bảng `coupons`
 --
 ALTER TABLE `coupons`
+  ADD CONSTRAINT `coupons_supplier_id_foreign` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `coupons_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
 --
