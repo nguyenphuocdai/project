@@ -13,7 +13,8 @@
         "laravel/socialite": "^3.0",
         "cartalyst/stripe-laravel": "7.0.*",
         "mercuryseries/flashy": "^1.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "consoletvs/charts": "^5.4"
 	
     },
     "require-dev": {

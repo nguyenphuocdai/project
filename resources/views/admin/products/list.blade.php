@@ -52,7 +52,7 @@
                                 echo "Sản phẩm chưa cập nhật giá.";
                             }
                             else {
-                                echo number_format($item->price,'0',',','.')."đ";
+                                echo number_format($item->price,'0',',','.')." đ";
                             }
                             ?>
                         </td>
