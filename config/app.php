@@ -168,6 +168,7 @@ return [
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -239,6 +240,7 @@ return [
         'Flashy' => MercurySeries\Flashy\Flashy::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Input' => Illuminate\Support\Facades\Input::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 
 ];

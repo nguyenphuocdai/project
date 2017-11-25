@@ -10,8 +10,10 @@ use App\users;
 use App\news;
 use App\customers;
 use App\orders;
+use App\coupons;
 use App\orders_detail;
 use Flashy;
+use Charts;
 
 class DashboardController extends Controller
 {
@@ -24,8 +26,27 @@ class DashboardController extends Controller
 		$orders = orders::select('*')->where('status',0)->orderBy('created_at','DESC')->get()->count();
 		$users = DB::table('users')->get()->count();
         $coupon = DB::table('coupons')->get()->count();
-		Flashy::primaryDark('Chào mừng bạn đến với hệ thống', 'http://your-awesome-link.com');
-    	return view('admin.tong-quan',compact('cates','products','orders','users','customer','news','coupon'));
+		Flashy::primaryDark('Chào mừng bạn đến với hệ thống');
+
+        $userschart = users::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
+                    ->get();
+        $chart = Charts::database($userschart, 'bar', 'highcharts')
+                  ->title("Biểu đồ thống kê thành viên/tháng")
+                  ->elementLabel("Thành viên mới/tháng")
+                  ->dimensions(1000, 500)
+                  ->responsive(false)
+                  ->groupByMonth(date('Y'), true);
+
+        $couponchart = coupons::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
+                    ->get();
+        $chartCoupon = Charts::database($couponchart, 'pie', 'highcharts')
+                  ->title("Biểu đồ thống kê phiếu nhập hàng/tháng")
+                  ->elementLabel("phiếu nhập hàng/tháng")
+                  ->dimensions(1000, 500)
+                  ->responsive(false)
+                  ->groupByMonth(date('Y'), true);
+    	return view('admin.tong-quan',compact('cates','products','orders','users','customer','news','coupon','chart','chartCoupon'));
+
     }
 
     

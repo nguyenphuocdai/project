@@ -26,6 +26,7 @@
         <link href="{{ url('public/admin/bower_components/datatables-responsive/css/dataTables.responsive.css') }}" rel="stylesheet">
         <link href="{{ url('public/admin/datepicker.css') }}" rel="stylesheet">
         <link href="{{ url('public/admin/style.css') }}" rel="stylesheet">
+        {!! Charts::assets() !!}
         <!-- ckeditor và ckfinder -->
         
         <script src="{{ url('public/admin/js/ckeditor/ckeditor.js') }}"></script>

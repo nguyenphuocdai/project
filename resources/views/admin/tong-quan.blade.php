@@ -1,13 +1,12 @@
 @extends('admin.master')
 @section('content')
-<div>
-
+<div class="container" style="width: 100%">
 	<div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Tổng Quan</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-           </div>
+		<div class="col-lg-12">
+			<h1 class="page-header">Tổng Quan</h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
 	<div class="col-lg-3 col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -163,6 +162,14 @@
 		</div>
 	</div>
 </div>
-
+<div class="container" style="width:100%">
+	<h1>Biểu đồ thống kê</h1>
+	<div class="row">
+		{!! $chart->render() !!}
+	</div>
+	<div class="row">
+		{!! $chartCoupon->render() !!}
+	</div>
+</div>
 <div>
 	@endsection
