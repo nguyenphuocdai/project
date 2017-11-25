@@ -49,7 +49,8 @@ class CouponControlller extends Controller
 					$cp->save();
 					$sp = products::where('product_id',$cp->product_id)->first();
 					$sp->quantity = $sp->quantity + $cp->quantity;
-					$sp->price = $cp->price;
+					$sp->price = $cp->price*1.2;
+					// $sp->discount = $sp->price*1.2;
 					$sp->save();					
 				// }
 			

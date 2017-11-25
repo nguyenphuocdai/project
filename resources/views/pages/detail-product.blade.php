@@ -25,7 +25,7 @@
 		<div class="slider-padding">
 			<div id="product-slider" class="">
 				@foreach ($img as $detail)
-				<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}">
+				<img class="" src="{{ asset('resources/upload/product_image/'.$detail->image)}}" style="margin: 0 auto;">
 				@endforeach
 				{{-- <img class="rsImg" src="{{ asset('resources/upload/'.$pr_detail->image)}}"/> --}}
 			</div>
@@ -142,7 +142,7 @@
 <div class="four columns">
 	<figure class="product">
 		<div class="mediaholder">
-			<a href="#">
+			<a href="{{url('chi-tiet-san-pham',[$pr->product_id,$pr->alias])}}">
 				<img alt="" src="{{ asset('resources/upload/'.$pr->image)}}" style="    width: 220px;
 				height: 300px;"/>
 				<div class="cover">
@@ -180,7 +180,7 @@
 <div class="four columns">
 	<figure class="product">
 		<div class="mediaholder">
-			<a href="#">
+			<a href="{{url('chi-tiet-san-pham',[$pr->product_id,$pr->alias])}}">
 				<img alt="" src="{{ asset('resources/upload/'.$pr->image)}}" style="    width: 220px;
 				height: 300px;"/>
 				<div class="cover">

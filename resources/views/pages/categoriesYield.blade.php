@@ -1,6 +1,7 @@
 @extends('pages.shopcategories')
 @section('sectionPrice')
 @foreach($pr_cate as $item_pr_cate)
+@if($item_pr_cate->price != 0)
 <div class="four shop columns">
 	<figure class="product">
 		<div class="product-discount">NEW</div>
@@ -23,6 +24,7 @@
 		
 	</figure>
 </div>
+@endif
 @endforeach
 <div>
 <div>{{ $pr_cate->links() }}</div>

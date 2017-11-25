@@ -61,8 +61,9 @@ class HomeController extends Controller
     public function getcategories()
     {   
         $subtotal = Cart::subtotal(0,",",".");
-         View::share('subtotal', $subtotal);
-        $pr = products::inRandomOrder()->paginate(30);
+        View::share('subtotal', $subtotal);
+
+        $pr = DB::table('products')->where('price','<>','0')->paginate(12);
         return view('pages.allshop',compact('pr'));
     }
      public function getsearch(Request $req){
@@ -79,8 +80,12 @@ class HomeController extends Controller
     public function detail($product_id)
     {   
         //click vào thì lượt xem tăng 1
-        $pr_view = DB::table('products')->where('product_id',$product_id)->increment('view',1);
+        // $pr_view = DB::table('products')->where('product_id',$product_id)->increment('view',1);
         $display_view = DB::table('products')->where('product_id',$product_id)->first();
+
+        $product = products::find($product_id);
+        $product->view = $product->view + 1;
+        $product->save();
         $img = DB::table('images')->select('product_id','image')->where('product_id',$product_id)->get();
         //lấy ra sản phẩm
         $imgarray = array();
@@ -91,7 +96,7 @@ class HomeController extends Controller
         // lấy ra sản phẩm tượng tự
         $pr_relate = DB::table('products')->where('category_id',$pr_detail->category_id)->where('product_id','<>',$product_id)->inRandomOrder()->limit(4)->get();
         $randomProd = products::inRandomOrder()->limit(8)->get();
-        return view('pages.detail-product',compact('pr_detail','img','pr_relate','display_view','randomProd'));
+        return view('pages.detail-product',compact('pr_detail','img','pr_relate','display_view','randomProd','pr_view'));
     }
 
     public function getMuaHang($product_id)
@@ -130,7 +135,7 @@ class HomeController extends Controller
     {   
          $subtotal = Cart::subtotal(0,",",".");
          View::share('subtotal', $subtotal);
-        $cate1 = DB::table('products')->whereBetween('price', [0,2000000 ])->orderBy('price','DESC')->paginate(6);
+        $cate1 = DB::table('products')->whereBetween('price', [1,2000000 ])->orderBy('price','DESC')->paginate(6);
         return view('pages.priceCate1',compact('cate1','pr_cate'));
     }
      public function cate2()

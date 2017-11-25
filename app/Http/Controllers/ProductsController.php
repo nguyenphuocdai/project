@@ -19,7 +19,7 @@ class ProductsController extends Controller
 {
     public function getList()
     {   
-        $data = products::select('product_id','name','price','quantity','created_at','image','category_id','user_id')->orderBy('product_id','DESC')->get();
+        $data = products::select('product_id','name','price','discount','quantity','created_at','image','category_id','user_id')->get();
         return view('admin.products.list',compact('data'));
     }
     public function getAdd(){
@@ -33,9 +33,9 @@ class ProductsController extends Controller
     	$product = new products();
     	$product->name= $product_request->txtProductName;
     	$product->alias= changeTitle($product_request->txtProductName);
-    	$product->price= $product_request->txtPrice;
+    	$product->price= 0;
         $product->highlight= $product_request->highlight;
-    	$product->quantity= $product_request->txtQuantity;
+    	$product->quantity= 0;
     	$product->origin= $product_request->txtOrigin;  
     	//lấy tên của hình
     	$filename = $product_request->file('txtImage')->getClientOriginalName();
@@ -169,10 +169,6 @@ class ProductsController extends Controller
                 }
             }
         }
-
-        //thêm hình ảnh chi tiết cho sản phẩm
-        
-       
         return redirect()->route('admin.products.list')->with(['flash_level'=>'success','flash_message'=>'Cập nhật sản phẩm thành công !']);
             
     }

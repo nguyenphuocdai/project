@@ -34,10 +34,10 @@
                                <i class="fa fa-times-circle" style="color: red"></i>  <label>Từ Khóa</label>
                                 <input class="form-control" name="txtKeywords" placeholder="Nhập Từ Khóa" />
                             </div>
-                            <div class="form-group">
+                  {{--           <div class="form-group">
                               <i class="fa fa-times-circle" style="color: red"></i>   <label>Mô Tả</label>
                                 <textarea class="form-control" name="txtDescribe" rows="3"></textarea>
-                            </div>
+                            </div> --}}
                             
                             <button type="submit" class="btn btn-primary">Thêm Mới</button>
                             <button type="reset" class="btn btn-warning">Làm Lại</button>

@@ -27,7 +27,7 @@ class CategoriesController extends Controller
     	$categories = new categories;
     	$categories->name=$request->txtName;
     	$categories->alias=changeTitle($request->txtName);
-    	$categories->describe=$request->txtDescribe;
+    	// $categories->describe=$request->txtDescribe;
     	$categories->keywords=$request->txtKeywords;
         
         $categories->save();
@@ -98,7 +98,7 @@ class CategoriesController extends Controller
     	$cate = categories::find($category_id);
     	$cate->name=$request->txtCateName;
     	$cate->alias=changeTitle($request->txtCateName);
-    	$cate->describe=$request->txtDescribe;
+    	// $cate->describe=$request->txtDescribe;
     	$cate->keywords=$request->txtKeywords;
     	$cate->save();
     	return redirect()->route('admin.categories.list')->with(['flash_level'=>'success','flash_message'=>'Cập nhật loại sản phẩm thành công !']);

@@ -23,12 +23,11 @@
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <hr>
                 <thead>
-                    <tr align="center">
+                    <tr>
                         
                         <th>STT</th>
-                        <th>Loại sản phẩm</th>
                         <th>Tên sản phẩm</th>
-                        <th>Giá</th>
+                        <th>Giá bán</th>
                         <th>Số lượng</th>
                         <th>Hình ảnh</th>
                         <th>Người Đăng</th>
@@ -38,24 +37,33 @@
                 <tbody>
                     <?php static $i=1;?>
                     @foreach($data as $item)
-                    <tr class="even gradeC" align="center">
+                    <tr class="even gradeC">
                         
                         <td width="10px"><?php echo $i++ ?>
                         </td>
-                        <td>
-                            <?php $cate = DB::table('categories')->where('category_id',$item["category_id"])->first(); ?>
+                        <td>{{$item->name}} <br>
+                            ( <?php $cate = DB::table('categories')->where('category_id',$item["category_id"])->first(); ?>
                             @if(!empty($cate->name))
                             {!!$cate->name!!}
-                            @endif
+                            @endif)
                         </td>
-                        <td>{{$item->name}}</td>
-                        <td>{{number_format($item->price,'0',',','.')}} đ</td>
-                        <td width="15px"><?php if($item->quantity==0)
-                            echo "Hết hàng"."<br>"."<a class='import' href='admin/products/nhap-hang/$item->product_id'>Cần nhập hàng</a>";
+                        <td>
+                            <?php if($item->price == 0 ){
+                                echo "Sản phẩm chưa cập nhật giá.";
+                            }
+                            else {
+                                echo number_format($item->price,'0',',','.')."đ";
+                            }
+                            ?>
+                        </td>
+                        <td width="15px"><?php
+                            if($item->quantity==0)
+                            echo "<p class='import'>Hết hàng</p>";
                             else
                             echo $item->quantity;
                             ?>
                         </td>
+                        
                         <td width="80px" >
                             <img width="80px" height="80px" class="" alt="{{$item->name}}" src="resources/upload/{{$item->image}}"/>
                         </td>

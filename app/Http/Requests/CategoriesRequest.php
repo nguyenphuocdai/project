@@ -26,7 +26,7 @@ class CategoriesRequest extends FormRequest
         return [
             'txtName'=>'required|unique:categories,name',
             'txtKeywords'=>'required',
-            'txtDescribe'=>'required',
+            // 'txtDescribe'=>'required',
         ];
 
     }
@@ -35,7 +35,7 @@ class CategoriesRequest extends FormRequest
             'txtName.required'=>'Bạn chưa nhập tên loại sản phẩm !',
             'txtName.unique'=>'Tên loại sản phẩm đã tồn tại !',
             'txtKeywords.required'=>'Bạn chưa nhập từ khóa !',
-            'txtDescribe.required'=>'Bạn chưa nhập mô tả !',
+            // 'txtDescribe.required'=>'Bạn chưa nhập mô tả !',
         ];
     }
 }
