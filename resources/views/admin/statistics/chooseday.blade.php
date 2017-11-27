@@ -60,8 +60,11 @@ cursor: pointer;
                 <th>STT</th>
                 <th>Sản Phẩm</th>
                 <th>Số Lượng Bán</th>
-                <th>Đơn Giá</th>
+                <th>Đơn Giá Mua</th>
+                <th>Đơn Giá Bán</th>
+                
                 <th>Tổng Tiền</th>
+                <th>Lợi nhuận</th>
             </tr>
         </thead>
         <tbody>
@@ -77,10 +80,17 @@ cursor: pointer;
                     
                     {{$t->total}}  sản phẩm
                 </td>
-                <td><?php echo number_format(DB::table('products')->where('product_id', $t->product_id)->first()->price,'0',',','.'); ?></td>
+                
+                <td><?php echo number_format(DB::table('products')->where('product_id', $t->product_id)->first()->price/1.2,'0',',','.')." đ"; ?></td>
+                <td><?php echo number_format(DB::table('products')->where('product_id', $t->product_id)->first()->price,'0',',','.')." đ"; ?></td>
                 <td>
-                    <?php echo number_format(DB::table('products')->where('product_id', $t->product_id)->first()->price*$t->total,'0',',','.')." VNĐ"; ?>
+                    <?php echo number_format(DB::table('products')->where('product_id', $t->product_id)->first()->price*$t->total,'0',',','.')." đ"; ?>
                 </td>
+                <td style="color: red"><?php $tamp = DB::table('products')->where('product_id', $t->product_id)->first();
+                    $tump = $tamp->price*$t->total;
+                    $temp = $tamp->price/1.2*$t->total;
+                    $tomp = $tump - $temp;
+                echo number_format($tomp,0,",",".")." đ"; ?></td>
             </tr>
             @endforeach
             
@@ -91,5 +101,4 @@ cursor: pointer;
 </div>
 <!-- /.container-fluid -->
 </div>
-
 @endsection

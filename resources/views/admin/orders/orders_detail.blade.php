@@ -45,11 +45,11 @@
                                  </td>
                                
                                 <td>
-                                 {{$item->quantity}}
+                                 {{$item->quantity}} sản phẩm
                                 </td>
-                                <td>{{number_format($item->price,0,",",".")}}</td>
+                                <td>{{number_format($item->price,0,",",".")}} đ</td>
 
-                                <td class="center">{{number_format($item->total,0,",",".")}}</td>
+                                <td class="center">{{number_format($item->total,0,",",".")}} đ</td>
                                
                                
                             </tr>

@@ -92,6 +92,7 @@ class OrdersController extends Controller
             $product = products::find($prod->product_id);
             $result = $product->quantity + $prod->note;
             $product->quantity = $result;
+            $prod->note = 0;
             DB::table('orders_detail')->where([['product_id',$prod->product_id],['order_id',$prod->order_id]])->update(['note'=>$prod->note]);
             $product->save();
         }

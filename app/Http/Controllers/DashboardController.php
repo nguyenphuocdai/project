@@ -37,11 +37,11 @@ class DashboardController extends Controller
                   ->responsive(false)
                   ->groupByMonth(date('Y'), true);
 
-        $couponchart = coupons::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
+        $couponchart = products::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
                     ->get();
-        $chartCoupon = Charts::database($couponchart, 'pie', 'highcharts')
-                  ->title("Biểu đồ thống kê phiếu nhập hàng/tháng")
-                  ->elementLabel("phiếu nhập hàng/tháng")
+        $chartCoupon = Charts::database($couponchart, 'bar', 'highcharts')
+                  ->title("Biểu đồ thống kê sản phẩm mới/tháng")
+                  ->elementLabel("sản phẩm mới/tháng")
                   ->dimensions(1000, 500)
                   ->responsive(false)
                   ->groupByMonth(date('Y'), true);

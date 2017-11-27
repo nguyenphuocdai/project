@@ -22,11 +22,6 @@
                                 <input class="form-control" name="txtKeywords" value="{{old('txtKeywords', isset($data) ? $data['keywords'] : null )}}" placeholder="Nhập từ khóa" />
                             </div>
                             
-                            <div class="form-group">
-                                <label>Mô Tả</label>
-                                <textarea class="form-control" rows="3" name="txtDescribe"  placeholder="Nhập mô tả">{{old('txtDescribe', isset($data) ? $data['describe'] : null )}}</textarea>
-                            </div>
-                            
                             <button type="submit" class="btn btn-primary">Cập Nhật</button>
                             <button type="reset" class="btn btn-warning">Làm Lại</button>
                             <a href="{{URL::route('admin.categories.list')}}" class="btn btn-danger" style="float: right">Quay lại</a>

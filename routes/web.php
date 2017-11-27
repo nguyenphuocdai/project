@@ -77,6 +77,7 @@ Route::group(['prefix'=>'admin','middleware'=>'Login'],function(){
 		Route::get('customer',['as'=>'admin.statistics.customer','uses'=>'StatisticsController@getCustomer']);
 		Route::get('product',['as'=>'admin.statistics.product','uses'=>'StatisticsController@getProductLimit']);
 
+
 	});
 	Route::group(['prefix'=>'news'],function(){
 		Route::get('add',['as'=>'admin.news.add','uses'=>'NewsController@getAdd']);
