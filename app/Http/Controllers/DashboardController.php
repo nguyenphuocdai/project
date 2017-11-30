@@ -45,7 +45,16 @@ class DashboardController extends Controller
                   ->dimensions(1000, 500)
                   ->responsive(false)
                   ->groupByMonth(date('Y'), true);
-    	return view('admin.tong-quan',compact('cates','products','orders','users','customer','news','coupon','chart','chartCoupon'));
+
+        $coupons = coupons::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
+                    ->get();
+        $chartCoupons = Charts::database($coupons, 'bar', 'highcharts')
+                  ->title("Biểu đồ thống kê phiếu nhập hàng/tháng")
+                  ->elementLabel("phiếu nhập hàng/tháng")
+                  ->dimensions(1000, 500)
+                  ->responsive(false)
+                  ->groupByMonth(date('Y'), true);
+    	return view('admin.tong-quan',compact('cates','products','orders','users','customer','news','coupon','chart','chartCoupon','chartCoupons'));
 
     }
 

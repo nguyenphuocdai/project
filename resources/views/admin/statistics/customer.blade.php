@@ -28,6 +28,7 @@
                                 <th>Tên khách hàng</th>
                                 <th>Địa chỉ</th>
                                 <th>Số điện thoại</th>
+                                <th>Số đơn hàng đã đặt</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,6 +51,10 @@
                                  else{
                                     echo $item->phone_number;
                                  }?></td>
+                                 <td align="center"><?php $orders = DB::table('orders')->where('customer_id',$item->customer_id)->count(); 
+                                 echo $orders;
+                                 ?>
+                                 </td>
                             </tr>
                             @endforeach
                         </tbody>

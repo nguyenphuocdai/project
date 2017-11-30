@@ -92,6 +92,12 @@
 <script>
 	function capnhat(rowid) {
 		var soluong = parseInt($('#so-luong-' + rowid).val());
+		console.log(soluong);
+		if(soluong > 0){
+			if(soluong > 50){
+				alert('Số lượng nhập quá lớn, vui lòng kiểm tra lại');
+			}
+			else{
 		$.ajax({
 			url: '{{ url('cap-nhat') }}',
 			type: 'post',
@@ -109,6 +115,11 @@
 				}
 			}
 		});
+		}
+		}
+		else{
+			alert('Số lượng nhập không được âm, vui lòng nhập lại');
+		}
 		}
 </script>
 @endsection

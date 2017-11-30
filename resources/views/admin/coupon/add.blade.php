@@ -50,7 +50,7 @@
 					<select class="form-control" name="selectFK" id="tsp">
 						<option value="" selected="selected" disabled>Chọn sản phẩm</option>
 						@foreach($product as $pro)
-						<option value="{{ $pro->product_id }}" name="{{ $pro->product_id }}" id="{{ $pro->product_id }}">{{ $pro->name }} (Giá hiện tại : {{ $pro->price }}, Số lượng hiện tại: {{ $pro->quantity }})</option>
+						<option value="{{ $pro->product_id }}" name="{{ $pro->product_id }}" id="{{ $pro->product_id }}">{{ $pro->name }} (Giá nhập hiện tại : {{ number_format($pro->price/1.2,0,",",".") }}, Số lượng hiện tại: {{ $pro->quantity }})</option>
 						@endforeach
 					</select>
 					<br>

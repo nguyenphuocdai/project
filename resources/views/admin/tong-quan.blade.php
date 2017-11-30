@@ -170,6 +170,9 @@
 	<div class="row">
 		{!! $chartCoupon->render() !!}
 	</div>
+	<div class="row">
+		{!! $chartCoupons->render() !!}
+	</div>
 </div>
 <div>
 	@endsection

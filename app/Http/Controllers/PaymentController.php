@@ -110,6 +110,7 @@ class PaymentController extends Controller
                 $order->customer_id= $cus->customer_id;
                 $order->address_receive = $cus->address;
                 $order->payment = 1;
+                $order->status = 0;
                 $order->phone_social = $cus->phone_number;
                 $order->datesigned = $cus->created_at;
                 $order->save();
