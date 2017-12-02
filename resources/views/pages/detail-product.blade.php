@@ -139,6 +139,7 @@
 <div class="products">
 <!-- Product #1 -->
 @foreach($pr_relate as $pr)
+@if($pr->price != 0)
 <div class="four columns">
 	<figure class="product">
 		<div class="mediaholder">
@@ -164,6 +165,7 @@
 		</a>
 	</figure>
 </div>
+@endif
 @endforeach
 </div>
 </div>
@@ -177,6 +179,7 @@
 <div class="products">
 <!-- Product #1 -->
 @foreach($randomProd as $pr)
+@if($pr->price != 0)
 <div class="four columns">
 	<figure class="product">
 		<div class="mediaholder">
@@ -202,6 +205,7 @@
 		</a>
 	</figure>
 </div>
+@endif
 @endforeach
 </div>
 </div>

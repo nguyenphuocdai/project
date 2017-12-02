@@ -112,6 +112,7 @@ class HomeController extends Controller
     public function getGioHang()
     {   //lấy các thứ hiện tại 
         $content = Cart::content();
+        
         $sub = Cart::subtotal();
         $subtotal = Cart::subtotal(0,",",".");
         return view('pages.shopping-cart',compact('content','subtotal','totalEnglishSub'));

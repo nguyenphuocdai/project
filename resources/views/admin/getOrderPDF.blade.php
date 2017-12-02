@@ -46,32 +46,41 @@
 	</head>
 	<body>
 		<caption>
-		<h1>Đơn Hàng</h1>
+		<h2>HÓA ĐƠN ĐƠN HÀNG</h2>
 		</caption>
 		<div class="container">
 			<div class="row">
-				<div id="nguoilap" style="">Người Lập: <?php echo DB::table('users')->where('user_id',$or->user_id)->first()->username;?>    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ngày Lập: <?php   $time = DB::table('orders')->where('order_id',$or->order_id)->first()->datesigned;
+				<div id="nguoilap" style="">NGƯỜI LẬP: <?php echo DB::table('users')->where('user_id',$or->user_id)->first()->username;?>    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;NGÀY LẬP: <?php   $time = DB::table('orders')->where('order_id',$or->order_id)->first()->datesigned;
 					$dateTime = new DateTime($time);
-					echo $dateTime->format("d-m-Y H:i");
+					echo $dateTime->format("d-m-Y");
 				?>  </div>
 				
 			</div>
 		</div>
 		<div class="container">
 			<div class="row">
-				<div id="hoten">Họ tên khách hàng: <?php echo DB::table('customers')->where('customer_id',$or->customer_id)->first()->name;?> </div>
-				<div id="diachi">Địa chỉ nhận hàng: <?php $tamp = DB::table('orders')->where('customer_id',$or->customer_id)->first();
-															$temp = DB::table('customers')->where('customer_id',$or->customer_id)->first();
-						if($tamp->address_receive == null){
-							echo $temp->address;
-						}
-						else{
-							echo $tamp->address_receive;
-						}
+				<div id="hoten">TÊN KHÁCH HÀNG: <?php echo DB::table('customers')->where('customer_id',$or->customer_id)->first()->name;?> </div>
+				<div id="diachi">ĐỊA CHỈ NHẬN HÀNG: <?php $tamp = DB::table('orders')->where('customer_id',$or->customer_id)->first();
+							$temp = DB::table('customers')->where('customer_id',$or->customer_id)->first();
+							if($tamp->address_receive == null){
+								echo $temp->address;
+							}
+							else{
+								echo $tamp->address_receive;
+							}
 					?>
 				</div>
-				<div id="diachi">Số điện thoại: <?php echo DB::table('customers')->where('customer_id',$or->customer_id)->first()->phone_number; ?> </div>
+				<div id="diachi">SỐ ĐIỆN THOẠI: <?php echo DB::table('customers')->where('customer_id',$or->customer_id)->first()->phone_number; ?> </div>
+				<div style="font-family: DejaVu Sans;">TÌNH TRẠNG ĐƠN HÀNG: <?php if($tamp->payment == 1){
+					echo "<span style='color: #4267b2'>"."Đã thanh toán"."</span>";
+				}
+				else{
+					echo "<span style='color: red'>"."Thanh toán khi nhận hàng"."</span>";
+				}
+				?>	
+				</div>
 			</div>
+			<br>
 			<table>
 				
 			</div>
@@ -92,11 +101,12 @@
 					<td><?php $tamp= DB::table('products')->where('product_id',$item->product_id)->first();
 					echo $tamp->name; ?></td>
 					<td>{{$item->quantity}}</td>
-					<td>{{number_format($item->price,0,",",".")}}</td>
-					<td>{{number_format($item->total,0,",",".")}}</td>
+					<td>{{number_format($item->price,0,",",".")}} đ</td>
+					<td>{{number_format($item->total,0,",",".")}} đ</td>
 				</tr>
 				@endforeach
 			</tbody>
+			<br>
 			<tr>
 				<div id="tongtien">
 					Tổng tiền:
@@ -110,6 +120,7 @@
 				</div>
 			</tr>
 		</table>
+
 		<script src="{{ url('public/admin/js/myscript.js') }}">
 		</script>
 		<script src="{{ url('public/admin/bower_components/DataTables/media/js/jquery.dataTables.min.js') }}"></script>

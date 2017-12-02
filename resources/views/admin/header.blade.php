@@ -81,10 +81,10 @@
         <a href=""><i class="fa fa-area-chart"></i> Thống Kê<span class="fa arrow "></span></a>
         <ul class="nav nav-second-level">
             <li>
-                <a href="{{route('admin.statistics.chooseday')}}">Doanh thu</a>
+                <a href="{{route('admin.statistics.chooseday')}}">Doanh thu theo sản phẩm</a>
             </li>
             <li>
-                <a href="{{url::route('admin.statistics.customer')}}">Khách hàng</a>
+                <a href="{{url::route('admin.statistics.customer')}}">Khách hàng thân thiết</a>
             </li>
         </ul>
         <!-- /.nav-second-level -->

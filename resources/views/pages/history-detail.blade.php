@@ -10,11 +10,11 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>MÃ ĐƠN HÀNG</th>
-						<th>SỐ LƯỢNG</th>
-						<th>THỜI GIAN ĐẶT HÀNG</th>
-						<th>ĐƠN GIÁ</th>
-						<th>THÀNH TIỀN</th>
+						<th><strong>MÃ ĐƠN HÀNG</strong></th>
+						<th><strong>SỐ LƯỢNG</strong></th>
+						<th><strong>THỜI GIAN ĐẶT HÀNG</strong></th>
+						<th><strong>ĐƠN GIÁ</strong></th>
+						<th><strong>THÀNH TIỀN</strong></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -41,7 +41,7 @@
 			</span>
 				</div>
 		</div>
-		<a href="{{ url('history-order') }}" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="fa fa-hand-o-left"></i></a>
+		<a href="{{ url('history-order') }}" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="fa fa-hand-o-left" style="color:#ffffff !important"></i></a>
 	</div>
 </div>
 @endsection

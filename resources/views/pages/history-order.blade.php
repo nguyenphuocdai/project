@@ -14,13 +14,14 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>MÃ ĐƠN HÀNG</th>
-            <th>TÊN KHÁCH HÀNG</th>
-            <th>SỐ ĐIỆN THOẠI</th>
-            <th>ĐỊA CHỈ NHẬN HÀNG</th>
-            <th>THỜI GIAN ĐẶT HÀNG</th>
-            <th>CHI TIẾT</th>
-            <th>TRẠNG THÁI</th>
+            <th><strong>MÃ ĐƠN HÀNG</strong></th>
+            <th><strong>TÊN KHÁCH HÀNG</strong></th>
+            <th><strong>SỐ ĐIỆN THOẠI</strong></th>
+            <th><strong>ĐỊA CHỈ NHẬN HÀNG</strong></th>
+            <th><strong>THỜI GIAN ĐẶT HÀNG</strong></th>
+            <th><strong>PHƯƠNG THỨC THANH TOÁN</strong></th>
+            <th><strong>CHI TIẾT</strong></th>
+            <th><strong>TRẠNG THÁI</strong></th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +32,17 @@
             <td>{{ $customer->phone_number }}</td>
             <td>{{ $customer->address }}</td>
             <td>{{ $order->created_at }}</td>
-            <td><a href="{{ url('history-detail',$order->order_id) }}"><span class="label label-info">Xem</span></a></td>
+            <td><?php
+              if($order->payment == 1){
+              echo "Đã thanh toán";
+            }
+            else {
+              echo "Thanh toán khi nhận hàng";
+            }
+            ?>
+
+            </td>
+            <td><a href="{{ url('history-detail',$order->order_id) }}"><span class="label label-info">Xem chi tiết</span></a></td>
             <td><span class="label label-success">
             	<?php if($order->status == 0){
             		echo "Đang xử lý";
@@ -44,7 +55,7 @@
         </tbody>
       </table>
     </div>
-    <a href="{{ url('profile') }}" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="fa fa-hand-o-left"></i></a>
+    <a href="{{ url('profile') }}" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="fa fa-hand-o-left" style="color:#ffffff !important"></i></a>
 	</div>
 </div>
 @endsection

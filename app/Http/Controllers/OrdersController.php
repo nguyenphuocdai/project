@@ -65,6 +65,7 @@ class OrdersController extends Controller
         $t = DB::table('products')->where('product_id',$prod->product_id)->first()->quantity;
         $product = products::find($prod->product_id);
         if($product->quantity == 0 && $prod->quantity == $prod->note*(-1)){
+          $product->quantity = $product->quantity;
         }
         else{
         $product->quantity = $prod->quantity + $prod->note;

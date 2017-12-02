@@ -21,8 +21,7 @@
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                    
                         <thead>
-                            <tr align="center">
-                                
+                            <tr>
                                 <th>STT</th>
                                 <th>Tên Khách Hàng</th>
                                 <th>Địa chỉ giao hàng</th>
@@ -31,14 +30,12 @@
                                 <th>Ngày Duyệt</th>
                                 <th>Chi Tiết Đơn Hàng</th>
                                 <th>Xuất File</th>
-                               
-                              
                             </tr>
                         </thead>
                         <tbody>
                             <?php static $i=1;?>
                            @foreach($order as $item)
-                            <tr class="even gradeC" align="center">
+                            <tr class="even gradeC">
                                
                                 <td width="10px"><?php echo $i++ ?>
                                 </td>
@@ -64,10 +61,11 @@
                                 </td>
 
                                 <td>
-                                 <?php                                   
-                                        $dateTime = new DateTime($item->datesigned);
-                                         echo $dateTime->format('d-m-Y H:i');
-                                         
+                                 <?php    
+                                        $date = DB::table('orders_detail')->where('order_id',$item->order_id)->first();
+                                        // dd($date);                               
+                                        $dateTime = new DateTime($date->date_signed);
+                                         echo $dateTime->format('d-m-Y H:i:s');
                                     ?>
                                 </td>
 
