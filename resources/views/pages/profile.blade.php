@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
 			@if(Session::has('flash_message'))
-			<div class="success-custom alert alert-success">
+			<div class="success-custom alert alert-success" style="background-color: #3acf87 !important;color: #ffffff !important">
 				{{Session::get('flash_message')}}
 			</div>
 			@endif

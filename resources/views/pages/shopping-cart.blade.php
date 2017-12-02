@@ -35,12 +35,12 @@
 		</p>
 		<table class="table table-responsive">
 			<tr>
-				<th>{{ Lang::locale() === "en" ? 'IMAGE' : 'HÌNH ẢNH' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'ITEM NAME' : 'TÊN SẢN PHẨM' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'PRICE' : 'GIÁ BÁN' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'QUANTITY' : 'SỐ LƯỢNG' }}</th>
-				<th style="text-align: center">{{ Lang::locale() === "en" ? 'TOOL' : 'CÔNG CỤ' }}</th>
-				<th>{{ Lang::locale() === "en" ? 'TOTAL' : 'TỔNG TIỀN' }}</th>
+				<th><strong>{{ Lang::locale() === "en" ? 'IMAGE' : 'HÌNH ẢNH' }}</strong></th>
+				<th><strong>{{ Lang::locale() === "en" ? 'ITEM NAME' : 'TÊN SẢN PHẨM' }}</strong></th>
+				<th><strong>{{ Lang::locale() === "en" ? 'PRICE' : 'GIÁ BÁN' }}</strong></th>
+				<th><strong>{{ Lang::locale() === "en" ? 'QUANTITY' : 'SỐ LƯỢNG' }}</strong></th>
+				<th style="text-align: center"><strong>{{ Lang::locale() === "en" ? 'TOOL' : 'CÔNG CỤ' }}</strong></th>
+				<th><strong>{{ Lang::locale() === "en" ? 'TOTAL' : 'TỔNG TIỀN' }}</strong></th>
 			</tr>
 			<form method="post" action="" style="margin-top: 20px;">
 				<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -67,7 +67,6 @@
 			<tr>
 				<th>
 					<div class="cart-btns" style="width: 100%">
-						<a href="{{ route('dathang') }}" class="button color cart-btns proceed">Thanh toán</a>
 						<a href="{{ url('shop') }}" class="button color cart-btns proceed left">tiếp tục mua sắm</a>
 					</div>
 				</th>
@@ -75,7 +74,7 @@
 		</table>
 	</div>
 	<!-- Cart Totals -->
-	<div class="eight columns cart-totals">
+	<div class="night columns cart-totals" style="float: right;">
 		<h3 class="headline">Giỏ hàng thanh toán</h3><span class="line"></span><div class="clearfix"></div>
 		<table class="cart-table margin-top-5">
 			<tr>
@@ -84,6 +83,7 @@
 			</tr>
 		</table>
 		<br>
+		<a href="{{ route('dathang') }}" class="btn btn-success" style="float:right;margin-right: 30px;">THANH TOÁN</a>
 	</div>
 </div>
 <div class="margin-top-40"></div>
@@ -92,7 +92,6 @@
 <script>
 	function capnhat(rowid) {
 		var soluong = parseInt($('#so-luong-' + rowid).val());
-		console.log(soluong);
 		if(soluong > 0){
 			if(soluong > 50){
 				alert('Số lượng nhập quá lớn, vui lòng kiểm tra lại');

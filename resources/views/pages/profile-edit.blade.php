@@ -10,7 +10,7 @@
           <div class="panel-body">
             <label>Họ & Tên: </label><input type='text' class='form-control'  value="{{ $customer->name }}" name="name" >
             <label>Tài khoản :</label><input type='text' class='form-control'  value="{{ $customer->username }}" name="username">
-            <label>Địa chỉ </label><input type='text' class='form-control' name="address"  value="{{ $customer->address }}" required pattern="([a-zA-Z0-9]| |/|\\|@|#|\$|%|&)+">
+            <label>Địa chỉ </label><input type='text' class='form-control' name="address"  value="{{ $customer->address }}" required>
             <label>Email :</label><input type='text' class='form-control' name="email"  value="{{ $customer->email }}" >
             <label>Số điện thoại:</label><input type='text' class='form-control' name="phone_number"  value="{{ $customer->phone_number }}" required pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$">
             <div align="right" style="margin-top: 25px">
