@@ -126,7 +126,7 @@
 	</div>
 </div>
 <div class="container">
-	<div class="sixteen columns">
+	<div class="sixteen columns headerFull">
 		
 		<a href="#menu" class="menu-trigger"><i class="fa fa-bars"></i> Menu</a>
 		<nav id="navigation">

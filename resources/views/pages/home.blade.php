@@ -38,9 +38,9 @@
 </div>
 <!-- Featured
 ================================================== -->
-<div class="container" >
+<div class="container" style="    margin-left: 15px;">
 	<div class="one-third column">
-		<a href="javascript:void(0)" class="img-caption" >
+		<a href="javascript:void(0)" class="img-caption">
 			<figure>
 				<img src="{{url('public/pages/images/nhabep1.jpg')}}" alt="" />
 				<figcaption>
@@ -91,6 +91,7 @@
 			<div class="overflowholder">
 				<ul>
 					@foreach($pr_new as $new)
+					@if($new->price != 0)
 					<li>
 						<figure class="product">
 							<div class="product-discount">Mới</div>
@@ -111,11 +112,12 @@
 							<a href="{{url('chi-tiet-san-pham',[$new->product_id,$new->alias])}}">
 								<section>
 									<span class="product-category">{{ $new->name }}</span>
-									<span class="product-price">{{number_format($new->price,0,",",".")}}</span>
+									<span class="product-price">{{number_format($new->price,0,",",".")}} đ</span>
 								</section>
 							</a>
 						</figure>
 					</li>
+					@endif
 					@endforeach
 				</ul>
 				<div class="clearfix"></div>

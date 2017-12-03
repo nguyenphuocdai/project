@@ -210,3 +210,10 @@ body { margin-top:20px; }
 a:hover {
     color: #ffffff !important;
 }
+.container{
+    width: 100% !important;
+}
+.headerFull{
+    width: 100% !important;
+    margin-left: 0 !important;
+}

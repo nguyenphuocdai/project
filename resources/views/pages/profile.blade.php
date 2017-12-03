@@ -53,9 +53,11 @@
 					</div>
 				</div>
 				<div class="panel-footer">
-					<a href="{{ url('history-order') }}" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="fa fa-history" style="color:#ffffff !important"></i></a>
+					<a href="{{ url('history-order') }}" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="fa fa-history" style="color:#ffffff !important"></i>
+						<span class="tooltiptext" style="color: #ffffff !important">Lịch sử đơn đặt</span>
+					</a>
 					<span class="pull-right">
-						<a href="{{ url('profile-edit',Auth::guard('customers')->user()->customer_id) }}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+						<a href="{{ url('profile-edit',Auth::guard('customers')->user()->customer_id) }}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i><span class="tooltiptext" style="color: #ffffff !important"> Cập nhật thông tin</span></a>
 					</span>
 				</div>
 				

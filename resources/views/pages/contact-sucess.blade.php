@@ -55,7 +55,7 @@
 		<div class="toggle-wrap faq">
 			<span class="trigger"><a href="#"><i class="toggle-icon"></i> Giao hàng và trả hàng?</a></span>
 			<div class="toggle-container">
-				<p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
+				<p><span class="glyphicon glyphicon-wrench"></span> Chức năng đang phát triển, vui lòng quay lại sau. </p>
 			</div>
 		</div>
 
@@ -63,7 +63,7 @@
 		<div class="toggle-wrap faq">
 			<span class="trigger"><a href="#"><i class="toggle-icon"></i> Phí vận chuyển cồng kềnh?</a></span>
 			<div class="toggle-container">
-				<p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
+				<p>Hoàn toàn miễn phí vận chuyển toàn quốc.</p>
 			</div>
 		</div>
 
@@ -71,7 +71,7 @@
 		<div class="toggle-wrap faq">
 			<span class="trigger"><a href="#"><i class="toggle-icon"></i>Các hình thức thanh toán đang áp dụng ở Shop?</a></span>
 			<div class="toggle-container">
-				<p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
+				<p>Khách hàng có thể thanh toán trực tuyến bằng thẻ ngân hàng quốc tế hoặc thanh toán khi nhận hàng.</p>
 			</div>
 		</div>
 
@@ -79,7 +79,7 @@
 		<div class="toggle-wrap faq">
 			<span class="trigger"><a href="#"><i class="toggle-icon"></i>Làm sao để bán hàng cùng với Shop</a></span>
 			<div class="toggle-container">
-				<p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
+				<p><span class="glyphicon glyphicon-wrench"></span> Chức năng đang được xây dựng, vui lòng trở lại sau.</p>
 			</div>
 		</div>
 
@@ -87,15 +87,7 @@
 		<div class="toggle-wrap faq">
 			<span class="trigger"><a href="#"><i class="toggle-icon"></i>Làm sao để biết tôi thanh toán thành công hay chưa?</a></span>
 			<div class="toggle-container">
-				<p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
-			</div>
-		</div>
-
-		<!-- Toggle 7 -->
-		<div class="toggle-wrap faq">
-			<span class="trigger"><a href="#"><i class="toggle-icon"></i>Sản phẩm vận chuyển từ nước khác có không?</a></span>
-			<div class="toggle-container">
-				<p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
+				<p>Bạn vui lòng đăng nhập và vào thông tin cá nhân <span class="glyphicon glyphicon-triangle-right"></span> xem lịch sử đơn hàng.</p>
 			</div>
 		</div>
 
