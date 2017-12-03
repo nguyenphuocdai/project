@@ -67,7 +67,7 @@
 			<div class="form-group">
 				<label class="col-sm-4 control-label" for="amount_order">Tổng tiền</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" name="amount_order" value="{{ number_format($convertTotal,0,",",".") }}" id="amount_order" placeholder="Tổng tiền hóa đơn" disabled="disabled">
+					<input type="text" class="form-control" name="amount_order" value="{{ number_format($convertTotal,0,",",".") }} đ" id="amount_order" placeholder="Tổng tiền hóa đơn" disabled="disabled">
 					
 					@if ($errors->has('amount_order'))
 					<span class="help-block">

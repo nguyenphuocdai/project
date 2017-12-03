@@ -68,7 +68,7 @@
 			</section>
 			<!-- Text Parapgraph -->
 			<section>
-				<p class="margin-reset"><?php echo $pr_detail->highlight;   ?></p>
+				<p class="margin-reset"><?php echo $pr_detail->highlight;?></p>
 				<div class="clearfix"></div>
 			</section>
 			<section class="linking">
@@ -145,7 +145,7 @@
 		<div class="mediaholder">
 			<a href="{{url('chi-tiet-san-pham',[$pr->product_id,$pr->alias])}}">
 				<img alt="" src="{{ asset('resources/upload/'.$pr->image)}}" style="    width: 220px;
-				height: 300px;"/>
+				height: 220px;"/>
 				<div class="cover">
 					<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$pr->product_id)->first();
 										if($coverImage == NULL){
@@ -160,7 +160,7 @@
 		<a href="#">
 			<section>
 				<span class="product-category">{{ $pr->name }}</span>
-				<span class="product-price">{{ number_format($pr->price,0,",",".") }}</span>
+				<span class="product-price">{{ number_format($pr->price,0,",",".") }} đ</span>
 			</section>
 		</a>
 	</figure>
@@ -184,8 +184,8 @@
 	<figure class="product">
 		<div class="mediaholder">
 			<a href="{{url('chi-tiet-san-pham',[$pr->product_id,$pr->alias])}}">
-				<img alt="" src="{{ asset('resources/upload/'.$pr->image)}}" style="    width: 220px;
-				height: 300px;"/>
+				<img alt="" src="{{ asset('resources/upload/'.$pr->image)}}" style="width: 220px;
+				height: 220px;"/>
 				<div class="cover">
 					<?php $coverImage = DB::table('images')->select('product_id','image')->where('product_id',$pr->product_id)->first();
 										if($coverImage == NULL){
@@ -195,12 +195,12 @@
 					<img alt="" src="{{ asset('resources/upload/product_image/'.$coverImage->image)}}" style="width: 220px;height: 220px"/>
 				</div>
 			</a>
-			<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+			<a href="{{url('mua-hang',[$pr->product_id,$pr->alias])}}" class="product-button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 		</div>
-		<a href="#">
+		<a href="{{url('chi-tiet-san-pham',[$pr->product_id,$pr->alias])}}">
 			<section>
 				<span class="product-category">{{ $pr->name }}</span>
-				<span class="product-price">{{ number_format($pr->price,0,",",".") }}</span>
+				<span class="product-price">{{ number_format($pr->price,0,",",".") }} đ</span>
 			</section>
 		</a>
 	</figure>
